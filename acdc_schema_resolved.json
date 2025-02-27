@@ -673,14 +673,6 @@
                 }
             ]
         },
-        "alternate_timepoint": {
-            "description": "If the data is not a baseline measurement, the timepoint name is defined here.",
-            "type": "string"
-        },
-        "baseline_timepoint": {
-            "description": "Does the data reflect a baseline measurement?",
-            "type": "boolean"
-        },
         "core_metadata_collections": {
             "anyOf": [
                 {
@@ -1388,6 +1380,10 @@
         },
         "assay_description": {
             "description": "A description of the type of assay used.",
+            "type": "string"
+        },
+        "assay_id": {
+            "description": "An identifier for the assay or experiemnt performed on the sample",
             "type": "string"
         },
         "metabolite_names": {
@@ -3138,6 +3134,10 @@
         "sequencing_protocol": {
             "description": "Name of the sequencing protocol used to convert cleaned libraries into sequenced data",
             "type": "string"
+        },
+        "baseline_timepoint": {
+            "description": "Is the timepoint a baseline timepoint?",
+            "type": "boolean"
         },
         "intervention": {
             "description": "What intervention did the participant receive at this timepoint?",
@@ -4989,7 +4989,6 @@
         "submitter_id",
         "data_category",
         "data_format",
-        "data_type",
         "mapping_file_version",
         "type",
         "submitter_id",
