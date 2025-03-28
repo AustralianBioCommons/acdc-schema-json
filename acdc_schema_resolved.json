@@ -908,7 +908,7 @@
                 "ambient temperature",
                 "cut slide",
                 "fresh",
-                "frozen, -70C freezer",
+                "frozen, -80C freezer",
                 "frozen, -150C freezer",
                 "frozen, liquid nitrogen",
                 "frozen, vapor phase",
@@ -933,7 +933,7 @@
                     "version": "6.1.1"
                 },
                 {
-                    "enumeration": "frozen, -70C freezer",
+                    "enumeration": "frozen, -80C freezer",
                     "source": "https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage",
                     "version": "6.1.1"
                 },
