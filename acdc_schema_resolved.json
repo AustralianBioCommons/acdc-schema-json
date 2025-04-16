@@ -474,14 +474,20 @@
                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                 }
             },
-            "type": "string",
+            "type": [
+                "string",
+                "null"
+            ],
             "systemAlias": "node_id"
         },
         "project_id": {
             "term": {
                 "description": "Unique ID for any specific defined piece of work that is undertaken or attempted to meet a single requirement.\n"
             },
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "state": {
             "default": "validated",
@@ -531,7 +537,10 @@
             ]
         },
         "type": {
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "updated_datetime": {
             "oneOf": [
@@ -561,19 +570,28 @@
             "term": {
                 "description": "The format of the data file object.\n"
             },
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "file_name": {
             "term": {
                 "description": "The name (or part of a name) of a file (of any type).\n"
             },
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "file_size": {
             "term": {
                 "description": "The size of the data file (object) in bytes.\n"
             },
-            "type": "integer"
+            "type": [
+                "integer",
+                "null"
+            ]
         },
         "file_state": {
             "default": "registered",
@@ -597,18 +615,27 @@
             "term": {
                 "description": "DRS URI as defined by GA4GH DRS spec for pointers to file objects.\n"
             },
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "md5sum": {
             "pattern": "^[a-f0-9]{32}$",
             "term": {
                 "description": "The 128-bit hash value expressed as a 32 digit hexadecimal number used as a file's digital fingerprint.\n"
             },
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "object_id": {
             "description": "The GUID of the object in the index service.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "aligned_reads_files": {
             "anyOf": [
@@ -628,10 +655,16 @@
                                         "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                     }
                                 },
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             },
                             "submitter_id": {
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             }
                         },
                         "type": "object",
@@ -655,10 +688,16 @@
                                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                 }
                             },
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "submitter_id": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "type": "object"
@@ -683,10 +722,16 @@
                                         "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                     }
                                 },
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             },
                             "submitter_id": {
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             }
                         },
                         "type": "object",
@@ -710,10 +755,16 @@
                                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                 }
                             },
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "submitter_id": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "type": "object"
@@ -750,7 +801,10 @@
         "reference_genome_build": {
             "description": "Reference genome used e.g. GRCh37.",
             "pattern": "^GRCh[0-9]{2}$",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "variant_workflows": {
             "anyOf": [
@@ -770,10 +824,16 @@
                                         "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                     }
                                 },
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             },
                             "submitter_id": {
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             }
                         },
                         "type": "object",
@@ -797,10 +857,16 @@
                                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                 }
                             },
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "submitter_id": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "type": "object"
@@ -809,15 +875,24 @@
         },
         "freeze_thaw_cycles": {
             "description": "Number of freeze thaw cycles conducted on the sample",
-            "type": "integer"
+            "type": [
+                "integer",
+                "null"
+            ]
         },
         "sample_collection_method": {
             "description": "How the sample was collected, e.g. blood draw",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "sample_id": {
             "description": "A unique sample identifier",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "sample_in_preservation": {
             "description": "The preservation method used for the sample",
@@ -891,7 +966,10 @@
         "sample_source": {
             "description": "Uberon identifier, anatomical location as described by the Uber Anatomy Ontology (UBERON). (CMG, CCDG)",
             "pattern": "^UBERON:[0-9]{7}$",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "sample_storage_method": {
             "description": "How the sample was/is stored",
@@ -963,7 +1041,10 @@
         },
         "sample_type": {
             "description": "The type of sample, e.g. Whole Blood, Blood Cells, Frozen Blood",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "storage_location": {
             "description": "Where the sample is stored",
@@ -992,10 +1073,16 @@
                                         "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                     }
                                 },
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             },
                             "submitter_id": {
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             }
                         },
                         "type": "object",
@@ -1019,10 +1106,16 @@
                                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                 }
                             },
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "submitter_id": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "type": "object"
@@ -1031,7 +1124,10 @@
         },
         "cohort_id": {
             "description": "Identifier for the cohort the subject is a part of",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "consent_codes": {
             "description": "Subject Consent | Data Use Restrictions that are used to indicate  permissions/restrictions for datasets and/or materials, and relates to the purposes for which datasets and/or material might be removed, stored or used. Based on the Data Use Ontology : see http://www.obofoundry.org/ontology/duo.html",
@@ -1086,7 +1182,10 @@
         },
         "patient_id": {
             "description": "De-identified unique identifier for the patient/subject",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "projects": {
             "anyOf": [
@@ -1095,7 +1194,10 @@
                         "additionalProperties": true,
                         "properties": {
                             "code": {
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             },
                             "id": {
                                 "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
@@ -1109,7 +1211,10 @@
                                         "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                     }
                                 },
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             }
                         },
                         "type": "object",
@@ -1122,7 +1227,10 @@
                     "additionalProperties": true,
                     "properties": {
                         "code": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "id": {
                             "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
@@ -1136,7 +1244,10 @@
                                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                 }
                             },
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "type": "object"
@@ -1161,10 +1272,16 @@
                                         "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                     }
                                 },
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             },
                             "submitter_id": {
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             }
                         },
                         "type": "object",
@@ -1188,10 +1305,16 @@
                                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                 }
                             },
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "submitter_id": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "type": "object"
@@ -1200,7 +1323,10 @@
         },
         "run_id": {
             "description": "Sequencing run ID associated with file",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "age_at_collection": {
             "description": "Age of the participant at the time of lab tests.",
@@ -1372,11 +1498,17 @@
         },
         "assay_description": {
             "description": "A description of the type of assay used.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "assay_id": {
             "description": "An identifier for the assay or experiemnt performed on the sample",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "metabolite_names": {
             "description": "A list of all metabolites assayed in this method",
@@ -1724,10 +1856,16 @@
                                         "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                     }
                                 },
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             },
                             "submitter_id": {
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             }
                         },
                         "type": "object",
@@ -1751,10 +1889,16 @@
                                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                 }
                             },
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "submitter_id": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "type": "object"
@@ -1793,10 +1937,16 @@
                                         "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                     }
                                 },
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             },
                             "submitter_id": {
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             }
                         },
                         "type": "object",
@@ -1820,10 +1970,16 @@
                                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                 }
                             },
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "submitter_id": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "type": "object"
@@ -1832,11 +1988,17 @@
         },
         "abs_cluster": {
             "description": "Australian bureau of statistics: Name of the suburb where the participant lives",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "abs_state": {
             "description": "Australian bureau of statistics: Name of the state where participant lives",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "abs_weight_2000": {
             "description": "Australian bureau of statistics: Population weights from 2000",
@@ -1855,7 +2017,10 @@
         "baseline_date": {
             "description": "Date of baseline examination/recruitment/visit 1. In the format [YYYY-MM-DD]",
             "pattern": "^\\d{4}-\\d{2}-\\d{2}",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "bmi_baseline": {
             "description": "Body mass index calculated at baseline. (kg /(m^2))",
@@ -1909,12 +2074,18 @@
         },
         "month_birth": {
             "description": "Month of birth at baseline (MM)",
-            "type": "integer"
+            "type": [
+                "integer",
+                "null"
+            ]
         },
         "postcode": {
             "description": "The postcode is used to calculate the Socio-Economic Indexes for Areas (SEIFA) quintile. It may be manually adjusted at the clinician\u2019s discretion to better reflect the socioeconomic status of individual patients.",
             "pattern": "^\\d{4}$",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "sex": {
             "description": "Self-reported biological sex of the participant",
@@ -1939,7 +2110,10 @@
         },
         "year_birth": {
             "description": "Year of birth at baseline (YYYY)",
-            "type": "integer"
+            "type": [
+                "integer",
+                "null"
+            ]
         },
         "serum_marker_assays": {
             "anyOf": [
@@ -1959,10 +2133,16 @@
                                         "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                     }
                                 },
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             },
                             "submitter_id": {
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             }
                         },
                         "type": "object",
@@ -1986,10 +2166,16 @@
                                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                 }
                             },
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "submitter_id": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "type": "object"
@@ -1998,7 +2184,10 @@
         },
         "serum_unit": {
             "description": "Units of measurement captured in the file.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "alignment_workflows": {
             "anyOf": [
@@ -2018,10 +2207,16 @@
                                         "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                     }
                                 },
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             },
                             "submitter_id": {
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             }
                         },
                         "type": "object",
@@ -2045,10 +2240,16 @@
                                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                 }
                             },
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "submitter_id": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "type": "object"
@@ -2073,10 +2274,16 @@
                                         "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                     }
                                 },
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             },
                             "submitter_id": {
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             }
                         },
                         "type": "object",
@@ -2100,10 +2307,16 @@
                                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                 }
                             },
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "submitter_id": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "type": "object"
@@ -2113,16 +2326,25 @@
         "workflow_end_datetime": {
             "description": "A combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]",
             "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "workflow_link": {
             "description": "Link to Github hash for the CWL workflow used.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "workflow_start_datetime": {
             "description": "A combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]",
             "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "workflow_type": {
             "description": "Generic name for the workflow used to analyze a data set",
@@ -2136,7 +2358,10 @@
         },
         "workflow_version": {
             "description": "Version of the workflow used",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "imputed_data": {
             "description": "Does the lipidomic file contain imputed data for missing lipid species?",
@@ -2177,10 +2402,16 @@
                                         "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                     }
                                 },
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             },
                             "submitter_id": {
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             }
                         },
                         "type": "object",
@@ -2204,10 +2435,16 @@
                                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                 }
                             },
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "submitter_id": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "type": "object"
@@ -2216,7 +2453,10 @@
         },
         "acknowledgee": {
             "description": "Name of the individual or group to be acknowledged. Preferably as First name Last name",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "contact_type": {
             "description": "The type of contact or role in the project, e.g. Principal Investigator",
@@ -2229,11 +2469,17 @@
         "orcid": {
             "description": "The ORCID number for the acknowledgee",
             "pattern": "^[0]{4}-\\d{4}-\\d{4}-(\\d{3}X|\\d{4})$",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "cigarettes_per_day": {
             "description": "Self reported cigarettes per day.",
-            "type": "integer"
+            "type": [
+                "integer",
+                "null"
+            ]
         },
         "drinking_status": {
             "description": "Self reported current drinking status.",
@@ -2245,11 +2491,17 @@
         },
         "drinks_per_week": {
             "description": "Estimated standard drinks per week as integer",
-            "type": "integer"
+            "type": [
+                "integer",
+                "null"
+            ]
         },
         "drinks_per_week_string": {
             "description": "Estimated standard drinks per week as string. Suitable for questionaires where drinks may be reported as a range e.g. 10-12",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "smoking_status": {
             "description": "Indicates whether subject ever regularly smoked cigarettes.",
@@ -2262,13 +2514,19 @@
         "authz": {
             "description": "The authz string (example, [\"/programs/Program.name/projects/Project.code\"] ).",
             "items": {
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "type": "array"
         },
         "availability_mechanism": {
             "description": "Mechanism by which the project will be made avilable.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "availability_type": {
             "description": "Is the project open or restricted?",
@@ -2279,32 +2537,53 @@
         },
         "code": {
             "description": "Unique identifier for the project.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "data_access_url": {
             "description": "A URL link that takes you to a page that explains how to gain access to the project",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "date_collected": {
             "description": "The date or date range in which the project data was collected.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "dbgap_accession_number": {
             "description": "The dbgap accession number provided for the project. (CMG)",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "full_name": {
             "description": "The full name for the project.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "intended_release_date": {
             "description": "Tracks a Project's intended release date.",
             "format": "date-time",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "name": {
             "description": "Display name/brief description for the project.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "programs": {
             "anyOf": [
@@ -2324,10 +2603,16 @@
                                         "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                     }
                                 },
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             },
                             "submitter_id": {
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             }
                         },
                         "type": "object",
@@ -2351,10 +2636,16 @@
                                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                 }
                             },
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "submitter_id": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "type": "object"
@@ -2364,11 +2655,17 @@
         },
         "project_description": {
             "description": "The description for the project.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "project_registration": {
             "description": "External source from which the identifier included in study_id originates",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "releasable": {
             "default": false,
@@ -2382,15 +2679,24 @@
         },
         "short_name": {
             "description": "The shorthand name for the project.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "support_id": {
             "description": "The ID of the source providing support/grant resources.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "support_source": {
             "description": "The name of source providing support/grant resources.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "instrument_model": {
             "description": "The name and/or number associated with a specific sequencing instrument model",
@@ -3108,7 +3414,10 @@
         },
         "library_prep_protocol": {
             "description": "Name of the protocol used to prepare the samples",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "library_strategy": {
             "description": "Sequencing technique used for this library",
@@ -3125,7 +3434,10 @@
         },
         "sequencing_protocol": {
             "description": "Name of the sequencing protocol used to convert cleaned libraries into sequenced data",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "bp_diastolic": {
             "description": "Resting diastolic blood pressure from the upper arm in a clinical setting. (mmHg)",
@@ -3136,7 +3448,10 @@
                     "term_id": "EFO:0006336"
                 }
             ],
-            "type": "integer"
+            "type": [
+                "integer",
+                "null"
+            ]
         },
         "bp_systolic": {
             "description": "Resting systolic blood pressure from the upper arm in a clinical setting. (mmHg)",
@@ -3147,7 +3462,10 @@
                     "term_id": "EFO:0006335"
                 }
             ],
-            "type": "integer"
+            "type": [
+                "integer",
+                "null"
+            ]
         },
         "atrial_fibrillation": {
             "description": "Self reported Atrial Fibrillation",
@@ -3172,7 +3490,10 @@
         },
         "cvd_death_ICD10": {
             "description": "ICD10 code for Death due to CVD",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "cvd_family_history": {
             "description": "Does the participant have a family history of CVD? (Family history of premature CVD is defined as coronary heart disease or stroke in a first-degree female relative aged <65 years or a firstdegree male relative aged <55 years.)",
@@ -3190,7 +3511,10 @@
         },
         "cvd_non_fatal_10_year_ICD10": {
             "description": "ICD10 code for Non fatal cardiovascular disease within the last 10 years.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "cvd_reported": {
             "description": "Reported Stroke/MI/Angina at baseline, by clinician",
@@ -3215,7 +3539,10 @@
                     "term_id": "HP:0001297"
                 }
             ],
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "cvd_self_reported": {
             "description": "Self-reported Stroke/MI/Angina at baseline by the participant.",
@@ -3234,7 +3561,10 @@
         "date_death": {
             "description": "Date of death in the format YYYY-MM-DD",
             "pattern": "^\\d{4}-\\d{2}-\\d{2}",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "diabetes_reported": {
             "description": "Diabetes diagnosed by a clinician",
@@ -3259,7 +3589,10 @@
                     "term_id": "HP:0000819"
                 }
             ],
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "diabetes_self_reported": {
             "description": "Self-reported diabetes in the participant",
@@ -3300,7 +3633,10 @@
                     "term_version": "2021-10-10"
                 }
             ],
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "heart_failure_status": {
             "description": "Self reported heart failure status.",
@@ -3311,7 +3647,10 @@
         },
         "heart_rate": {
             "description": "Indicate the number of heart beats over a period of one minute.",
-            "type": "integer"
+            "type": [
+                "integer",
+                "null"
+            ]
         },
         "hypertension_measured": {
             "description": "Hypertension reported by a clinician at recruitment. Systolic BP >140mmHg, diastolic BP >90mmHg, or both",
@@ -3322,7 +3661,10 @@
         },
         "hypertension_measured_ICD10": {
             "description": "ICD10 code associated with Hypertension reported by a clinician at recruitment.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "hypertension_self_reported": {
             "description": "Hypertension self reported by patient. Systolic BP >140mmHg, diastolic BP >90mmHg, or both",
@@ -3348,7 +3690,10 @@
         },
         "os_time": {
             "description": "Overall survival time in months. Calculated as the time between baseline date and death date.",
-            "type": "integer"
+            "type": [
+                "integer",
+                "null"
+            ]
         },
         "premature_cvd_family_history": {
             "description": "Does the participant have a family history of premature CVD? Premature family history is defined as coronary heart disease or stroke in a first-degree female relative aged <65 years or a first degree male relative aged <55 years.)",
@@ -3382,10 +3727,16 @@
                                         "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                     }
                                 },
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             },
                             "submitter_id": {
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             }
                         },
                         "type": "object",
@@ -3409,10 +3760,16 @@
                                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                 }
                             },
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "submitter_id": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "type": "object"
@@ -3421,12 +3778,18 @@
         },
         "mapping_file_version": {
             "description": "Version of the mapping file",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "doi": {
             "description": "Digital object identifier for the published article or pre-print. Starting with 10.",
             "pattern": "^10\\.\\d{4,9}.+",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "is_primary": {
             "description": "Whether the publication is the primary publication for this study",
@@ -3434,15 +3797,24 @@
         },
         "pmid": {
             "description": "The pubmed id of the article",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "title": {
             "description": "Title of the publication",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "url": {
             "description": "Direct link to the published article",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "serum_markers": {
             "description": "A list of the serum markers that were measured",
@@ -3834,10 +4206,16 @@
                                         "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                     }
                                 },
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             },
                             "submitter_id": {
-                                "type": "string"
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
                             }
                         },
                         "type": "object",
@@ -3861,10 +4239,16 @@
                                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                 }
                             },
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "submitter_id": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "type": "object"
@@ -4682,15 +5066,24 @@
         },
         "contrast_bolus_agent": {
             "description": "The type of contrast agent used during the imaging procedure, such as iodine-based agents.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "convolution_kernel": {
             "description": "The type of convolution kernel used in image reconstruction, which affects image sharpness and noise.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "exposure_modulation_type": {
             "description": "The type of exposure modulation used to adjust the radiation dose during imaging, such as AUTO.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "image_data_modification_method": {
             "description": "The type of modification performed on the image data, such as removal of alphanumeric characters, defacing, or skull-stripping.",
@@ -4702,7 +5095,10 @@
         },
         "image_data_modification_name": {
             "description": "A classification describing specific methods used to modify the image data, such as software tools or processes.",
-            "type": "integer"
+            "type": [
+                "integer",
+                "null"
+            ]
         },
         "image_data_modified": {
             "description": "Indicates whether any post-clinical modification of the image pixel data has been performed.",
@@ -4714,19 +5110,31 @@
         },
         "manufacturer": {
             "description": "The name of the manufacturer of the imaging equipment, such as GE Healthcare or Siemens.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "manufacturer_model_name": {
             "description": "The model name of the imaging equipment, such as Revolution CT or MAGNETOM Skyra.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "modality": {
             "description": "The type of imaging modality used, such as CT, MRI, X-ray, Ultrasound, or PET.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "patient_position": {
             "description": "The position of the patient during the imaging procedure, such as Head First Supine (HFS) or Feet First Prone (FFP).",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "pixel_spacing": {
             "description": "The distance between the centers of adjacent pixels in the image, measured in millimeters.",
@@ -4737,11 +5145,17 @@
         },
         "series_description": {
             "description": "A description of the imaging series, such as \"Chest CT\" or \"Cardiac MRI\".",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "series_uid": {
             "description": "The unique identifier for the imaging series, assigned by the imaging equipment.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "slice_thickness": {
             "description": "The thickness of each slice in the imaging series, measured in millimeters.",
@@ -4759,15 +5173,24 @@
         },
         "contributor": {
             "description": "An entity responsible for making contributions to the resource. Examples of a Contributor include a person, an organization, or a service. Typically, the name of a Contributor should be used to indicate the entity.\n",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "coverage": {
             "description": "The spatial or temporal topic of the resource, the spatial applicability of the resource, or the jurisdiction under which the resource is relevant. Spatial topic and spatial applicability may be a named place or a location specified by its geographic coordinates. Temporal topic may be a named period, date, or date range. A jurisdiction may be a named administrative entity or a geographic place to which the resource applies. Recommended best practice is to use a controlled vocabulary such as the Thesaurus of Geographic Names [TGN] (http://www.getty.edu/research/tools/vocabulary/tgn/index.html). Where appropriate, named places or time periods can be used in preference to numeric identifiers such as sets of coordinates or date ranges.\n",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "creator": {
             "description": "An entity primarily responsible for making the resource. Examples of a Creator include a person, an organization, or a service. Typically, the name of a Creator should be used to indicate the entity.\n",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "date": {
             "oneOf": [
@@ -4785,35 +5208,59 @@
         },
         "description": {
             "description": "An account of the resource. Description may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource.\n",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "format": {
             "description": "The file format, physical medium, or dimensions of the resource. Examples of dimensions include size and duration. Recommended best practice is to use a controlled vocabulary such as the list of Internet Media Types [MIME] (http://www.iana.org/assignments/media-types/).\n",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "language": {
             "description": "A language of the resource. Recommended best practice is to use a controlled vocabulary such as RFC 4646 (http://www.ietf.org/rfc/rfc4646.txt).\n",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "publisher": {
             "description": "An entity responsible for making the resource available. Examples of a Publisher include a person, an organization, or a service. Typically, the name of a Publisher should be used to indicate the entity.\n",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "relation": {
             "description": "A related resource. Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system.\u00a0\n",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "rights": {
             "description": "Information about rights held in and over the resource. Typically, rights information includes a statement about various property rights associated with the resource, including intellectual property rights.\n",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "source": {
             "description": "A related resource from which the described resource is derived. The described resource may be derived from the related resource in whole or in part. Recommended best practice is to identify the related resource by means of a string conforming to a formal identification system.\n",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "subject": {
             "description": "The topic of the resource. Typically, the subject will be represented using keywords, key phrases, or classification codes. Recommended best practice is to use a controlled vocabulary.\n",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         }
     },
     "required": [
@@ -5317,7 +5764,10 @@
                 "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
             }
         },
-        "type": "string"
+        "type": [
+            "string",
+            "null"
+        ]
     },
     "data_bundle_state": {
         "default": "submitted",
@@ -5368,14 +5818,20 @@
                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                 }
             },
-            "type": "string",
+            "type": [
+                "string",
+                "null"
+            ],
             "systemAlias": "node_id"
         },
         "project_id": {
             "term": {
                 "description": "Unique ID for any specific defined piece of work that is undertaken or attempted to meet a single requirement.\n"
             },
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "state": {
             "default": "validated",
@@ -5425,7 +5881,10 @@
             ]
         },
         "type": {
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "updated_datetime": {
             "oneOf": [
@@ -5455,19 +5914,28 @@
             "term": {
                 "description": "The format of the data file object.\n"
             },
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "file_name": {
             "term": {
                 "description": "The name (or part of a name) of a file (of any type).\n"
             },
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "file_size": {
             "term": {
                 "description": "The size of the data file (object) in bytes.\n"
             },
-            "type": "integer"
+            "type": [
+                "integer",
+                "null"
+            ]
         },
         "file_state": {
             "default": "registered",
@@ -5491,18 +5959,27 @@
             "term": {
                 "description": "DRS URI as defined by GA4GH DRS spec for pointers to file objects.\n"
             },
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "md5sum": {
             "pattern": "^[a-f0-9]{32}$",
             "term": {
                 "description": "The 128-bit hash value expressed as a 32 digit hexadecimal number used as a file's digital fingerprint.\n"
             },
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "object_id": {
             "description": "The GUID of the object in the index service.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         }
     },
     "date": {
@@ -5536,19 +6013,28 @@
         "term": {
             "description": "The format of the data file object.\n"
         },
-        "type": "string"
+        "type": [
+            "string",
+            "null"
+        ]
     },
     "file_name": {
         "term": {
             "description": "The name (or part of a name) of a file (of any type).\n"
         },
-        "type": "string"
+        "type": [
+            "string",
+            "null"
+        ]
     },
     "file_size": {
         "term": {
             "description": "The size of the data file (object) in bytes.\n"
         },
-        "type": "integer"
+        "type": [
+            "integer",
+            "null"
+        ]
     },
     "file_state": {
         "default": "registered",
@@ -5583,10 +6069,16 @@
                         "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                     }
                 },
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "submitter_id": {
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             }
         },
         "type": "object"
@@ -5595,7 +6087,10 @@
         "additionalProperties": true,
         "properties": {
             "code": {
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             },
             "id": {
                 "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
@@ -5609,7 +6104,10 @@
                         "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                     }
                 },
-                "type": "string"
+                "type": [
+                    "string",
+                    "null"
+                ]
             }
         },
         "type": "object"
@@ -5618,14 +6116,20 @@
         "term": {
             "description": "DRS URI as defined by GA4GH DRS spec for pointers to file objects.\n"
         },
-        "type": "string"
+        "type": [
+            "string",
+            "null"
+        ]
     },
     "md5sum": {
         "pattern": "^[a-f0-9]{32}$",
         "term": {
             "description": "The 128-bit hash value expressed as a 32 digit hexadecimal number used as a file's digital fingerprint.\n"
         },
-        "type": "string"
+        "type": [
+            "string",
+            "null"
+        ]
     },
     "month": {
         "description": "month (MM)",
@@ -5634,7 +6138,10 @@
     },
     "object_id": {
         "description": "The GUID of the object in the index service.",
-        "type": "string"
+        "type": [
+            "string",
+            "null"
+        ]
     },
     "parent_uuids": {
         "items": {
@@ -5649,7 +6156,10 @@
                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                 }
             },
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "minItems": 1,
         "type": "array",
@@ -5664,7 +6174,10 @@
         "term": {
             "description": "Unique ID for any specific defined piece of work that is undertaken or attempted to meet a single requirement.\n"
         },
-        "type": "string"
+        "type": [
+            "string",
+            "null"
+        ]
     },
     "qc_metrics_state": {
         "enum": [
@@ -5751,10 +6264,16 @@
                                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                 }
                             },
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "submitter_id": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "type": "object",
@@ -5777,10 +6296,16 @@
                                 "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                             }
                         },
-                        "type": "string"
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     },
                     "submitter_id": {
-                        "type": "string"
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     }
                 },
                 "type": "object"
@@ -5794,7 +6319,10 @@
                     "additionalProperties": true,
                     "properties": {
                         "code": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "id": {
                             "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
@@ -5808,7 +6336,10 @@
                                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                 }
                             },
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "type": "object",
@@ -5820,7 +6351,10 @@
                 "additionalProperties": true,
                 "properties": {
                     "code": {
-                        "type": "string"
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     },
                     "id": {
                         "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
@@ -5834,7 +6368,10 @@
                                 "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                             }
                         },
-                        "type": "string"
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     }
                 },
                 "type": "object"
@@ -5859,10 +6396,16 @@
                                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                 }
                             },
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "submitter_id": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "type": "object",
@@ -5886,10 +6429,16 @@
                                 "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                             }
                         },
-                        "type": "string"
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     },
                     "submitter_id": {
-                        "type": "string"
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     }
                 },
                 "type": "object"
@@ -5903,7 +6452,10 @@
                     "additionalProperties": true,
                     "properties": {
                         "code": {
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         },
                         "id": {
                             "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
@@ -5917,7 +6469,10 @@
                                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                                 }
                             },
-                            "type": "string"
+                            "type": [
+                                "string",
+                                "null"
+                            ]
                         }
                     },
                     "type": "object",
@@ -5930,7 +6485,10 @@
                 "additionalProperties": true,
                 "properties": {
                     "code": {
-                        "type": "string"
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     },
                     "id": {
                         "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
@@ -5944,7 +6502,10 @@
                                 "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                             }
                         },
-                        "type": "string"
+                        "type": [
+                            "string",
+                            "null"
+                        ]
                     }
                 },
                 "type": "object"
@@ -5978,14 +6539,20 @@
                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                 }
             },
-            "type": "string",
+            "type": [
+                "string",
+                "null"
+            ],
             "systemAlias": "node_id"
         },
         "project_id": {
             "term": {
                 "description": "Unique ID for any specific defined piece of work that is undertaken or attempted to meet a single requirement.\n"
             },
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "state": {
             "default": "validated",
@@ -6035,7 +6602,10 @@
             ]
         },
         "type": {
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "updated_datetime": {
             "oneOf": [
@@ -6079,14 +6649,20 @@
                     "term_url": "https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&version=16.02d&ns=NCI_Thesaurus&code=C54100"
                 }
             },
-            "type": "string",
+            "type": [
+                "string",
+                "null"
+            ],
             "systemAlias": "node_id"
         },
         "project_id": {
             "term": {
                 "description": "Unique ID for any specific defined piece of work that is undertaken or attempted to meet a single requirement.\n"
             },
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "state": {
             "default": "validated",
@@ -6136,7 +6712,10 @@
             ]
         },
         "type": {
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "updated_datetime": {
             "oneOf": [
@@ -6168,7 +6747,10 @@
         },
         "workflow_link": {
             "description": "Link to Github hash for the CWL workflow used.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         },
         "workflow_start_datetime": {
             "oneOf": [
@@ -6186,7 +6768,10 @@
         },
         "workflow_version": {
             "description": "Major version for a GDC workflow.",
-            "type": "string"
+            "type": [
+                "string",
+                "null"
+            ]
         }
     },
     "year": {
