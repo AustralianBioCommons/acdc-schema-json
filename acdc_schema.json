@@ -75,7 +75,8 @@
                 "enum": [
                     "low",
                     "medium",
-                    "high"
+                    "high",
+                    "null"
                 ]
             },
             "education_abs_heap": {
@@ -89,7 +90,8 @@
                     "HEAP-6",
                     "HEAP-7",
                     "HEAP-8",
-                    "HEAP-9"
+                    "HEAP-9",
+                    "null"
                 ]
             },
             "height_baseline_measured": {
@@ -125,7 +127,8 @@
                 "description": "Self-reported biological sex of the participant",
                 "enum": [
                     "male",
-                    "female"
+                    "female",
+                    "null"
                 ]
             },
             "subjects": {
@@ -156,10 +159,7 @@
         "required": [
             "type",
             "submitter_id",
-            "subjects",
-            "baseline_age",
-            "baseline_date",
-            "sex"
+            "subjects"
         ],
         "submittable": true,
         "systemProperties": [
@@ -224,7 +224,8 @@
                 "description": "Is the project open or restricted?",
                 "enum": [
                     "Open",
-                    "Restricted"
+                    "Restricted",
+                    "null"
                 ]
             },
             "code": {
@@ -326,7 +327,8 @@
                     "submitted",
                     "processing",
                     "closed",
-                    "legacy"
+                    "legacy",
+                    "null"
                 ]
             },
             "support_id": {
@@ -437,7 +439,8 @@
                         "K",
                         "LP(A)",
                         "UREA",
-                        "Omega-3"
+                        "Omega-3",
+                        "null"
                     ],
                     "enumDef": [
                         {
@@ -521,8 +524,7 @@
         },
         "required": [
             "type",
-            "submitter_id",
-            "assay_description"
+            "submitter_id"
         ],
         "submittable": true,
         "systemProperties": [
@@ -604,7 +606,8 @@
                     "STAR",
                     "BWA-aln",
                     "BWA-mem",
-                    "spinnaker"
+                    "spinnaker",
+                    "null"
                 ],
                 "enumDef": [
                     {
@@ -635,8 +638,7 @@
         },
         "required": [
             "type",
-            "submitter_id",
-            "workflow_type"
+            "submitter_id"
         ],
         "submittable": true,
         "systemProperties": [
@@ -701,7 +703,8 @@
                     "SPIRAL",
                     "CONSTANT_ANGLE",
                     "STATIONARY",
-                    "FREE"
+                    "FREE",
+                    "null"
                 ]
             },
             "contrast_bolus_agent": {
@@ -728,21 +731,24 @@
                     "MRI",
                     "X-Ray",
                     "Ultrasound",
-                    "PET"
+                    "PET",
+                    "null"
                 ]
             },
             "data_format": {
                 "description": "The specific format of the data files, such as DCM for DICOM files or nii.gz for NIfTI files.",
                 "enum": [
                     "dcm",
-                    "nii"
+                    "nii",
+                    "null"
                 ]
             },
             "data_type": {
                 "description": "The type of data file, such as DICOM or NIfTI, which indicates the format used for storing medical images.",
                 "enum": [
                     "DICOM",
-                    "NifTI"
+                    "NifTI",
+                    "null"
                 ]
             },
             "exposure_modulation_type": {
@@ -757,7 +763,8 @@
                 "enum": [
                     "Removal of alphanumeric characters",
                     "Defacing",
-                    "Skull-stripping"
+                    "Skull-stripping",
+                    "null"
                 ]
             },
             "image_data_modification_name": {
@@ -851,11 +858,7 @@
         },
         "required": [
             "type",
-            "submitter_id",
-            "data_type",
-            "data_format",
-            "data_category",
-            "acquisition_type"
+            "submitter_id"
         ],
         "submittable": true,
         "systemProperties": [
@@ -928,7 +931,8 @@
                     "Ion Mobility MS",
                     "MALDI MS",
                     "GC-MS",
-                    "High Mass Accuracy MS"
+                    "High Mass Accuracy MS",
+                    "null"
                 ]
             },
             "lipid_names": {
@@ -1681,7 +1685,8 @@
                         "TG(O-54:4) [NL-17:1]",
                         "TG(O-54:4) [NL-18:2]",
                         "TG(O-54:4) [SIM]",
-                        "Ubiquinone"
+                        "Ubiquinone",
+                        "null"
                     ]
                 },
                 "type": "array"
@@ -1692,8 +1697,7 @@
         },
         "required": [
             "type",
-            "submitter_id",
-            "assay_description"
+            "submitter_id"
         ],
         "submittable": true,
         "systemProperties": [
@@ -1766,13 +1770,15 @@
                 "enum": [
                     "mass spec raw",
                     "mass spec analysed",
-                    "summarised results"
+                    "summarised results",
+                    "null"
                 ]
             },
             "data_format": {
                 "description": "The format of the data in this data file",
                 "enum": [
-                    "wiff"
+                    "wiff",
+                    "null"
                 ]
             },
             "data_type": {
@@ -1784,14 +1790,16 @@
                     "Ion Mobility MS",
                     "MALDI MS",
                     "GC-MS",
-                    "High Mass Accuracy MS"
+                    "High Mass Accuracy MS",
+                    "null"
                 ]
             },
             "metabolomic_unit": {
                 "description": "Units of measurement captured in the metabolomics file.",
                 "enum": [
                     "pmol/mL",
-                    "umol/mL"
+                    "umol/mL",
+                    "null"
                 ]
             },
             "metabolomics_assays": {
@@ -1800,10 +1808,7 @@
         },
         "required": [
             "type",
-            "submitter_id",
-            "data_category",
-            "data_format",
-            "data_type"
+            "submitter_id"
         ],
         "submittable": true,
         "systemProperties": [
@@ -1859,7 +1864,8 @@
                 "enum": [
                     "Principal Investigator",
                     "Data custodian",
-                    "Co-investigator"
+                    "Co-investigator",
+                    "null"
                 ]
             },
             "orcid": {
@@ -1877,9 +1883,7 @@
         "required": [
             "type",
             "submitter_id",
-            "projects",
-            "acknowledgee",
-            "contact_type"
+            "projects"
         ],
         "submittable": true,
         "systemProperties": [
@@ -1927,21 +1931,24 @@
                 "description": "Self reported Atrial Fibrillation",
                 "enum": [
                     "yes",
-                    "no"
+                    "no",
+                    "null"
                 ]
             },
             "cabg": {
                 "description": "Has the patient had Coronary Artery Bypass Graft (CABG) Surgery?",
                 "enum": [
                     "yes",
-                    "no"
+                    "no",
+                    "null"
                 ]
             },
             "cvd_death": {
                 "description": "Death due to cardiovascular disease",
                 "enum": [
                     "yes",
-                    "no"
+                    "no",
+                    "null"
                 ]
             },
             "cvd_death_ICD10": {
@@ -1955,14 +1962,16 @@
                 "description": "Does the participant have a family history of CVD? (Family history of premature CVD is defined as coronary heart disease or stroke in a first-degree female relative aged <65 years or a firstdegree male relative aged <55 years.)",
                 "enum": [
                     "yes",
-                    "no"
+                    "no",
+                    "null"
                 ]
             },
             "cvd_non_fatal_10_year": {
                 "description": "Non fatal cardiovascular disease at 10 years.",
                 "enum": [
                     "yes",
-                    "no"
+                    "no",
+                    "null"
                 ]
             },
             "cvd_non_fatal_10_year_ICD10": {
@@ -1976,7 +1985,8 @@
                 "description": "Reported Stroke/MI/Angina at baseline, by clinician",
                 "enum": [
                     "yes",
-                    "no"
+                    "no",
+                    "null"
                 ],
                 "termDef": [
                     {
@@ -2004,7 +2014,8 @@
                 "description": "Self-reported Stroke/MI/Angina at baseline by the participant.",
                 "enum": [
                     "yes",
-                    "no"
+                    "no",
+                    "null"
                 ],
                 "termDef": [
                     {
@@ -2026,7 +2037,8 @@
                 "description": "Diabetes diagnosed by a clinician",
                 "enum": [
                     "yes",
-                    "no"
+                    "no",
+                    "null"
                 ],
                 "termDef": [
                     {
@@ -2054,7 +2066,8 @@
                 "description": "Self-reported diabetes in the participant",
                 "enum": [
                     "yes",
-                    "no"
+                    "no",
+                    "null"
                 ],
                 "termDef": [
                     {
@@ -2068,7 +2081,8 @@
                 "description": "Diabetes mellitus type. Either \"type-1\" or \"type-2\"",
                 "enum": [
                     "type-1",
-                    "type-2"
+                    "type-2",
+                    "null"
                 ],
                 "termDef": [
                     {
@@ -2098,7 +2112,8 @@
                 "description": "Self reported heart failure status.",
                 "enum": [
                     "yes",
-                    "no"
+                    "no",
+                    "null"
                 ]
             },
             "heart_rate": {
@@ -2112,7 +2127,8 @@
                 "description": "Hypertension reported by a clinician at recruitment. Systolic BP >140mmHg, diastolic BP >90mmHg, or both",
                 "enum": [
                     "yes",
-                    "no"
+                    "no",
+                    "null"
                 ]
             },
             "hypertension_measured_ICD10": {
@@ -2126,14 +2142,16 @@
                 "description": "Hypertension self reported by patient. Systolic BP >140mmHg, diastolic BP >90mmHg, or both",
                 "enum": [
                     "yes",
-                    "no"
+                    "no",
+                    "null"
                 ]
             },
             "mhx_pad": {
                 "description": "Vascular history - Code 13. Peripheral vascular disease (includes abdominal aortic aneurism)",
                 "enum": [
                     "yes",
-                    "no"
+                    "no",
+                    "null"
                 ]
             },
             "os_event": {
@@ -2141,7 +2159,8 @@
                 "enum": [
                     "alive",
                     "dead",
-                    "censored"
+                    "censored",
+                    "null"
                 ]
             },
             "os_time": {
@@ -2155,14 +2174,16 @@
                 "description": "Does the participant have a family history of premature CVD? Premature family history is defined as coronary heart disease or stroke in a first-degree female relative aged <65 years or a first degree male relative aged <55 years.)",
                 "enum": [
                     "yes",
-                    "no"
+                    "no",
+                    "null"
                 ]
             },
             "stent": {
                 "description": "Coronary stent",
                 "enum": [
                     "yes",
-                    "no"
+                    "no",
+                    "null"
                 ]
             },
             "subjects": {
@@ -2215,14 +2236,16 @@
                 "error",
                 "released",
                 "suppressed",
-                "redacted"
+                "redacted",
+                "null"
             ]
         },
         "data_file_error_type": {
             "enum": [
                 "file_size",
                 "file_format",
-                "md5sum"
+                "md5sum",
+                "null"
             ],
             "term": {
                 "$ref": "_terms.yaml#/data_file_error_type"
@@ -2321,7 +2344,8 @@
                 "processing",
                 "processed",
                 "released",
-                "error"
+                "error",
+                "null"
             ],
             "term": {
                 "$ref": "_terms.yaml#/file_state"
@@ -2415,7 +2439,8 @@
             "enum": [
                 "FAIL",
                 "PASS",
-                "WARN"
+                "WARN",
+                "null"
             ],
             "term": {
                 "$ref": "_terms.yaml#/qc_metric_state"
@@ -2427,7 +2452,8 @@
             "enum": [
                 "unreleased",
                 "released",
-                "redacted"
+                "redacted",
+                "null"
             ]
         },
         "state": {
@@ -2591,7 +2617,7 @@
     "_settings.yaml": {
         "enable_case_cache": false,
         "_dict_commit": "520a25999fd183f6c5b7ddef2980f3e839517da5",
-        "_dict_version": "0.4.1"
+        "_dict_version": "0.4.3"
     },
     "blood_pressure_test.yaml": {
         "$schema": "http://json-schema.org/draft-04/schema#",
@@ -2791,7 +2817,8 @@
                     "Sequel IIe",
                     "Tapestri",
                     "UG 100",
-                    "unspecified"
+                    "unspecified",
+                    "null"
                 ],
                 "enumDef": [
                     {
@@ -3313,7 +3340,8 @@
                     "PACBIO_SMRT",
                     "TAPESTRI",
                     "ULTIMA",
-                    "VELA_DIAGNOSTICS"
+                    "VELA_DIAGNOSTICS",
+                    "null"
                 ],
                 "enumDef": [
                     {
@@ -3437,7 +3465,8 @@
                     "miRNA-Seq",
                     "Total-RNA-Seq",
                     "Targeted",
-                    "Other"
+                    "Other",
+                    "null"
                 ]
             },
             "samples": {
@@ -3532,7 +3561,8 @@
                     "sequencing reads",
                     "single nucleotide variation",
                     "transcriptome profiling",
-                    "supplemental"
+                    "supplemental",
+                    "null"
                 ]
             },
             "data_format": {
@@ -3540,7 +3570,8 @@
                 "enum": [
                     "bed",
                     "vcf",
-                    "vcf.gz"
+                    "vcf.gz",
+                    "null"
                 ]
             },
             "data_type": {
@@ -3549,7 +3580,8 @@
                     "unaligned reads",
                     "aligned reads",
                     "variants annotation",
-                    "clinical supplement"
+                    "clinical supplement",
+                    "null"
                 ]
             },
             "reference_genome_build": {
@@ -3566,10 +3598,7 @@
         },
         "required": [
             "type",
-            "submitter_id",
-            "data_category",
-            "data_format",
-            "data_type"
+            "submitter_id"
         ],
         "submittable": true,
         "systemProperties": [
@@ -3690,7 +3719,8 @@
                 "enum": [
                     "mass spec raw",
                     "mass spec analysed",
-                    "summarised results"
+                    "summarised results",
+                    "null"
                 ]
             },
             "data_format": {
@@ -3698,7 +3728,8 @@
                 "enum": [
                     "csv",
                     "tsv",
-                    "txt"
+                    "txt",
+                    "null"
                 ]
             },
             "data_type": {
@@ -3710,7 +3741,8 @@
                     "Ion Mobility MS",
                     "MALDI MS",
                     "GC-MS",
-                    "High Mass Accuracy MS"
+                    "High Mass Accuracy MS",
+                    "null"
                 ]
             },
             "serum_marker_assays": {
@@ -3726,10 +3758,7 @@
         },
         "required": [
             "type",
-            "submitter_id",
-            "data_category",
-            "data_format",
-            "data_type"
+            "submitter_id"
         ],
         "submittable": true,
         "systemProperties": [
@@ -4055,7 +4084,8 @@
                         "TGFBI",
                         "THBS1",
                         "TTR",
-                        "VTN"
+                        "VTN",
+                        "null"
                     ]
                 },
                 "type": "array"
@@ -4066,8 +4096,7 @@
         },
         "required": [
             "type",
-            "submitter_id",
-            "assay_description"
+            "submitter_id"
         ],
         "submittable": true,
         "systemProperties": [
@@ -4143,7 +4172,8 @@
                     "frozen",
                     "unknown",
                     "not reported",
-                    "not allowed to collect"
+                    "not allowed to collect",
+                    "null"
                 ],
                 "enumDef": [
                     {
@@ -4189,7 +4219,8 @@
                 "enum": [
                     "yes",
                     "no",
-                    "unknown"
+                    "unknown",
+                    "null"
                 ]
             },
             "sample_provider": {
@@ -4198,7 +4229,8 @@
                     "Baker",
                     "USYD",
                     "UMELB",
-                    "UQ"
+                    "UQ",
+                    "null"
                 ]
             },
             "sample_source": {
@@ -4222,7 +4254,8 @@
                     "frozen, vapor phase",
                     "paraffin block",
                     "RNAlater, frozen",
-                    "TRIzol, frozen"
+                    "TRIzol, frozen",
+                    "null"
                 ],
                 "enumDef": [
                     {
@@ -4290,7 +4323,8 @@
                     "Baker",
                     "USYD",
                     "UMELB",
-                    "UQ"
+                    "UQ",
+                    "null"
                 ]
             },
             "subjects": {
@@ -4368,13 +4402,15 @@
                     "sequencing reads",
                     "single nucleotide variation",
                     "transcriptome profiling",
-                    "supplemental"
+                    "supplemental",
+                    "null"
                 ]
             },
             "data_format": {
                 "description": "Format of the data files.",
                 "enum": [
-                    "fastq.gz"
+                    "fastq.gz",
+                    "null"
                 ]
             },
             "data_type": {
@@ -4383,7 +4419,8 @@
                     "unaligned reads",
                     "aligned reads",
                     "variants annotation",
-                    "clinical supplement"
+                    "clinical supplement",
+                    "null"
                 ]
             },
             "genomics_assay": {
@@ -4399,10 +4436,7 @@
         },
         "required": [
             "type",
-            "submitter_id",
-            "data_category",
-            "data_format",
-            "data_type"
+            "submitter_id"
         ],
         "submittable": true,
         "systemProperties": [
@@ -6238,7 +6272,8 @@
                     "sequencing reads",
                     "single nucleotide variation",
                     "transcriptome profiling",
-                    "supplemental"
+                    "supplemental",
+                    "null"
                 ]
             },
             "data_format": {
@@ -6247,7 +6282,8 @@
                     "bai",
                     "bam.bai",
                     "crai",
-                    "cram.crai"
+                    "cram.crai",
+                    "null"
                 ]
             },
             "data_type": {
@@ -6256,16 +6292,14 @@
                     "unaligned reads",
                     "aligned reads",
                     "variants annotation",
-                    "clinical supplement"
+                    "clinical supplement",
+                    "null"
                 ]
             }
         },
         "required": [
             "type",
-            "submitter_id",
-            "data_category",
-            "data_format",
-            "data_type"
+            "submitter_id"
         ],
         "submittable": true,
         "systemProperties": [
@@ -6348,7 +6382,8 @@
                     "DeepVariant",
                     "Strelka2",
                     "FreeBayes",
-                    "VarScan"
+                    "VarScan",
+                    "null"
                 ]
             },
             "workflow_version": {
@@ -6361,8 +6396,7 @@
         },
         "required": [
             "type",
-            "submitter_id",
-            "workflow_type"
+            "submitter_id"
         ],
         "submittable": true,
         "systemProperties": [
@@ -6435,13 +6469,15 @@
                 "enum": [
                     "mass spec raw",
                     "mass spec analysed",
-                    "summarised results"
+                    "summarised results",
+                    "null"
                 ]
             },
             "data_format": {
                 "description": "The format of the data in this data file",
                 "enum": [
-                    "mgf"
+                    "mgf",
+                    "null"
                 ]
             },
             "data_type": {
@@ -6453,14 +6489,16 @@
                     "Ion Mobility MS",
                     "MALDI MS",
                     "GC-MS",
-                    "High Mass Accuracy MS"
+                    "High Mass Accuracy MS",
+                    "null"
                 ]
             },
             "proteomic_unit": {
                 "description": "Units of measurement captured in the proteomics file.",
                 "enum": [
                     "pmol/mL",
-                    "umol/mL"
+                    "umol/mL",
+                    "null"
                 ]
             },
             "proteomics_assays": {
@@ -6469,10 +6507,7 @@
         },
         "required": [
             "type",
-            "submitter_id",
-            "data_category",
-            "data_format",
-            "data_type"
+            "submitter_id"
         ],
         "submittable": true,
         "systemProperties": [
@@ -6528,7 +6563,8 @@
                 "enum": [
                     "never",
                     "former",
-                    "current"
+                    "current",
+                    "null"
                 ]
             },
             "drinks_per_week": {
@@ -6550,7 +6586,8 @@
                 "enum": [
                     "never",
                     "former",
-                    "current"
+                    "current",
+                    "null"
                 ]
             },
             "subjects": {
@@ -6680,7 +6717,8 @@
                         "Valine",
                         "Valine-d8",
                         "\u03b1-keto-\u03b2-methylvaleric acid.1",
-                        "\u03b1-keto-\u03b2-methylvaleric acid.2"
+                        "\u03b1-keto-\u03b2-methylvaleric acid.2",
+                        "null"
                     ],
                     "enumDef": [
                         {
@@ -6958,8 +6996,7 @@
         },
         "required": [
             "type",
-            "submitter_id",
-            "assay_description"
+            "submitter_id"
         ],
         "submittable": true,
         "systemProperties": [
@@ -7025,7 +7062,8 @@
                 "enum": [
                     "mass spec raw",
                     "mass spec analysed",
-                    "summarised results"
+                    "summarised results",
+                    "null"
                 ]
             },
             "data_format": {
@@ -7033,7 +7071,8 @@
                 "enum": [
                     "csv",
                     "tsv",
-                    "txt"
+                    "txt",
+                    "null"
                 ]
             },
             "data_type": {
@@ -7045,7 +7084,8 @@
                     "Ion Mobility MS",
                     "MALDI MS",
                     "GC-MS",
-                    "High Mass Accuracy MS"
+                    "High Mass Accuracy MS",
+                    "null"
                 ]
             },
             "lipidomics_files": {
@@ -7061,11 +7101,7 @@
         },
         "required": [
             "type",
-            "submitter_id",
-            "data_category",
-            "data_format",
-            "data_type",
-            "mapping_file_version"
+            "submitter_id"
         ],
         "submittable": true,
         "systemProperties": [
@@ -7138,7 +7174,8 @@
                 "enum": [
                     "mass spec raw",
                     "mass spec analysed",
-                    "summarised results"
+                    "summarised results",
+                    "null"
                 ]
             },
             "data_format": {
@@ -7146,7 +7183,8 @@
                 "enum": [
                     "csv",
                     "tsv",
-                    "txt"
+                    "txt",
+                    "null"
                 ]
             },
             "data_type": {
@@ -7158,28 +7196,32 @@
                     "Ion Mobility MS",
                     "MALDI MS",
                     "GC-MS",
-                    "High Mass Accuracy MS"
+                    "High Mass Accuracy MS",
+                    "null"
                 ]
             },
             "imputed_data": {
                 "description": "Does the lipidomic file contain imputed data for missing lipid species?",
                 "enum": [
                     "yes",
-                    "no"
+                    "no",
+                    "null"
                 ]
             },
             "individual_or_sum": {
                 "description": "Does the lipidomic file contain data for individual lipid species? Or total lipid class?",
                 "enum": [
                     "individual",
-                    "sum"
+                    "sum",
+                    "null"
                 ]
             },
             "lipidomic_unit": {
                 "description": "Units of measurement captured in the lipidomics file.",
                 "enum": [
                     "pmol/mL",
-                    "umol/mL"
+                    "umol/mL",
+                    "null"
                 ]
             },
             "lipidomics_assays": {
@@ -7188,12 +7230,7 @@
         },
         "required": [
             "type",
-            "submitter_id",
-            "data_category",
-            "data_format",
-            "data_type",
-            "imputed_data",
-            "individual_or_sum"
+            "submitter_id"
         ],
         "submittable": true,
         "systemProperties": [
@@ -7272,14 +7309,16 @@
                     "sequencing reads",
                     "single nucleotide variation",
                     "transcriptome profiling",
-                    "supplemental"
+                    "supplemental",
+                    "null"
                 ]
             },
             "data_format": {
                 "description": "Format of the data files.",
                 "enum": [
                     "bam",
-                    "cram"
+                    "cram",
+                    "null"
                 ]
             },
             "data_type": {
@@ -7288,14 +7327,16 @@
                     "unaligned reads",
                     "aligned reads",
                     "variants annotation",
-                    "clinical supplement"
+                    "clinical supplement",
+                    "null"
                 ]
             },
             "reference_genome_build": {
                 "description": "Reference genome used e.g. GRCh37.",
                 "enum": [
                     "GRCh38",
-                    "GRCh37"
+                    "GRCh37",
+                    "null"
                 ]
             },
             "run_id": {
@@ -7311,10 +7352,7 @@
         },
         "required": [
             "type",
-            "submitter_id",
-            "data_category",
-            "data_format",
-            "data_type"
+            "submitter_id"
         ],
         "submittable": true,
         "systemProperties": [
@@ -7411,7 +7449,8 @@
                 "description": "Whether the participant had fasted before blood was collected.",
                 "enum": [
                     "yes",
-                    "no"
+                    "no",
+                    "null"
                 ]
             },
             "glucose_fasting": {
@@ -7533,11 +7572,7 @@
         "required": [
             "type",
             "submitter_id",
-            "subjects",
-            "hdl",
-            "ldl",
-            "total_cholesterol",
-            "triglycerides"
+            "subjects"
         ],
         "submittable": true,
         "systemProperties": [
@@ -7585,14 +7620,16 @@
                 "description": "Self-reported / measured use of antithrobotic medication ",
                 "enum": [
                     "yes",
-                    "no"
+                    "no",
+                    "null"
                 ]
             },
             "bp_lowering_meds": {
                 "description": "Self-reported use of anti-hypertensive medication at the time of blood pressure measurement.",
                 "enum": [
                     "yes",
-                    "no"
+                    "no",
+                    "null"
                 ]
             },
             "diabetes_therapy": {
@@ -7603,14 +7640,16 @@
                     "insulin",
                     "injectible",
                     "combination",
-                    "other"
+                    "other",
+                    "null"
                 ]
             },
             "lipid_lowering_meds": {
                 "description": "Self-reported use of lipid lowering drugs (are you taking tables to lower your cholesterol?). Full drug audit at wave 2 and 3. ",
                 "enum": [
                     "yes",
-                    "no"
+                    "no",
+                    "null"
                 ]
             },
             "subjects": {
@@ -7704,9 +7743,7 @@
         "required": [
             "type",
             "submitter_id",
-            "projects",
-            "doi",
-            "title"
+            "projects"
         ],
         "submittable": true,
         "systemProperties": [
@@ -7766,7 +7803,8 @@
                         "Disease Specific Research",
                         "not for profit, non commercial user only",
                         "ethics approval required",
-                        "user specific restriction"
+                        "user specific restriction",
+                        "null"
                     ],
                     "enumDef": [
                         {
@@ -7822,8 +7860,7 @@
         "required": [
             "type",
             "submitter_id",
-            "projects",
-            "patient_id"
+            "projects"
         ],
         "submittable": true,
         "systemProperties": [
