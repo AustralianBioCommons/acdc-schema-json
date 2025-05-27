@@ -26,13 +26,12 @@
                 "label": "describes",
                 "target_type": "timepoint",
                 "multiplicity": "one_to_one",
-                "required": true
+                "required": false
             }
         ],
         "required": [
             "type",
-            "submitter_id",
-            "timepoints"
+            "submitter_id"
         ],
         "uniqueKeys": [
             [
@@ -2357,7 +2356,7 @@
     "_settings.yaml": {
         "enable_case_cache": false,
         "_dict_commit": "520a25999fd183f6c5b7ddef2980f3e839517da5",
-        "_dict_version": "0.4.4"
+        "_dict_version": "0.4.5"
     },
     "blood_pressure_test.yaml": {
         "$schema": "http://json-schema.org/draft-04/schema#",
@@ -3364,7 +3363,7 @@
             {
                 "name": "subjects",
                 "backref": "timepoints",
-                "label": "taken_from",
+                "label": "describes",
                 "target_type": "subject",
                 "multiplicity": "many_to_one",
                 "required": true
@@ -3389,8 +3388,8 @@
             "subjects": {
                 "$ref": "_definitions.yaml#/to_one"
             },
-            "label": {
-                "description": "Timepoint label or code.",
+            "timepoint_label": {
+                "description": "The timepoint_label you want to use",
                 "type": "string"
             },
             "description": {
