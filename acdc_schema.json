@@ -1585,19 +1585,19 @@
                 "required": true,
                 "subgroup": [
                     {
-                        "name": "core_metadata_collections",
-                        "backref": "metabolomics_files",
-                        "label": "describes",
-                        "target_type": "core_metadata_collection",
-                        "multiplicity": "one_to_one",
-                        "required": false
-                    },
-                    {
                         "name": "metabolomics_assays",
                         "backref": "metabolomics_files",
                         "label": "derives_from",
                         "target_type": "metabolomics_assay",
                         "multiplicity": "many_to_one",
+                        "required": false
+                    },
+                    {
+                        "name": "core_metadata_collections",
+                        "backref": "metabolomics_files",
+                        "label": "describes",
+                        "target_type": "core_metadata_collection",
+                        "multiplicity": "one_to_one",
                         "required": false
                     }
                 ]
@@ -1621,10 +1621,10 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/data_file_properties",
-            "core_metadata_collections": {
+            "metabolomics_assays": {
                 "$ref": "_definitions.yaml#/to_one"
             },
-            "metabolomics_assays": {
+            "core_metadata_collections": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "cv": {
@@ -2357,7 +2357,7 @@
     "_settings.yaml": {
         "enable_case_cache": false,
         "_dict_commit": "520a25999fd183f6c5b7ddef2980f3e839517da5",
-        "_dict_version": "0.4.6"
+        "_dict_version": "0.4.7"
     },
     "blood_pressure_test.yaml": {
         "$schema": "http://json-schema.org/draft-04/schema#",
@@ -3261,18 +3261,18 @@
                         "required": false
                     },
                     {
-                        "name": "core_metadata_collections",
-                        "backref": "variant_files",
-                        "label": "data_from",
-                        "target_type": "core_metadata_collection",
-                        "multiplicity": "one_to_one",
-                        "required": false
-                    },
-                    {
                         "name": "variant_workflows",
                         "backref": "variant_files",
                         "label": "generated_from",
                         "target_type": "variant_workflow",
+                        "multiplicity": "one_to_one",
+                        "required": false
+                    },
+                    {
+                        "name": "core_metadata_collections",
+                        "backref": "variant_files",
+                        "label": "data_from",
+                        "target_type": "core_metadata_collection",
                         "multiplicity": "one_to_one",
                         "required": false
                     }
@@ -3300,10 +3300,10 @@
             "aligned_reads_files": {
                 "$ref": "_definitions.yaml#/to_one"
             },
-            "core_metadata_collections": {
+            "variant_workflows": {
                 "$ref": "_definitions.yaml#/to_one"
             },
-            "variant_workflows": {
+            "core_metadata_collections": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "data_category": {
@@ -4138,19 +4138,19 @@
                 "required": true,
                 "subgroup": [
                     {
-                        "name": "core_metadata_collections",
-                        "backref": "aligned_reads_filess",
-                        "label": "data_from",
-                        "target_type": "core_metadata_collection",
-                        "multiplicity": "one_to_one",
-                        "required": false
-                    },
-                    {
                         "name": "genomics_assay",
                         "backref": "unaligned_reads_files",
                         "label": "generated_from",
                         "target_type": "genomics_assay",
                         "multiplicity": "many_to_one",
+                        "required": false
+                    },
+                    {
+                        "name": "core_metadata_collections",
+                        "backref": "aligned_reads_filess",
+                        "label": "data_from",
+                        "target_type": "core_metadata_collection",
+                        "multiplicity": "one_to_one",
                         "required": false
                     }
                 ]
@@ -4174,10 +4174,10 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/data_file_properties",
-            "core_metadata_collections": {
+            "genomics_assay": {
                 "$ref": "_definitions.yaml#/to_one"
             },
-            "genomics_assay": {
+            "core_metadata_collections": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "data_category": {
@@ -6183,19 +6183,19 @@
                 "required": true,
                 "subgroup": [
                     {
-                        "name": "core_metadata_collections",
-                        "backref": "proteomics_files",
-                        "label": "describes",
-                        "target_type": "core_metadata_collection",
-                        "multiplicity": "one_to_one",
-                        "required": false
-                    },
-                    {
                         "name": "proteomics_assays",
                         "backref": "proteomics_files",
                         "label": "derives_from",
                         "target_type": "proteomics_assay",
                         "multiplicity": "many_to_one",
+                        "required": false
+                    },
+                    {
+                        "name": "core_metadata_collections",
+                        "backref": "proteomics_files",
+                        "label": "describes",
+                        "target_type": "core_metadata_collection",
+                        "multiplicity": "one_to_one",
                         "required": false
                     }
                 ]
@@ -6219,10 +6219,10 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/data_file_properties",
-            "core_metadata_collections": {
+            "proteomics_assays": {
                 "$ref": "_definitions.yaml#/to_one"
             },
-            "proteomics_assays": {
+            "core_metadata_collections": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "cv": {
@@ -6761,18 +6761,18 @@
                 "required": true,
                 "subgroup": [
                     {
-                        "name": "core_metadata_collections",
-                        "backref": "lipidomics_mapping_files",
-                        "label": "describes",
-                        "target_type": "core_metadata_collection",
-                        "multiplicity": "one_to_one",
-                        "required": false
-                    },
-                    {
                         "name": "lipidomics_files",
                         "backref": "lipidomics_mapping_files",
                         "label": "part_of",
                         "target_type": "lipidomics_file",
+                        "multiplicity": "one_to_one",
+                        "required": false
+                    },
+                    {
+                        "name": "core_metadata_collections",
+                        "backref": "lipidomics_mapping_files",
+                        "label": "describes",
+                        "target_type": "core_metadata_collection",
                         "multiplicity": "one_to_one",
                         "required": false
                     }
@@ -6797,10 +6797,10 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/data_file_properties",
-            "core_metadata_collections": {
+            "lipidomics_files": {
                 "$ref": "_definitions.yaml#/to_one"
             },
-            "lipidomics_files": {
+            "core_metadata_collections": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "data_category": {
@@ -6863,19 +6863,19 @@
                 "required": true,
                 "subgroup": [
                     {
-                        "name": "core_metadata_collections",
-                        "backref": "lipidomics_files",
-                        "label": "data_from",
-                        "target_type": "core_metadata_collection",
-                        "multiplicity": "one_to_one",
-                        "required": false
-                    },
-                    {
                         "name": "lipidomics_assays",
                         "backref": "lipidomics_files",
                         "label": "data_from",
                         "target_type": "lipidomics_assay",
                         "multiplicity": "many_to_one",
+                        "required": false
+                    },
+                    {
+                        "name": "core_metadata_collections",
+                        "backref": "lipidomics_files",
+                        "label": "data_from",
+                        "target_type": "core_metadata_collection",
+                        "multiplicity": "one_to_one",
                         "required": false
                     }
                 ]
@@ -6899,10 +6899,10 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/data_file_properties",
-            "core_metadata_collections": {
+            "lipidomics_assays": {
                 "$ref": "_definitions.yaml#/to_one"
             },
-            "lipidomics_assays": {
+            "core_metadata_collections": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "cv": {
@@ -6994,18 +6994,18 @@
                         "required": false
                     },
                     {
-                        "name": "core_metadata_collections",
-                        "backref": "aligned_reads_files",
-                        "label": "data_from",
-                        "target_type": "core_metadata_collection",
-                        "multiplicity": "one_to_one",
-                        "required": false
-                    },
-                    {
                         "name": "unaligned_reads_files",
                         "backref": "aligned_reads_files",
                         "label": "generated_from",
                         "target_type": "unaligned_reads_file",
+                        "multiplicity": "one_to_one",
+                        "required": false
+                    },
+                    {
+                        "name": "core_metadata_collections",
+                        "backref": "aligned_reads_files",
+                        "label": "data_from",
+                        "target_type": "core_metadata_collection",
                         "multiplicity": "one_to_one",
                         "required": false
                     }
@@ -7032,10 +7032,10 @@
             "alignment_workflows": {
                 "$ref": "_definitions.yaml#/to_one"
             },
-            "core_metadata_collections": {
+            "unaligned_reads_files": {
                 "$ref": "_definitions.yaml#/to_one"
             },
-            "unaligned_reads_files": {
+            "core_metadata_collections": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "data_category": {
