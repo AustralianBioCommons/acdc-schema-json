@@ -26,12 +26,13 @@
                 "label": "describes",
                 "target_type": "timepoint",
                 "multiplicity": "one_to_one",
-                "required": false
+                "required": true
             }
         ],
         "required": [
             "type",
-            "submitter_id"
+            "submitter_id",
+            "timepoints"
         ],
         "uniqueKeys": [
             [
@@ -2356,7 +2357,7 @@
     "_settings.yaml": {
         "enable_case_cache": false,
         "_dict_commit": "520a25999fd183f6c5b7ddef2980f3e839517da5",
-        "_dict_version": "0.4.5"
+        "_dict_version": "0.4.6"
     },
     "blood_pressure_test.yaml": {
         "$schema": "http://json-schema.org/draft-04/schema#",
