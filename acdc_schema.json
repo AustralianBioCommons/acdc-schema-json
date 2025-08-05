@@ -21,10 +21,10 @@
         ],
         "links": [
             {
-                "name": "timepoints",
+                "name": "clinical_contexts",
                 "backref": "demographics",
                 "label": "describes",
-                "target_type": "timepoint",
+                "target_type": "clinical_context",
                 "multiplicity": "one_to_one",
                 "required": true
             }
@@ -32,7 +32,7 @@
         "required": [
             "type",
             "submitter_id",
-            "timepoints"
+            "clinical_contexts"
         ],
         "uniqueKeys": [
             [
@@ -45,7 +45,7 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/ubiquitous_properties",
-            "timepoints": {
+            "clinical_contexts": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "abs_cluster": {
@@ -578,10 +578,10 @@
                 "required": true,
                 "subgroup": [
                     {
-                        "name": "timepoints",
+                        "name": "clinical_contexts",
                         "backref": "imaging_files",
                         "label": "data_from",
-                        "target_type": "timepoint",
+                        "target_type": "clinical_context",
                         "multiplicity": "many_to_one",
                         "required": false
                     },
@@ -598,10 +598,7 @@
         ],
         "required": [
             "type",
-            "submitter_id",
-            "data_type",
-            "data_format",
-            "data_category"
+            "submitter_id"
         ],
         "uniqueKeys": [
             [
@@ -614,7 +611,7 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/data_file_properties",
-            "timepoints": {
+            "clinical_contexts": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "core_metadata_collections": {
@@ -1605,10 +1602,7 @@
         ],
         "required": [
             "type",
-            "submitter_id",
-            "data_category",
-            "data_format",
-            "data_type"
+            "submitter_id"
         ],
         "uniqueKeys": [
             [
@@ -1734,6 +1728,78 @@
             }
         }
     },
+    "clinical_context.yaml": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "id": "clinical_context",
+        "title": "Clinical Context",
+        "type": "object",
+        "namespace": "https://data.test.biocommons.org.au/",
+        "category": "clinical",
+        "program": "*",
+        "project": "*",
+        "description": "The clinical context of the data",
+        "additionalProperties": false,
+        "submittable": true,
+        "validators": null,
+        "systemProperties": [
+            "id",
+            "project_id",
+            "state",
+            "created_datetime",
+            "updated_datetime"
+        ],
+        "links": [
+            {
+                "name": "subjects",
+                "backref": "clinical_contexts",
+                "label": "describes",
+                "target_type": "subject",
+                "multiplicity": "many_to_one",
+                "required": true
+            }
+        ],
+        "required": [
+            "type",
+            "submitter_id",
+            "subjects",
+            "baseline_measure"
+        ],
+        "uniqueKeys": [
+            [
+                "id"
+            ],
+            [
+                "project_id",
+                "submitter_id"
+            ]
+        ],
+        "properties": {
+            "$ref": "_definitions.yaml#/ubiquitous_properties",
+            "subjects": {
+                "$ref": "_definitions.yaml#/to_one"
+            },
+            "label": {
+                "description": "The code or label for the clinical context. e.g. baseline, 6months, treatment, placebo, etc",
+                "type": "string"
+            },
+            "description": {
+                "description": "The description of the clinical context. e.g. blood taken at 6 months, 10mg lovastatin, double-blind placebo",
+                "type": "string"
+            },
+            "baseline_measure": {
+                "description": "Indicates if this is a baseline measure",
+                "type": "boolean"
+            },
+            "years_from_baseline": {
+                "description": "Years from the baseline measurement",
+                "type": "number"
+            },
+            "site": {
+                "description": "The location, lab, or clinical site that the data was collected",
+                "type": "string"
+            }
+        }
+    },
     "medical_history.yaml": {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "id": "medical_history",
@@ -1756,10 +1822,10 @@
         ],
         "links": [
             {
-                "name": "timepoints",
+                "name": "clinical_contexts",
                 "backref": "medical_histories",
                 "label": "describes",
-                "target_type": "timepoint",
+                "target_type": "clinical_context",
                 "multiplicity": "one_to_one",
                 "required": true
             }
@@ -1767,7 +1833,7 @@
         "required": [
             "type",
             "submitter_id",
-            "timepoints"
+            "clinical_contexts"
         ],
         "uniqueKeys": [
             [
@@ -1780,7 +1846,7 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/ubiquitous_properties",
-            "timepoints": {
+            "clinical_contexts": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "atrial_fibrillation": {
@@ -2357,7 +2423,7 @@
     "_settings.yaml": {
         "enable_case_cache": false,
         "_dict_commit": "520a25999fd183f6c5b7ddef2980f3e839517da5",
-        "_dict_version": "0.4.7"
+        "_dict_version": "0.4.8"
     },
     "blood_pressure_test.yaml": {
         "$schema": "http://json-schema.org/draft-04/schema#",
@@ -2381,18 +2447,18 @@
         ],
         "links": [
             {
-                "name": "timepoints",
+                "name": "clinical_contexts",
                 "backref": "blood_pressure_tests",
                 "label": "taken_by",
-                "target_type": "timepoint",
-                "multiplicity": "many_to_one",
+                "target_type": "clinical_context",
+                "multiplicity": "one_to_one",
                 "required": true
             }
         ],
         "required": [
             "type",
             "submitter_id",
-            "timepoints"
+            "clinical_contexts"
         ],
         "uniqueKeys": [
             [
@@ -2405,7 +2471,7 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/ubiquitous_properties",
-            "timepoints": {
+            "clinical_contexts": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "bp_diastolic": {
@@ -3253,18 +3319,18 @@
                 "required": true,
                 "subgroup": [
                     {
-                        "name": "aligned_reads_files",
-                        "backref": "variant_files",
-                        "label": "generated_from",
-                        "target_type": "aligned_reads_file",
-                        "multiplicity": "one_to_one",
-                        "required": false
-                    },
-                    {
                         "name": "variant_workflows",
                         "backref": "variant_files",
                         "label": "generated_from",
                         "target_type": "variant_workflow",
+                        "multiplicity": "one_to_one",
+                        "required": false
+                    },
+                    {
+                        "name": "aligned_reads_files",
+                        "backref": "variant_files",
+                        "label": "generated_from",
+                        "target_type": "aligned_reads_file",
                         "multiplicity": "one_to_one",
                         "required": false
                     },
@@ -3281,10 +3347,7 @@
         ],
         "required": [
             "type",
-            "submitter_id",
-            "data_category",
-            "data_format",
-            "data_type"
+            "submitter_id"
         ],
         "uniqueKeys": [
             [
@@ -3297,10 +3360,10 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/data_file_properties",
-            "aligned_reads_files": {
+            "variant_workflows": {
                 "$ref": "_definitions.yaml#/to_one"
             },
-            "variant_workflows": {
+            "aligned_reads_files": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "core_metadata_collections": {
@@ -3337,81 +3400,6 @@
                 "description": "Reference genome used e.g. GRCh37.",
                 "type": "string",
                 "pattern": "^GRCh[0-9]{2}$"
-            }
-        }
-    },
-    "timepoint.yaml": {
-        "$schema": "http://json-schema.org/draft-04/schema#",
-        "id": "timepoint",
-        "title": "Timepoint",
-        "type": "object",
-        "namespace": "https://data.test.biocommons.org.au/",
-        "category": "clinical",
-        "program": "*",
-        "project": "*",
-        "description": "The timepoint associated with the data",
-        "additionalProperties": false,
-        "submittable": true,
-        "validators": null,
-        "systemProperties": [
-            "id",
-            "project_id",
-            "state",
-            "created_datetime",
-            "updated_datetime"
-        ],
-        "links": [
-            {
-                "name": "subjects",
-                "backref": "timepoints",
-                "label": "describes",
-                "target_type": "subject",
-                "multiplicity": "many_to_one",
-                "required": true
-            }
-        ],
-        "required": [
-            "type",
-            "submitter_id",
-            "subjects"
-        ],
-        "uniqueKeys": [
-            [
-                "id"
-            ],
-            [
-                "project_id",
-                "submitter_id"
-            ]
-        ],
-        "properties": {
-            "$ref": "_definitions.yaml#/ubiquitous_properties",
-            "subjects": {
-                "$ref": "_definitions.yaml#/to_one"
-            },
-            "timepoint_label": {
-                "description": "The timepoint_label you want to use",
-                "type": "string"
-            },
-            "description": {
-                "description": "Description of the timepoint",
-                "type": "string"
-            },
-            "arm": {
-                "description": "Treatment arm (if applicable)",
-                "type": "string"
-            },
-            "months_from_base": {
-                "description": "Months from the baseline timepoint",
-                "type": "integer"
-            },
-            "intervention": {
-                "description": "Name of the intervention",
-                "type": "string"
-            },
-            "baseline_timepoint": {
-                "description": "Is this timepoint considered baseline?",
-                "type": "boolean"
             }
         }
     },
@@ -3507,10 +3495,7 @@
         ],
         "required": [
             "type",
-            "submitter_id",
-            "data_category",
-            "data_format",
-            "data_type"
+            "submitter_id"
         ],
         "uniqueKeys": [
             [
@@ -3916,10 +3901,10 @@
         ],
         "links": [
             {
-                "name": "timepoints",
+                "name": "clinical_contexts",
                 "backref": "samples",
                 "label": "taken_from",
-                "target_type": "timepoint",
+                "target_type": "clinical_context",
                 "multiplicity": "many_to_one",
                 "required": true
             }
@@ -3927,7 +3912,7 @@
         "required": [
             "type",
             "submitter_id",
-            "timepoints"
+            "clinical_contexts"
         ],
         "uniqueKeys": [
             [
@@ -3940,7 +3925,7 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/ubiquitous_properties",
-            "timepoints": {
+            "clinical_contexts": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "freeze_thaw_cycles": {
@@ -4158,10 +4143,7 @@
         ],
         "required": [
             "type",
-            "submitter_id",
-            "data_category",
-            "data_format",
-            "data_type"
+            "submitter_id"
         ],
         "uniqueKeys": [
             [
@@ -6019,9 +6001,7 @@
         ],
         "required": [
             "type",
-            "submitter_id",
-            "data_format",
-            "data_type"
+            "submitter_id"
         ],
         "uniqueKeys": [
             [
@@ -6203,10 +6183,7 @@
         ],
         "required": [
             "type",
-            "submitter_id",
-            "data_category",
-            "data_format",
-            "data_type"
+            "submitter_id"
         ],
         "uniqueKeys": [
             [
@@ -6286,10 +6263,10 @@
         ],
         "links": [
             {
-                "name": "timepoints",
+                "name": "clinical_contexts",
                 "backref": "exposures",
                 "label": "describes",
-                "target_type": "timepoint",
+                "target_type": "clinical_context",
                 "multiplicity": "one_to_one",
                 "required": true
             }
@@ -6297,7 +6274,7 @@
         "required": [
             "type",
             "submitter_id",
-            "timepoints"
+            "clinical_contexts"
         ],
         "uniqueKeys": [
             [
@@ -6310,7 +6287,7 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/ubiquitous_properties",
-            "timepoints": {
+            "clinical_contexts": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "cigarettes_per_day": {
@@ -6781,10 +6758,7 @@
         ],
         "required": [
             "type",
-            "submitter_id",
-            "data_category",
-            "data_format",
-            "data_type"
+            "submitter_id"
         ],
         "uniqueKeys": [
             [
@@ -6883,10 +6857,7 @@
         ],
         "required": [
             "type",
-            "submitter_id",
-            "data_category",
-            "data_format",
-            "data_type"
+            "submitter_id"
         ],
         "uniqueKeys": [
             [
@@ -6986,19 +6957,19 @@
                 "required": true,
                 "subgroup": [
                     {
-                        "name": "alignment_workflows",
-                        "backref": "aligned_reads_files",
-                        "label": "generated_from",
-                        "target_type": "alignment_workflow",
-                        "multiplicity": "many_to_one",
-                        "required": false
-                    },
-                    {
                         "name": "unaligned_reads_files",
                         "backref": "aligned_reads_files",
                         "label": "generated_from",
                         "target_type": "unaligned_reads_file",
                         "multiplicity": "one_to_one",
+                        "required": false
+                    },
+                    {
+                        "name": "alignment_workflows",
+                        "backref": "aligned_reads_files",
+                        "label": "generated_from",
+                        "target_type": "alignment_workflow",
+                        "multiplicity": "many_to_one",
                         "required": false
                     },
                     {
@@ -7014,9 +6985,7 @@
         ],
         "required": [
             "type",
-            "submitter_id",
-            "data_format",
-            "data_type"
+            "submitter_id"
         ],
         "uniqueKeys": [
             [
@@ -7029,10 +6998,10 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/data_file_properties",
-            "alignment_workflows": {
+            "unaligned_reads_files": {
                 "$ref": "_definitions.yaml#/to_one"
             },
-            "unaligned_reads_files": {
+            "alignment_workflows": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "core_metadata_collections": {
@@ -7099,18 +7068,18 @@
         ],
         "links": [
             {
-                "name": "timepoints",
+                "name": "clinical_contexts",
                 "backref": "lab_results",
                 "label": "describes",
-                "target_type": "timepoint",
-                "multiplicity": "many_to_one",
+                "target_type": "clinical_context",
+                "multiplicity": "one_to_one",
                 "required": true
             }
         ],
         "required": [
             "type",
             "submitter_id",
-            "timepoints"
+            "clinical_contexts"
         ],
         "uniqueKeys": [
             [
@@ -7123,7 +7092,7 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/ubiquitous_properties",
-            "timepoints": {
+            "clinical_contexts": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "age_at_collection": {
@@ -7270,10 +7239,10 @@
         ],
         "links": [
             {
-                "name": "timepoints",
+                "name": "clinical_contexts",
                 "backref": "medications",
                 "label": "taken_by",
-                "target_type": "timepoint",
+                "target_type": "clinical_context",
                 "multiplicity": "one_to_one",
                 "required": true
             }
@@ -7281,7 +7250,7 @@
         "required": [
             "type",
             "submitter_id",
-            "timepoints"
+            "clinical_contexts"
         ],
         "uniqueKeys": [
             [
@@ -7294,7 +7263,7 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/ubiquitous_properties",
-            "timepoints": {
+            "clinical_contexts": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "antithrombotic_meds": {
