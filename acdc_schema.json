@@ -392,14 +392,15 @@
                         "label": "produces",
                         "target_type": "sample",
                         "multiplicity": "many_to_one",
-                        "required": false
+                        "required": true
                     }
                 ]
             }
         ],
         "required": [
             "type",
-            "submitter_id"
+            "submitter_id",
+            "samples"
         ],
         "uniqueKeys": [
             [
@@ -554,7 +555,7 @@
                         "label": "data_from",
                         "target_type": "clinical_descriptor",
                         "multiplicity": "many_to_one",
-                        "required": false
+                        "required": true
                     },
                     {
                         "name": "core_metadata_collections",
@@ -569,7 +570,8 @@
         ],
         "required": [
             "type",
-            "submitter_id"
+            "submitter_id",
+            "clinical_descriptors"
         ],
         "uniqueKeys": [
             [
@@ -727,14 +729,15 @@
                         "label": "produces",
                         "target_type": "sample",
                         "multiplicity": "many_to_one",
-                        "required": false
+                        "required": true
                     }
                 ]
             }
         ],
         "required": [
             "type",
-            "submitter_id"
+            "submitter_id",
+            "samples"
         ],
         "uniqueKeys": [
             [
@@ -2428,7 +2431,7 @@
                         "label": "generated_from",
                         "target_type": "sample",
                         "multiplicity": "many_to_one",
-                        "required": false
+                        "required": true
                     }
                 ]
             }
@@ -2436,6 +2439,7 @@
         "required": [
             "type",
             "submitter_id",
+            "samples",
             "run_id",
             "assay_batch_id",
             "assay_type"
@@ -2821,6 +2825,14 @@
                         "target_type": "genomics_file",
                         "multiplicity": "many_to_one",
                         "required": false
+                    },
+                    {
+                        "name": "core_metadata_collections",
+                        "backref": "qc_files",
+                        "label": "data_from",
+                        "target_type": "core_metadata_collection",
+                        "multiplicity": "one_to_one",
+                        "required": false
                     }
                 ]
             }
@@ -2841,6 +2853,9 @@
         "properties": {
             "$ref": "_definitions.yaml#/data_file_properties",
             "genomics_files": {
+                "$ref": "_definitions.yaml#/to_one"
+            },
+            "core_metadata_collections": {
                 "$ref": "_definitions.yaml#/to_one"
             }
         }
@@ -3021,14 +3036,15 @@
                         "label": "produces",
                         "target_type": "sample",
                         "multiplicity": "many_to_one",
-                        "required": false
+                        "required": true
                     }
                 ]
             }
         ],
         "required": [
             "type",
-            "submitter_id"
+            "submitter_id",
+            "samples"
         ],
         "uniqueKeys": [
             [
@@ -3567,6 +3583,20 @@
                 "target_type": "genomics_file",
                 "multiplicity": "many_to_one",
                 "required": false
+            },
+            {
+                "exclusive": null,
+                "required": true,
+                "subgroup": [
+                    {
+                        "name": "core_metadata_collections",
+                        "backref": "supplementary_files",
+                        "label": "data_from",
+                        "target_type": "core_metadata_collection",
+                        "multiplicity": "one_to_one",
+                        "required": false
+                    }
+                ]
             }
         ],
         "required": [
@@ -3585,6 +3615,9 @@
         "properties": {
             "$ref": "_definitions.yaml#/data_file_properties",
             "genomics_files": {
+                "$ref": "_definitions.yaml#/to_one"
+            },
+            "core_metadata_collections": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "data_category": {
@@ -3645,7 +3678,7 @@
                         "label": "generated_from",
                         "target_type": "genomics_assay",
                         "multiplicity": "many_to_one",
-                        "required": false
+                        "required": true
                     },
                     {
                         "name": "core_metadata_collections",
@@ -3660,7 +3693,8 @@
         ],
         "required": [
             "type",
-            "submitter_id"
+            "submitter_id",
+            "genomics_assays"
         ],
         "uniqueKeys": [
             [
@@ -5697,14 +5731,15 @@
                         "label": "produces",
                         "target_type": "sample",
                         "multiplicity": "many_to_one",
-                        "required": false
+                        "required": true
                     }
                 ]
             }
         ],
         "required": [
             "type",
-            "submitter_id"
+            "submitter_id",
+            "samples"
         ],
         "uniqueKeys": [
             [
