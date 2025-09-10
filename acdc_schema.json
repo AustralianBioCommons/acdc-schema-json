@@ -21,10 +21,10 @@
         ],
         "links": [
             {
-                "name": "clinical_contexts",
+                "name": "clinical_descriptors",
                 "backref": "demographics",
                 "label": "describes",
-                "target_type": "clinical_context",
+                "target_type": "clinical_descriptor",
                 "multiplicity": "one_to_one",
                 "required": true
             }
@@ -32,7 +32,7 @@
         "required": [
             "type",
             "submitter_id",
-            "clinical_contexts"
+            "clinical_descriptors"
         ],
         "uniqueKeys": [
             [
@@ -45,7 +45,7 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/ubiquitous_properties",
-            "clinical_contexts": {
+            "clinical_descriptors": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "abs_cluster": {
@@ -137,6 +137,78 @@
             "year_birth": {
                 "description": "Year of birth at baseline (YYYY)",
                 "type": "integer"
+            }
+        }
+    },
+    "clinical_descriptor.yaml": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "id": "clinical_descriptor",
+        "title": "Clinical Descriptor",
+        "type": "object",
+        "namespace": "https://data.test.biocommons.org.au/",
+        "category": "clinical",
+        "program": "*",
+        "project": "*",
+        "description": "Contains metadata describing the conditions under which the clinical data was recorded. Includes attributes such as study timepoint, follow-up status, intervention, and clinical site",
+        "additionalProperties": false,
+        "submittable": true,
+        "validators": null,
+        "systemProperties": [
+            "id",
+            "project_id",
+            "state",
+            "created_datetime",
+            "updated_datetime"
+        ],
+        "links": [
+            {
+                "name": "subjects",
+                "backref": "clinical_descriptors",
+                "label": "describes",
+                "target_type": "subject",
+                "multiplicity": "many_to_one",
+                "required": true
+            }
+        ],
+        "required": [
+            "type",
+            "submitter_id",
+            "subjects",
+            "baseline_measure"
+        ],
+        "uniqueKeys": [
+            [
+                "id"
+            ],
+            [
+                "project_id",
+                "submitter_id"
+            ]
+        ],
+        "properties": {
+            "$ref": "_definitions.yaml#/ubiquitous_properties",
+            "subjects": {
+                "$ref": "_definitions.yaml#/to_one"
+            },
+            "label": {
+                "description": "The code or label for the clinical context. e.g. baseline, 6months, treatment, placebo, etc",
+                "type": "string"
+            },
+            "description": {
+                "description": "The description of the clinical context. e.g. blood taken at 6 months, 10mg lovastatin, double-blind placebo",
+                "type": "string"
+            },
+            "baseline_measure": {
+                "description": "Indicates if this is a baseline measure",
+                "type": "boolean"
+            },
+            "years_from_baseline": {
+                "description": "Years from the baseline measurement",
+                "type": "number"
+            },
+            "site": {
+                "description": "The location, lab, or clinical site that the data was collected",
+                "type": "string"
             }
         }
     },
@@ -451,107 +523,6 @@
             }
         }
     },
-    "alignment_workflow.yaml": {
-        "$schema": "http://json-schema.org/draft-04/schema#",
-        "id": "alignment_workflow",
-        "title": "Alignment Workflow",
-        "type": "object",
-        "namespace": "https://data.test.biocommons.org.au/",
-        "category": "analysis",
-        "program": "*",
-        "project": "*",
-        "description": "Metadata for the alignment pipeline used to align reads during genomic harmonisation",
-        "additionalProperties": false,
-        "submittable": true,
-        "validators": null,
-        "systemProperties": [
-            "id",
-            "project_id",
-            "state",
-            "created_datetime",
-            "updated_datetime"
-        ],
-        "links": [
-            {
-                "exclusive": null,
-                "required": true,
-                "subgroup": [
-                    {
-                        "name": "unaligned_reads_files",
-                        "backref": "alignment_workflows",
-                        "label": "part_of",
-                        "target_type": "unaligned_reads_file",
-                        "multiplicity": "many_to_one",
-                        "required": false
-                    }
-                ]
-            }
-        ],
-        "required": [
-            "type",
-            "submitter_id"
-        ],
-        "uniqueKeys": [
-            [
-                "id"
-            ],
-            [
-                "project_id",
-                "submitter_id"
-            ]
-        ],
-        "properties": {
-            "$ref": "_definitions.yaml#/ubiquitous_properties",
-            "unaligned_reads_files": {
-                "$ref": "_definitions.yaml#/to_one"
-            },
-            "workflow_end_datetime": {
-                "description": "A combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]",
-                "type": "string",
-                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
-            },
-            "workflow_link": {
-                "description": "Link to Github hash for the CWL workflow used.",
-                "type": "string"
-            },
-            "workflow_start_datetime": {
-                "description": "A combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]",
-                "type": "string",
-                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
-            },
-            "workflow_type": {
-                "description": "Type of read aligner used",
-                "enum": [
-                    "STAR",
-                    "BWA-aln",
-                    "BWA-mem",
-                    "spinnaker"
-                ],
-                "enumDef": [
-                    {
-                        "enumeration": "STAR",
-                        "source": "BioData Catalyst DD"
-                    },
-                    {
-                        "enumeration": "BWA-aln",
-                        "source": "BioData Catalyst DD"
-                    },
-                    {
-                        "enumeration": "BWA-mem",
-                        "source": "BioData Catalyst DD"
-                    },
-                    {
-                        "enumeration": "spinnaker",
-                        "source": "BioData Catalyst DD"
-                    }
-                ]
-            },
-            "workflow_version": {
-                "description": "Version of the workflow used",
-                "type": "string"
-            }
-        }
-    },
     "imaging_file.yaml": {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "id": "imaging_file",
@@ -578,10 +549,10 @@
                 "required": true,
                 "subgroup": [
                     {
-                        "name": "clinical_contexts",
+                        "name": "clinical_descriptors",
                         "backref": "imaging_files",
                         "label": "data_from",
-                        "target_type": "clinical_context",
+                        "target_type": "clinical_descriptor",
                         "multiplicity": "many_to_one",
                         "required": false
                     },
@@ -611,7 +582,7 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/data_file_properties",
-            "clinical_contexts": {
+            "clinical_descriptors": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "core_metadata_collections": {
@@ -1728,78 +1699,6 @@
             }
         }
     },
-    "clinical_context.yaml": {
-        "$schema": "http://json-schema.org/draft-04/schema#",
-        "id": "clinical_context",
-        "title": "Clinical Context",
-        "type": "object",
-        "namespace": "https://data.test.biocommons.org.au/",
-        "category": "clinical",
-        "program": "*",
-        "project": "*",
-        "description": "The clinical context of the data",
-        "additionalProperties": false,
-        "submittable": true,
-        "validators": null,
-        "systemProperties": [
-            "id",
-            "project_id",
-            "state",
-            "created_datetime",
-            "updated_datetime"
-        ],
-        "links": [
-            {
-                "name": "subjects",
-                "backref": "clinical_contexts",
-                "label": "describes",
-                "target_type": "subject",
-                "multiplicity": "many_to_one",
-                "required": true
-            }
-        ],
-        "required": [
-            "type",
-            "submitter_id",
-            "subjects",
-            "baseline_measure"
-        ],
-        "uniqueKeys": [
-            [
-                "id"
-            ],
-            [
-                "project_id",
-                "submitter_id"
-            ]
-        ],
-        "properties": {
-            "$ref": "_definitions.yaml#/ubiquitous_properties",
-            "subjects": {
-                "$ref": "_definitions.yaml#/to_one"
-            },
-            "label": {
-                "description": "The code or label for the clinical context. e.g. baseline, 6months, treatment, placebo, etc",
-                "type": "string"
-            },
-            "description": {
-                "description": "The description of the clinical context. e.g. blood taken at 6 months, 10mg lovastatin, double-blind placebo",
-                "type": "string"
-            },
-            "baseline_measure": {
-                "description": "Indicates if this is a baseline measure",
-                "type": "boolean"
-            },
-            "years_from_baseline": {
-                "description": "Years from the baseline measurement",
-                "type": "number"
-            },
-            "site": {
-                "description": "The location, lab, or clinical site that the data was collected",
-                "type": "string"
-            }
-        }
-    },
     "medical_history.yaml": {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "id": "medical_history",
@@ -1822,10 +1721,10 @@
         ],
         "links": [
             {
-                "name": "clinical_contexts",
+                "name": "clinical_descriptors",
                 "backref": "medical_histories",
                 "label": "describes",
-                "target_type": "clinical_context",
+                "target_type": "clinical_descriptor",
                 "multiplicity": "one_to_one",
                 "required": true
             }
@@ -1833,7 +1732,7 @@
         "required": [
             "type",
             "submitter_id",
-            "clinical_contexts"
+            "clinical_descriptors"
         ],
         "uniqueKeys": [
             [
@@ -1846,7 +1745,7 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/ubiquitous_properties",
-            "clinical_contexts": {
+            "clinical_descriptors": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "atrial_fibrillation": {
@@ -2447,10 +2346,10 @@
         ],
         "links": [
             {
-                "name": "clinical_contexts",
+                "name": "clinical_descriptors",
                 "backref": "blood_pressure_tests",
                 "label": "taken_by",
-                "target_type": "clinical_context",
+                "target_type": "clinical_descriptor",
                 "multiplicity": "one_to_one",
                 "required": true
             }
@@ -2458,7 +2357,7 @@
         "required": [
             "type",
             "submitter_id",
-            "clinical_contexts"
+            "clinical_descriptors"
         ],
         "uniqueKeys": [
             [
@@ -2471,7 +2370,7 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/ubiquitous_properties",
-            "clinical_contexts": {
+            "clinical_descriptors": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "bp_diastolic": {
@@ -2536,7 +2435,10 @@
         ],
         "required": [
             "type",
-            "submitter_id"
+            "submitter_id",
+            "run_id",
+            "assay_batch_id",
+            "assay_type"
         ],
         "uniqueKeys": [
             [
@@ -2552,757 +2454,351 @@
             "samples": {
                 "$ref": "_definitions.yaml#/to_one"
             },
-            "assay_id": {
-                "description": "An identifier for the assay or experiemnt performed on the sample",
+            "run_id": {
+                "description": "The unique identifier for the specific instrument run that generated the data. Use an identifier that will best minimise batch effects.",
                 "type": "string"
             },
             "instrument_model": {
-                "description": "The name and/or number associated with a specific sequencing instrument model",
-                "enum": [
-                    "454 GS",
-                    "454 GS 20",
-                    "454 GS FLX",
-                    "454 GS FLX Titanium",
-                    "454 GS FLX+",
-                    "454 GS Junior",
-                    "AB 310 Genetic Analyzer",
-                    "AB 3130 Genetic Analyzer",
-                    "AB 3130xL Genetic Analyzer",
-                    "AB 3500 Genetic Analyzer",
-                    "AB 3500xL Genetic Analyzer",
-                    "AB 3730 Genetic Analyzer",
-                    "AB 3730xL Genetic Analyzer",
-                    "AB 5500 Genetic Analyzer",
-                    "AB 5500xl Genetic Analyzer",
-                    "AB 5500xl-W Genetic Analysis System",
-                    "AB SOLiD 3 Plus System",
-                    "AB SOLiD 4 System",
-                    "AB SOLiD 4hq System",
-                    "AB SOLiD PI System",
-                    "AB SOLiD System",
-                    "AB SOLiD System 2.0",
-                    "AB SOLiD System 3.0",
-                    "BGISEQ-50",
-                    "BGISEQ-500",
-                    "Complete Genomics",
-                    "DNBSEQ-G400",
-                    "DNBSEQ-G400 FAST",
-                    "DNBSEQ-G50",
-                    "DNBSEQ-T7",
-                    "Element AVITI",
-                    "FASTASeq 300",
-                    "GENIUS",
-                    "GS111",
-                    "Genapsys Sequencer",
-                    "GenoCare 1600",
-                    "GenoLab M",
-                    "GridION",
-                    "Helicos HeliScope",
-                    "HiSeq X Five",
-                    "HiSeq X Ten",
-                    "Illumina Genome Analyzer",
-                    "Illumina Genome Analyzer II",
-                    "Illumina Genome Analyzer IIx",
-                    "Illumina HiScanSQ",
-                    "Illumina HiSeq 1000",
-                    "Illumina HiSeq 1500",
-                    "Illumina HiSeq 2000",
-                    "Illumina HiSeq 2500",
-                    "Illumina HiSeq 3000",
-                    "Illumina HiSeq 4000",
-                    "Illumina HiSeq X",
-                    "Illumina MiSeq",
-                    "Illumina MiniSeq",
-                    "Illumina NovaSeq 6000",
-                    "Illumina NovaSeq X",
-                    "Illumina iSeq 100",
-                    "Ion GeneStudio S5",
-                    "Ion GeneStudio S5 Plus",
-                    "Ion GeneStudio S5 Prime",
-                    "Ion Torrent Genexus",
-                    "Ion Torrent PGM",
-                    "Ion Torrent Proton",
-                    "Ion Torrent S5",
-                    "Ion Torrent S5 XL",
-                    "MGISEQ-2000RS",
-                    "MinION",
-                    "NextSeq 1000",
-                    "NextSeq 2000",
-                    "NextSeq 500",
-                    "NextSeq 550",
-                    "Onso",
-                    "PacBio RS",
-                    "PacBio RS II",
-                    "PromethION",
-                    "Revio",
-                    "Sentosa SQ301",
-                    "Sequel",
-                    "Sequel II",
-                    "Sequel IIe",
-                    "Tapestri",
-                    "UG 100",
-                    "unspecified"
-                ],
-                "enumDef": [
-                    {
-                        "enumeration": "454 GS",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "454 GS 20",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "454 GS FLX",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "454 GS FLX Titanium",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "454 GS FLX+",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "454 GS Junior",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "AB 310 Genetic Analyzer",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "AB 3130 Genetic Analyzer",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "AB 3130xL Genetic Analyzer",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "AB 3500 Genetic Analyzer",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "AB 3500xL Genetic Analyzer",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "AB 3730 Genetic Analyzer",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "AB 3730xL Genetic Analyzer",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "AB 5500 Genetic Analyzer",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "AB 5500xl Genetic Analyzer",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "AB 5500xl-W Genetic Analysis System",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "AB SOLiD 3 Plus System",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "AB SOLiD 4 System",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "AB SOLiD 4hq System",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "AB SOLiD PI System",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "AB SOLiD System",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "AB SOLiD System 2.0",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "AB SOLiD System 3.0",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "BGISEQ-50",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "BGISEQ-500",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Complete Genomics",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "DNBSEQ-G400",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "DNBSEQ-G400 FAST",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "DNBSEQ-G50",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "DNBSEQ-T7",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Element AVITI",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "FASTASeq 300",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "GENIUS",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "GS111",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Genapsys Sequencer",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "GenoCare 1600",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "GenoLab M",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "GridION",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Helicos HeliScope",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "HiSeq X Five",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "HiSeq X Ten",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Illumina Genome Analyzer",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Illumina Genome Analyzer II",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Illumina Genome Analyzer IIx",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Illumina HiScanSQ",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Illumina HiSeq 1000",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Illumina HiSeq 1500",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Illumina HiSeq 2000",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Illumina HiSeq 2500",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Illumina HiSeq 3000",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Illumina HiSeq 4000",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Illumina HiSeq X",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Illumina MiSeq",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Illumina MiniSeq",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Illumina NovaSeq 6000",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Illumina NovaSeq X",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Illumina iSeq 100",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Ion GeneStudio S5",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Ion GeneStudio S5 Plus",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Ion GeneStudio S5 Prime",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Ion Torrent Genexus",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Ion Torrent PGM",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Ion Torrent Proton",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Ion Torrent S5",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Ion Torrent S5 XL",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "MGISEQ-2000RS",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "MinION",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "NextSeq 1000",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "NextSeq 2000",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "NextSeq 500",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "NextSeq 550",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Onso",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "PacBio RS",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "PacBio RS II",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "PromethION",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Revio",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Sentosa SQ301",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Sequel",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Sequel II",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Sequel IIe",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "Tapestri",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "UG 100",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "unspecified",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_model",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    }
-                ]
-            },
-            "instrument_platform": {
-                "description": "The name of the technology platform used to perform nucleic acid sequencing or quantification",
-                "enum": [
-                    "ABI_SOLID",
-                    "BGISEQ",
-                    "CAPILLARY",
-                    "COMPLETE_GENOMICS",
-                    "DNBSEQ",
-                    "ELEMENT",
-                    "GENAPSYS",
-                    "GENE_MIND",
-                    "HELICOS",
-                    "ILLUMINA",
-                    "ION_TORRENT",
-                    "LS454",
-                    "OXFORD_NANOPORE",
-                    "PACBIO_SMRT",
-                    "TAPESTRI",
-                    "ULTIMA",
-                    "VELA_DIAGNOSTICS"
-                ],
-                "enumDef": [
-                    {
-                        "enumeration": "ABI_SOLID",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_platform",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "BGISEQ",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_platform",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "CAPILLARY",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_platform",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "COMPLETE_GENOMICS",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_platform",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "DNBSEQ",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_platform",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "ELEMENT",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_platform",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "GENAPSYS",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_platform",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "GENE_MIND",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_platform",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "HELICOS",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_platform",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "ILLUMINA",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_platform",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "ION_TORRENT",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_platform",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "LS454",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_platform",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "OXFORD_NANOPORE",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_platform",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "PACBIO_SMRT",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_platform",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "TAPESTRI",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_platform",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "ULTIMA",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_platform",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    },
-                    {
-                        "enumeration": "VELA_DIAGNOSTICS",
-                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
-                        "term_id": "instrument_platform",
-                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
-                    }
-                ]
-            },
-            "library_prep_protocol": {
-                "description": "Name of the protocol used to prepare the samples",
+                "description": "The name and/or number associated with a specific instrument model. e.g. Hiseq X, NovaSeq 6000",
                 "type": "string"
             },
-            "library_strategy": {
+            "instrument_manufacturer": {
+                "description": "The manufacturer of the instrument. E.g. Illumina, Affymetrix, Oxford Nanopore, Thermo Scientific",
+                "type": "string"
+            },
+            "assay_batch_id": {
+                "description": "An identifier for the assay performed on the sample. If unsure, use an identifier that can be best used to minimise batch effects",
+                "type": "string"
+            },
+            "assay_protocol": {
+                "description": "Name of the protocol used to prepare the samples. e.g. Protocol for use with NEBNext Ultra II DNA Library Prep with Sample Purification Beads (E7103)",
+                "type": "string"
+            },
+            "assay_version": {
+                "description": "A string that references the protocol version e.g. E7103",
+                "type": "string"
+            },
+            "assay_link": {
+                "description": "A link to the protocol. e.g. https://www.neb.com/en-au/protocols/2016/07/04/protocol-for-nebnext-ultra-ii-dna-library-prep-with-sample-purification-beads-neb-e7103",
+                "type": "string"
+            },
+            "assay_type": {
                 "description": "Sequencing technique used for this library",
                 "enum": [
                     "WGS",
-                    "WXS",
-                    "LC-WGS",
                     "RNA-Seq",
+                    "WES",
+                    "SNP Chip",
+                    "WGA",
+                    "ssRNA-seq",
+                    "snRNA-seq",
                     "miRNA-Seq",
-                    "Total-RNA-Seq",
-                    "Targeted",
-                    "Other"
+                    "ncRNA-Seq",
+                    "FL-cDNA",
+                    "EST",
+                    "Hi-C",
+                    "ATAC-seq",
+                    "WCS",
+                    "RAD-Seq",
+                    "CLONE",
+                    "POOLCLONE",
+                    "AMPLICON",
+                    "CLONEEND",
+                    "FINISHING",
+                    "ChIP-Seq",
+                    "MNase-Seq",
+                    "DNase-Hypersensitivity",
+                    "Bisulfite-Seq",
+                    "CTS",
+                    "MRE-Seq",
+                    "MeDIP-Seq",
+                    "MBD-Seq",
+                    "Tn-Seq",
+                    "VALIDATION",
+                    "FAIRE-seq",
+                    "SELEX",
+                    "RIP-Seq",
+                    "ChIA-PET",
+                    "Synthetic-Long-Read",
+                    "Targeted-Capture",
+                    "Tethered Chromatin Conformation Capture",
+                    "NOMe-Seq",
+                    "ChM-Seq",
+                    "GBS",
+                    "Ribo-Seq",
+                    "OTHER"
+                ],
+                "enumDef": [
+                    {
+                        "enumeration": "WGS",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "RNA-Seq",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "WES",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "SNP Chip",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "WGA",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "ssRNA-seq",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "snRNA-seq",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "miRNA-Seq",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "ncRNA-Seq",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "FL-cDNA",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "EST",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "Hi-C",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "ATAC-seq",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "WCS",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "RAD-Seq",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "CLONE",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "POOLCLONE",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "AMPLICON",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "CLONEEND",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "FINISHING",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "ChIP-Seq",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "MNase-Seq",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "DNase-Hypersensitivity",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "Bisulfite-Seq",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "CTS",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "MRE-Seq",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "MeDIP-Seq",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "MBD-Seq",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "Tn-Seq",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "VALIDATION",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "FAIRE-seq",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "SELEX",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "RIP-Seq",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "ChIA-PET",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "Synthetic-Long-Read",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "Targeted-Capture",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "Tethered Chromatin Conformation Capture",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "NOMe-Seq",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "ChM-Seq",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "GBS",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "Ribo-Seq",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    },
+                    {
+                        "enumeration": "OTHER",
+                        "source": "https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md",
+                        "term_id": "library_strategy",
+                        "version": "9efee515e2a8351e767f7cfb2d7dffb138c98f82"
+                    }
                 ]
             },
-            "sequencing_protocol": {
-                "description": "Name of the sequencing protocol used to convert cleaned libraries into sequenced data",
+            "dna_array_version": {
+                "description": "Version, manifest, or catalog number of the DNA microarray used in the genotyping experiment.",
                 "type": "string"
             }
         }
     },
-    "variant_file.yaml": {
+    "qc_file.yaml": {
         "$schema": "http://json-schema.org/draft-04/schema#",
-        "id": "variant_file",
-        "title": "Variant File",
+        "id": "qc_file",
+        "title": "QC File",
         "type": "object",
         "namespace": "https://data.test.biocommons.org.au/",
         "category": "data_file",
         "program": "*",
         "project": "*",
-        "description": "Data file that contains the results of variant calling on a SNP array or sequencing data",
+        "description": "Data file containing QC information",
         "additionalProperties": false,
         "submittable": true,
         "validators": null,
@@ -3319,27 +2815,11 @@
                 "required": true,
                 "subgroup": [
                     {
-                        "name": "variant_workflows",
-                        "backref": "variant_files",
+                        "name": "genomics_files",
+                        "backref": "qc_files",
                         "label": "generated_from",
-                        "target_type": "variant_workflow",
-                        "multiplicity": "one_to_one",
-                        "required": false
-                    },
-                    {
-                        "name": "aligned_reads_files",
-                        "backref": "variant_files",
-                        "label": "generated_from",
-                        "target_type": "aligned_reads_file",
-                        "multiplicity": "one_to_one",
-                        "required": false
-                    },
-                    {
-                        "name": "core_metadata_collections",
-                        "backref": "variant_files",
-                        "label": "data_from",
-                        "target_type": "core_metadata_collection",
-                        "multiplicity": "one_to_one",
+                        "target_type": "genomics_file",
+                        "multiplicity": "many_to_one",
                         "required": false
                     }
                 ]
@@ -3360,46 +2840,8 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/data_file_properties",
-            "variant_workflows": {
+            "genomics_files": {
                 "$ref": "_definitions.yaml#/to_one"
-            },
-            "aligned_reads_files": {
-                "$ref": "_definitions.yaml#/to_one"
-            },
-            "core_metadata_collections": {
-                "$ref": "_definitions.yaml#/to_one"
-            },
-            "data_category": {
-                "description": "Broad categorization of the contents of the data file.",
-                "enum": [
-                    "analysis",
-                    "sequencing reads",
-                    "single nucleotide variation",
-                    "transcriptome profiling",
-                    "supplemental"
-                ]
-            },
-            "data_format": {
-                "description": "Format of the data files.",
-                "enum": [
-                    "bed",
-                    "vcf",
-                    "vcf.gz"
-                ]
-            },
-            "data_type": {
-                "description": "Specific content type of the data file.",
-                "enum": [
-                    "unaligned reads",
-                    "aligned reads",
-                    "variants annotation",
-                    "clinical supplement"
-                ]
-            },
-            "reference_genome_build": {
-                "description": "Reference genome used e.g. GRCh37.",
-                "type": "string",
-                "pattern": "^GRCh[0-9]{2}$"
             }
         }
     },
@@ -3901,10 +3343,10 @@
         ],
         "links": [
             {
-                "name": "clinical_contexts",
+                "name": "clinical_descriptors",
                 "backref": "samples",
                 "label": "taken_from",
-                "target_type": "clinical_context",
+                "target_type": "clinical_descriptor",
                 "multiplicity": "many_to_one",
                 "required": true
             }
@@ -3912,7 +3354,7 @@
         "required": [
             "type",
             "submitter_id",
-            "clinical_contexts"
+            "clinical_descriptors"
         ],
         "uniqueKeys": [
             [
@@ -3925,7 +3367,7 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/ubiquitous_properties",
-            "clinical_contexts": {
+            "clinical_descriptors": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "freeze_thaw_cycles": {
@@ -4097,16 +3539,91 @@
             }
         }
     },
-    "unaligned_reads_file.yaml": {
+    "supplementary_file.yaml": {
         "$schema": "http://json-schema.org/draft-04/schema#",
-        "id": "unaligned_reads_file",
-        "title": "Unaligned Reads File",
+        "id": "supplementary_file",
+        "title": "Supplementary File",
         "type": "object",
         "namespace": "https://data.test.biocommons.org.au/",
         "category": "data_file",
         "program": "*",
         "project": "*",
-        "description": "Data file containing raw reads from a sequencing experiment.",
+        "description": "Generic Supplementary File",
+        "additionalProperties": false,
+        "submittable": true,
+        "validators": null,
+        "systemProperties": [
+            "id",
+            "project_id",
+            "state",
+            "created_datetime",
+            "updated_datetime"
+        ],
+        "links": [
+            {
+                "name": "genomics_files",
+                "backref": "supplementary_files",
+                "label": "part_of",
+                "target_type": "genomics_file",
+                "multiplicity": "many_to_one",
+                "required": false
+            }
+        ],
+        "required": [
+            "type",
+            "submitter_id"
+        ],
+        "uniqueKeys": [
+            [
+                "id"
+            ],
+            [
+                "project_id",
+                "submitter_id"
+            ]
+        ],
+        "properties": {
+            "$ref": "_definitions.yaml#/data_file_properties",
+            "genomics_files": {
+                "$ref": "_definitions.yaml#/to_one"
+            },
+            "data_category": {
+                "description": "Data category, default is 'supplementary'",
+                "enum": [
+                    "supplementary"
+                ]
+            },
+            "data_format": {
+                "description": "The format of the data, usually the file extension",
+                "enum": [
+                    "bai",
+                    "bam.bai",
+                    "crai",
+                    "cram.crai",
+                    "other"
+                ]
+            },
+            "data_type": {
+                "description": "The type of data, e.g. log, index, mapping, etc",
+                "enum": [
+                    "index_file",
+                    "mapping_file",
+                    "other",
+                    "log_file"
+                ]
+            }
+        }
+    },
+    "genomics_file.yaml": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "id": "genomics_file",
+        "title": "Genomics File",
+        "type": "object",
+        "namespace": "https://data.test.biocommons.org.au/",
+        "category": "data_file",
+        "program": "*",
+        "project": "*",
+        "description": "Data file containing genomics information",
         "additionalProperties": false,
         "submittable": true,
         "validators": null,
@@ -4123,8 +3640,8 @@
                 "required": true,
                 "subgroup": [
                     {
-                        "name": "genomics_assay",
-                        "backref": "unaligned_reads_files",
+                        "name": "genomics_assays",
+                        "backref": "genomics_files",
                         "label": "generated_from",
                         "target_type": "genomics_assay",
                         "multiplicity": "many_to_one",
@@ -4132,7 +3649,7 @@
                     },
                     {
                         "name": "core_metadata_collections",
-                        "backref": "aligned_reads_filess",
+                        "backref": "genomics_files",
                         "label": "data_from",
                         "target_type": "core_metadata_collection",
                         "multiplicity": "one_to_one",
@@ -4156,40 +3673,59 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/data_file_properties",
-            "genomics_assay": {
+            "genomics_assays": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "core_metadata_collections": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "data_category": {
-                "description": "Broad categorization of the contents of the data file.",
+                "description": "A high-level category indicating the data's stage in the bioinformatics workflow, such as raw instrument output, processed data, or analysis-ready results",
                 "enum": [
-                    "analysis",
-                    "sequencing reads",
-                    "single nucleotide variation",
-                    "transcriptome profiling",
-                    "supplemental"
+                    "raw",
+                    "processed",
+                    "analysis_output"
                 ]
             },
             "data_format": {
-                "description": "Format of the data files.",
+                "description": "The format of the data in this data file. Usually the extension of the fileThe technical format that defines the structure and encoding of the data within the file. This often corresponds to a standard specification and is typically indicated by the file extension (e.g., VCF, BAM, IDAT)",
                 "enum": [
-                    "fastq.gz"
+                    "bam",
+                    "cram",
+                    "fastq",
+                    "fastq.gz",
+                    "bed",
+                    "vcf",
+                    "vcf.gz",
+                    "plink",
+                    "fam",
+                    "bin",
+                    "csv",
+                    "tsv"
                 ]
             },
             "data_type": {
-                "description": "Specific content type of the data file.",
+                "description": "A specific descriptor for the biological content of the file, distinguishing between different kinds of genomic information such as unaligned reads, called genotypes, or copy number segments",
                 "enum": [
-                    "unaligned reads",
-                    "aligned reads",
-                    "variants annotation",
-                    "clinical supplement"
+                    "signal_intensity",
+                    "unaligned_reads",
+                    "aligned_reads",
+                    "called_genotypes",
+                    "imputed_genotypes",
+                    "genotype_dosage",
+                    "copy_number_segment"
                 ]
             },
-            "run_id": {
-                "description": "Sequencing run ID associated with file",
-                "type": "string"
+            "imputed": {
+                "description": "Does the file contain imputed data?",
+                "type": "boolean"
+            },
+            "reference_genome_build": {
+                "description": "Reference genome used e.g. GRCh37.",
+                "enum": [
+                    "GRCh38",
+                    "GRCh37"
+                ]
             }
         }
     },
@@ -5947,196 +5483,6 @@
             "description": "Data Use Restrictions that are used to indicate  permissions/restrictions for datasets and/or materials, and relates to the purposes for which datasets and/or material might be removed, stored or used. Based on the Data Use Ontology : see http://www.obofoundry.org/ontology/duo.html"
         }
     },
-    "aligned_reads_index_file.yaml": {
-        "$schema": "http://json-schema.org/draft-04/schema#",
-        "id": "aligned_reads_index_file",
-        "title": "Aligned Reads Index File",
-        "type": "object",
-        "namespace": "https://data.test.biocommons.org.au/",
-        "category": "data_file",
-        "program": "*",
-        "project": "*",
-        "description": "Data file containing an index for a set of aligned reads",
-        "additionalProperties": false,
-        "submittable": true,
-        "validators": null,
-        "systemProperties": [
-            "id",
-            "project_id",
-            "state",
-            "created_datetime",
-            "updated_datetime"
-        ],
-        "links": [
-            {
-                "exclusive": null,
-                "required": true,
-                "subgroup": [
-                    {
-                        "name": "aligned_reads_files",
-                        "backref": "aligned_reads_index_files",
-                        "label": "describes",
-                        "target_type": "aligned_reads_file",
-                        "multiplicity": "one_to_one",
-                        "required": false
-                    },
-                    {
-                        "name": "alignment_workflows",
-                        "backref": "aligned_reads_index_files",
-                        "label": "generated_from",
-                        "target_type": "alignment_workflow",
-                        "multiplicity": "one_to_one",
-                        "required": false
-                    },
-                    {
-                        "name": "core_metadata_collections",
-                        "backref": "aligned_reads_index_files",
-                        "label": "describes",
-                        "target_type": "core_metadata_collection",
-                        "multiplicity": "one_to_one",
-                        "required": false
-                    }
-                ]
-            }
-        ],
-        "required": [
-            "type",
-            "submitter_id"
-        ],
-        "uniqueKeys": [
-            [
-                "id"
-            ],
-            [
-                "project_id",
-                "submitter_id"
-            ]
-        ],
-        "properties": {
-            "$ref": "_definitions.yaml#/data_file_properties",
-            "aligned_reads_files": {
-                "$ref": "_definitions.yaml#/to_one"
-            },
-            "alignment_workflows": {
-                "$ref": "_definitions.yaml#/to_one"
-            },
-            "core_metadata_collections": {
-                "$ref": "_definitions.yaml#/to_one"
-            },
-            "data_category": {
-                "description": "Broad categorization of the contents of the data file.",
-                "enum": [
-                    "analysis",
-                    "sequencing reads",
-                    "single nucleotide variation",
-                    "transcriptome profiling",
-                    "supplemental"
-                ]
-            },
-            "data_format": {
-                "description": "Format of the data files.",
-                "enum": [
-                    "bai",
-                    "bam.bai",
-                    "crai",
-                    "cram.crai"
-                ]
-            },
-            "data_type": {
-                "description": "Specific content type of the data file.",
-                "enum": [
-                    "unaligned reads",
-                    "aligned reads",
-                    "variants annotation",
-                    "clinical supplement"
-                ]
-            }
-        }
-    },
-    "variant_workflow.yaml": {
-        "$schema": "http://json-schema.org/draft-04/schema#",
-        "id": "variant_workflow",
-        "title": "Variant Workflow",
-        "type": "object",
-        "namespace": "https://data.test.biocommons.org.au/",
-        "category": "analysis",
-        "program": "*",
-        "project": "*",
-        "description": "Metadata for the variant calling pipeline used to call germline variants",
-        "additionalProperties": false,
-        "submittable": true,
-        "validators": null,
-        "systemProperties": [
-            "id",
-            "project_id",
-            "state",
-            "created_datetime",
-            "updated_datetime"
-        ],
-        "links": [
-            {
-                "exclusive": null,
-                "required": true,
-                "subgroup": [
-                    {
-                        "name": "aligned_reads_files",
-                        "backref": "variant_workflows",
-                        "label": "part_of",
-                        "target_type": "aligned_reads_file",
-                        "multiplicity": "many_to_one",
-                        "required": false
-                    }
-                ]
-            }
-        ],
-        "required": [
-            "type",
-            "submitter_id"
-        ],
-        "uniqueKeys": [
-            [
-                "id"
-            ],
-            [
-                "project_id",
-                "submitter_id"
-            ]
-        ],
-        "properties": {
-            "$ref": "_definitions.yaml#/ubiquitous_properties",
-            "aligned_reads_files": {
-                "$ref": "_definitions.yaml#/to_one"
-            },
-            "workflow_end_datetime": {
-                "description": "A combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]",
-                "type": "string",
-                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
-            },
-            "workflow_link": {
-                "description": "Link to Github hash for the CWL workflow used.",
-                "type": "string"
-            },
-            "workflow_start_datetime": {
-                "description": "A combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]",
-                "type": "string",
-                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
-            },
-            "workflow_type": {
-                "description": "Generic name for the workflow used to analyze a data set",
-                "enum": [
-                    "HaplotypeCaller",
-                    "DeepVariant",
-                    "Strelka2",
-                    "FreeBayes",
-                    "VarScan"
-                ]
-            },
-            "workflow_version": {
-                "description": "Version of the workflow used",
-                "type": "string"
-            }
-        }
-    },
     "proteomics_file.yaml": {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "id": "proteomics_file",
@@ -6263,10 +5609,10 @@
         ],
         "links": [
             {
-                "name": "clinical_contexts",
+                "name": "clinical_descriptors",
                 "backref": "exposures",
                 "label": "describes",
-                "target_type": "clinical_context",
+                "target_type": "clinical_descriptor",
                 "multiplicity": "one_to_one",
                 "required": true
             }
@@ -6274,7 +5620,7 @@
         "required": [
             "type",
             "submitter_id",
-            "clinical_contexts"
+            "clinical_descriptors"
         ],
         "uniqueKeys": [
             [
@@ -6287,7 +5633,7 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/ubiquitous_properties",
-            "clinical_contexts": {
+            "clinical_descriptors": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "cigarettes_per_day": {
@@ -6738,14 +6084,6 @@
                 "required": true,
                 "subgroup": [
                     {
-                        "name": "lipidomics_files",
-                        "backref": "lipidomics_mapping_files",
-                        "label": "part_of",
-                        "target_type": "lipidomics_file",
-                        "multiplicity": "one_to_one",
-                        "required": false
-                    },
-                    {
                         "name": "core_metadata_collections",
                         "backref": "lipidomics_mapping_files",
                         "label": "describes",
@@ -6771,9 +6109,6 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/data_file_properties",
-            "lipidomics_files": {
-                "$ref": "_definitions.yaml#/to_one"
-            },
             "core_metadata_collections": {
                 "$ref": "_definitions.yaml#/to_one"
             },
@@ -6931,121 +6266,6 @@
             }
         }
     },
-    "aligned_reads_file.yaml": {
-        "$schema": "http://json-schema.org/draft-04/schema#",
-        "id": "aligned_reads_file",
-        "title": "Aligned Reads File",
-        "type": "object",
-        "namespace": "https://data.test.biocommons.org.au/",
-        "category": "data_file",
-        "program": "*",
-        "project": "*",
-        "description": "Data file containing aligned reads from a sequencing experiment.",
-        "additionalProperties": false,
-        "submittable": true,
-        "validators": null,
-        "systemProperties": [
-            "id",
-            "project_id",
-            "state",
-            "created_datetime",
-            "updated_datetime"
-        ],
-        "links": [
-            {
-                "exclusive": null,
-                "required": true,
-                "subgroup": [
-                    {
-                        "name": "unaligned_reads_files",
-                        "backref": "aligned_reads_files",
-                        "label": "generated_from",
-                        "target_type": "unaligned_reads_file",
-                        "multiplicity": "one_to_one",
-                        "required": false
-                    },
-                    {
-                        "name": "alignment_workflows",
-                        "backref": "aligned_reads_files",
-                        "label": "generated_from",
-                        "target_type": "alignment_workflow",
-                        "multiplicity": "many_to_one",
-                        "required": false
-                    },
-                    {
-                        "name": "core_metadata_collections",
-                        "backref": "aligned_reads_files",
-                        "label": "data_from",
-                        "target_type": "core_metadata_collection",
-                        "multiplicity": "one_to_one",
-                        "required": false
-                    }
-                ]
-            }
-        ],
-        "required": [
-            "type",
-            "submitter_id"
-        ],
-        "uniqueKeys": [
-            [
-                "id"
-            ],
-            [
-                "project_id",
-                "submitter_id"
-            ]
-        ],
-        "properties": {
-            "$ref": "_definitions.yaml#/data_file_properties",
-            "unaligned_reads_files": {
-                "$ref": "_definitions.yaml#/to_one"
-            },
-            "alignment_workflows": {
-                "$ref": "_definitions.yaml#/to_one"
-            },
-            "core_metadata_collections": {
-                "$ref": "_definitions.yaml#/to_one"
-            },
-            "data_category": {
-                "description": "Broad categorization of the contents of the data file.",
-                "enum": [
-                    "analysis",
-                    "sequencing reads",
-                    "single nucleotide variation",
-                    "transcriptome profiling",
-                    "supplemental"
-                ]
-            },
-            "data_format": {
-                "description": "Format of the data files.",
-                "enum": [
-                    "bam",
-                    "cram"
-                ]
-            },
-            "data_type": {
-                "description": "Specific content type of the data file.",
-                "enum": [
-                    "unaligned reads",
-                    "aligned reads",
-                    "variants annotation",
-                    "clinical supplement"
-                ]
-            },
-            "reference_genome_build": {
-                "description": "Reference genome used e.g. GRCh37.",
-                "enum": [
-                    "GRCh38",
-                    "GRCh37"
-                ]
-            },
-            "run_id": {
-                "description": "Sequencing run ID associated with file",
-                "type": "string"
-            }
-        }
-    },
     "lab_result.yaml": {
         "$schema": "http://json-schema.org/draft-04/schema#",
         "id": "lab_result",
@@ -7068,10 +6288,10 @@
         ],
         "links": [
             {
-                "name": "clinical_contexts",
+                "name": "clinical_descriptors",
                 "backref": "lab_results",
                 "label": "describes",
-                "target_type": "clinical_context",
+                "target_type": "clinical_descriptor",
                 "multiplicity": "one_to_one",
                 "required": true
             }
@@ -7079,7 +6299,7 @@
         "required": [
             "type",
             "submitter_id",
-            "clinical_contexts"
+            "clinical_descriptors"
         ],
         "uniqueKeys": [
             [
@@ -7092,7 +6312,7 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/ubiquitous_properties",
-            "clinical_contexts": {
+            "clinical_descriptors": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "age_at_collection": {
@@ -7239,10 +6459,10 @@
         ],
         "links": [
             {
-                "name": "clinical_contexts",
+                "name": "clinical_descriptors",
                 "backref": "medications",
                 "label": "taken_by",
-                "target_type": "clinical_context",
+                "target_type": "clinical_descriptor",
                 "multiplicity": "one_to_one",
                 "required": true
             }
@@ -7250,7 +6470,7 @@
         "required": [
             "type",
             "submitter_id",
-            "clinical_contexts"
+            "clinical_descriptors"
         ],
         "uniqueKeys": [
             [
@@ -7263,7 +6483,7 @@
         ],
         "properties": {
             "$ref": "_definitions.yaml#/ubiquitous_properties",
-            "clinical_contexts": {
+            "clinical_descriptors": {
                 "$ref": "_definitions.yaml#/to_one"
             },
             "antithrombotic_meds": {
@@ -7478,6 +6698,107 @@
             },
             "patient_id": {
                 "description": "De-identified unique identifier for the patient/subject",
+                "type": "string"
+            }
+        }
+    },
+    "analysis_workflow.yaml": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "id": "analysis_workflow",
+        "title": "Analysis Workflow",
+        "type": "object",
+        "namespace": "https://data.test.biocommons.org.au/",
+        "category": "analysis",
+        "program": "*",
+        "project": "*",
+        "description": "Information about the analysis workflow used on the raw data.",
+        "additionalProperties": false,
+        "submittable": true,
+        "validators": null,
+        "systemProperties": [
+            "id",
+            "project_id",
+            "state",
+            "created_datetime",
+            "updated_datetime"
+        ],
+        "links": [
+            {
+                "exclusive": null,
+                "required": true,
+                "subgroup": [
+                    {
+                        "name": "genomics_files",
+                        "backref": "analysis_workflows",
+                        "label": "describes",
+                        "target_type": "genomics_file",
+                        "multiplicity": "one_to_many",
+                        "required": false
+                    }
+                ]
+            }
+        ],
+        "required": [
+            "type",
+            "submitter_id"
+        ],
+        "uniqueKeys": [
+            [
+                "id"
+            ],
+            [
+                "project_id",
+                "submitter_id"
+            ]
+        ],
+        "properties": {
+            "$ref": "_definitions.yaml#/ubiquitous_properties",
+            "genomics_files": {
+                "$ref": "_definitions.yaml#/to_many"
+            },
+            "workflow_end_datetime": {
+                "description": "A combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]",
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+            },
+            "workflow_link": {
+                "description": "Link to Github hash for the CWL workflow used.",
+                "type": "string"
+            },
+            "workflow_start_datetime": {
+                "description": "A combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]",
+                "type": "string",
+                "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d+)?(?:Z|[+-]\\d{2}:\\d{2})$"
+            },
+            "workflow_type": {
+                "description": "Type of read aligner used",
+                "enum": [
+                    "STAR",
+                    "BWA-aln",
+                    "BWA-mem",
+                    "spinnaker"
+                ],
+                "enumDef": [
+                    {
+                        "enumeration": "STAR",
+                        "source": "BioData Catalyst DD"
+                    },
+                    {
+                        "enumeration": "BWA-aln",
+                        "source": "BioData Catalyst DD"
+                    },
+                    {
+                        "enumeration": "BWA-mem",
+                        "source": "BioData Catalyst DD"
+                    },
+                    {
+                        "enumeration": "spinnaker",
+                        "source": "BioData Catalyst DD"
+                    }
+                ]
+            },
+            "workflow_version": {
+                "description": "Version of the workflow used",
                 "type": "string"
             }
         }
