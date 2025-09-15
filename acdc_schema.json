@@ -2291,6 +2291,10 @@
             },
             "updated_datetime": {
                 "$ref": "#/datetime"
+            },
+            "data_release_version": {
+                "type": "string",
+                "description": "Version of the data release."
             }
         },
         "date": {
@@ -2325,7 +2329,7 @@
     "_settings.yaml": {
         "enable_case_cache": false,
         "_dict_commit": "520a25999fd183f6c5b7ddef2980f3e839517da5",
-        "_dict_version": "0.4.8"
+        "_dict_version": "0.4.9"
     },
     "blood_pressure_test.yaml": {
         "$schema": "http://json-schema.org/draft-04/schema#",
