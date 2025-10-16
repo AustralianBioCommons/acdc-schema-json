@@ -1,0 +1,264 @@
+$schema: http://json-schema.org/draft-04/schema#
+id: metabolomics_assay
+title: Metabolomics Assay
+type: object
+namespace: https://data.test.biocommons.org.au/
+category: experimental_methods
+program: '*'
+project: '*'
+description: Details about the methods that produced the metabolomics assay
+additionalProperties: false
+submittable: true
+validators: null
+systemProperties:
+- id
+- project_id
+- state
+- created_datetime
+- updated_datetime
+links:
+- exclusive: null
+  required: true
+  subgroup:
+  - name: samples
+    backref: metabolomics_assays
+    label: produces
+    target_type: sample
+    multiplicity: many_to_one
+    required: true
+required:
+- type
+- submitter_id
+- samples
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  samples:
+    $ref: _definitions.yaml#/to_one
+  assay_id:
+    description: An identifier for the assay or experiemnt performed on the sample
+    type: string
+  assay_description:
+    description: A description of the type of assay used.
+    type: string
+  metabolite_names:
+    description: A list of all metabolites assayed in this method
+    type: array
+    items:
+      enum:
+      - 1-methylhistamine
+      - 2-Arachidonyl glycerol
+      - 2'-deoxyadenosine
+      - 3-deaazadenosine
+      - 3HK
+      - 3-IPA
+      - 5-Aminolevulinic Acid
+      - Acetylcarnitine
+      - Adenosine
+      - Alanine
+      - Anandamide
+      - Arachidonic acid
+      - Arginine
+      - Asparagine
+      - Aspartate
+      - Betaine
+      - Butyrylcarnitine
+      - cAMP
+      - Carnitine
+      - Choline
+      - Colchicine
+      - Creatine
+      - Cysteamine
+      - Cysteine
+      - Cytosine
+      - DMGV
+      - GlucosePos2
+      - Glutamate
+      - Glutamine
+      - Histidine
+      - Isoleucine_Leucine
+      - Kynurenic acid
+      - L-Homoserine
+      - Methionine
+      - Phenylalanine
+      - Phosphocholine
+      - Proline
+      - Riboflavin
+      - Serine
+      - Serotonin
+      - Spermine
+      - Taurine
+      - Thiamine
+      - Threonine
+      - Thymidine
+      - TMNO
+      - trans-HYP
+      - Tyrosine
+      - Uridine
+      - Valine
+      - Valine-d8
+      - "\u03B1-keto-\u03B2-methylvaleric acid.1"
+      - "\u03B1-keto-\u03B2-methylvaleric acid.2"
+      enumDef:
+      - enumeration: 1-methylhistamine
+        source: HMDB
+        term_id: HMDB0000898
+      - enumeration: 2-Arachidonyl glycerol
+        source: HMDB
+        term_id: HMDB0004666
+      - enumeration: 2'-deoxyadenosine
+        source: HMDB
+        term_id: HMDB0000101
+      - enumeration: 3-deaazadenosine
+        source: HMDB
+        term_id: HMDB0029956
+      - enumeration: 3HK
+        source: HMDB
+        term_id: HMDB0011631
+      - enumeration: 3-IPA
+        source: HMDB
+        term_id: HMDB0002302
+      - enumeration: 5-Aminolevulinic Acid
+        source: HMDB
+        term_id: HMDB0001149
+      - enumeration: Acetylcarnitine
+        source: HMDB
+        term_id: HMDB0000201
+      - enumeration: Adenosine
+        source: HMDB
+        term_id: HMDB0000050
+      - enumeration: Alanine
+        source: HMDB
+        term_id: HMDB0000161
+      - enumeration: Anandamide
+        source: HMDB
+        term_id: HMDB0004080
+      - enumeration: Arachidonic acid
+        source: HMDB
+        term_id: HMDB0001043
+      - enumeration: Arginine
+        source: HMDB
+        term_id: HMDB0000517
+      - enumeration: Asparagine
+        source: HMDB
+        term_id: HMDB0000168
+      - enumeration: Aspartate
+        source: HMDB
+        term_id: HMDB0000191
+      - enumeration: Betaine
+        source: HMDB
+        term_id: HMDB0000043
+      - enumeration: Butyrylcarnitine
+        source: HMDB
+        term_id: HMDB0002013
+      - enumeration: cAMP
+        source: HMDB
+        term_id: HMDB0000058
+      - enumeration: Carnitine
+        source: HMDB
+        term_id: HMDB0000062
+      - enumeration: Choline
+        source: HMDB
+        term_id: HMDB0000097
+      - enumeration: Colchicine
+        source: HMDB
+        term_id: HMDB0015466
+      - enumeration: Creatine
+        source: HMDB
+        term_id: HMDB0000064
+      - enumeration: Cysteamine
+        source: HMDB
+        term_id: HMDB0002991
+      - enumeration: Cysteine
+        source: HMDB
+        term_id: HMDB0000574
+      - enumeration: Cytosine
+        source: HMDB
+        term_id: HMDB0000630
+      - enumeration: DMGV
+        source: HMDB
+        term_id: HMDB0240212
+      - enumeration: GlucosePos2
+        source: HMDB
+        term_id: HMDB0000122
+      - enumeration: Glutamate
+        source: HMDB
+        term_id: HMDB0000148
+      - enumeration: Glutamine
+        source: HMDB
+        term_id: HMDB0000641
+      - enumeration: Histidine
+        source: HMDB
+        term_id: HMDB0000177
+      - enumeration: Isoleucine_Leucine
+        source: HMDB
+        term_id: HMDB0028911
+      - enumeration: Kynurenic acid
+        source: HMDB
+        term_id: HMDB0000715
+      - enumeration: L-Homoserine
+        source: HMDB
+        term_id: HMDB0000719
+      - enumeration: Methionine
+        source: HMDB
+        term_id: HMDB0000696
+      - enumeration: Phenylalanine
+        source: HMDB
+        term_id: HMDB0000159
+      - enumeration: Phosphocholine
+        source: HMDB
+        term_id: HMDB0001565
+      - enumeration: Proline
+        source: HMDB
+        term_id: HMDB0000162
+      - enumeration: Riboflavin
+        source: HMDB
+        term_id: HMDB0000244
+      - enumeration: Serine
+        source: HMDB
+        term_id: HMDB0062263
+      - enumeration: Serotonin
+        source: HMDB
+        term_id: HMDB0000259
+      - enumeration: Spermine
+        source: HMDB
+        term_id: HMDB0001256
+      - enumeration: Taurine
+        source: HMDB
+        term_id: HMDB0000251
+      - enumeration: Thiamine
+        source: HMDB
+        term_id: HMDB0000235
+      - enumeration: Threonine
+        source: HMDB
+        term_id: HMDB0000167
+      - enumeration: Thymidine
+        source: HMDB
+        term_id: HMDB0000273
+      - enumeration: TMNO
+        source: HMDB
+        term_id: HMDB0000925
+      - enumeration: trans-HYP
+        source: HMDB
+        term_id: HMDB0000725
+      - enumeration: Tyrosine
+        source: HMDB
+        term_id: HMDB0000158
+      - enumeration: Uridine
+        source: HMDB
+        term_id: HMDB0000296
+      - enumeration: Valine
+        source: HMDB
+        term_id: HMDB0000883
+      - enumeration: Valine-d8
+        source: HMDB
+        term_id: HMDB0000883
+      - enumeration: "\u03B1-keto-\u03B2-methylvaleric acid.1"
+        source: HMDB
+        term_id: HMDB0000491
+      - enumeration: "\u03B1-keto-\u03B2-methylvaleric acid.2"
+        source: HMDB
+        term_id: HMDB0000491

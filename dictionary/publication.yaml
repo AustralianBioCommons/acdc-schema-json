@@ -1,0 +1,54 @@
+$schema: http://json-schema.org/draft-04/schema#
+id: publication
+title: Publication
+type: object
+namespace: https://data.test.biocommons.org.au/
+category: administrative
+program: '*'
+project: '*'
+description: Publication for a project
+additionalProperties: false
+submittable: true
+validators: null
+systemProperties:
+- id
+- project_id
+- state
+- created_datetime
+- updated_datetime
+links:
+- name: projects
+  backref: publications
+  label: refers_to
+  target_type: project
+  multiplicity: many_to_many
+  required: true
+required:
+- type
+- submitter_id
+- projects
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  projects:
+    $ref: _definitions.yaml#/to_many_project
+  doi:
+    description: Digital object identifier for the published article or pre-print.
+      Starting with 10.
+    type: string
+    pattern: ^10\.\d{4,9}.+
+  is_primary:
+    description: Whether the publication is the primary publication for this study
+    type: boolean
+  pmid:
+    description: The pubmed id of the article
+    type: string
+  title:
+    description: Title of the publication
+    type: string
+  url:
+    description: Direct link to the published article
+    type: string

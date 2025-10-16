@@ -1,0 +1,60 @@
+$schema: http://json-schema.org/draft-04/schema#
+id: exposure
+title: Exposure
+type: object
+namespace: https://data.test.biocommons.org.au/
+category: clinical
+program: '*'
+project: '*'
+description: Clinically relevant patient information relating to environmental exposures
+  (e.g. smoking)
+additionalProperties: false
+submittable: true
+validators: null
+systemProperties:
+- id
+- project_id
+- state
+- created_datetime
+- updated_datetime
+links:
+- name: clinical_descriptors
+  backref: exposures
+  label: describes
+  target_type: clinical_descriptor
+  multiplicity: one_to_one
+  required: true
+required:
+- type
+- submitter_id
+- clinical_descriptors
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  clinical_descriptors:
+    $ref: _definitions.yaml#/to_one
+  cigarettes_per_day:
+    description: Self reported cigarettes per day.
+    type: integer
+  drinking_status:
+    description: Self reported current drinking status.
+    enum:
+    - never
+    - former
+    - current
+  drinks_per_week:
+    description: Estimated standard drinks per week as integer
+    type: integer
+  drinks_per_week_string:
+    description: Estimated standard drinks per week as string. Suitable for questionaires
+      where drinks may be reported as a range e.g. 10-12
+    type: string
+  smoking_status:
+    description: Indicates whether subject ever regularly smoked cigarettes.
+    enum:
+    - never
+    - former
+    - current

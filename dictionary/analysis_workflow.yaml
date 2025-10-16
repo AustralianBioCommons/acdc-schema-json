@@ -1,0 +1,69 @@
+$schema: http://json-schema.org/draft-04/schema#
+id: analysis_workflow
+title: Analysis Workflow
+type: object
+namespace: https://data.test.biocommons.org.au/
+category: analysis
+program: '*'
+project: '*'
+description: Information about the analysis workflow used on the raw data.
+additionalProperties: false
+submittable: true
+validators: null
+systemProperties:
+- id
+- project_id
+- state
+- created_datetime
+- updated_datetime
+links:
+- exclusive: null
+  required: true
+  subgroup:
+  - name: genomics_files
+    backref: analysis_workflows
+    label: describes
+    target_type: genomics_file
+    multiplicity: one_to_many
+    required: false
+required:
+- type
+- submitter_id
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  genomics_files:
+    $ref: _definitions.yaml#/to_many
+  workflow_end_datetime:
+    description: A combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    type: string
+    pattern: ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$
+  workflow_link:
+    description: Link to Github hash for the CWL workflow used.
+    type: string
+  workflow_start_datetime:
+    description: A combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
+    type: string
+    pattern: ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$
+  workflow_type:
+    description: Type of read aligner used
+    enum:
+    - STAR
+    - BWA-aln
+    - BWA-mem
+    - spinnaker
+    enumDef:
+    - enumeration: STAR
+      source: BioData Catalyst DD
+    - enumeration: BWA-aln
+      source: BioData Catalyst DD
+    - enumeration: BWA-mem
+      source: BioData Catalyst DD
+    - enumeration: spinnaker
+      source: BioData Catalyst DD
+  workflow_version:
+    description: Version of the workflow used
+    type: string

@@ -1,0 +1,47 @@
+$schema: http://json-schema.org/draft-04/schema#
+id: qc_file
+title: QC File
+type: object
+namespace: https://data.test.biocommons.org.au/
+category: data_file
+program: '*'
+project: '*'
+description: Data file containing QC information
+additionalProperties: false
+submittable: true
+validators: null
+systemProperties:
+- id
+- project_id
+- state
+- created_datetime
+- updated_datetime
+links:
+- exclusive: null
+  required: true
+  subgroup:
+  - name: genomics_files
+    backref: qc_files
+    label: generated_from
+    target_type: genomics_file
+    multiplicity: many_to_one
+    required: false
+  - name: core_metadata_collections
+    backref: qc_files
+    label: data_from
+    target_type: core_metadata_collection
+    multiplicity: one_to_one
+    required: false
+required:
+- type
+- submitter_id
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  $ref: _definitions.yaml#/data_file_properties
+  genomics_files:
+    $ref: _definitions.yaml#/to_one
+  core_metadata_collections:
+    $ref: _definitions.yaml#/to_one

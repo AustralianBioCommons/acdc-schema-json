@@ -1,0 +1,151 @@
+$schema: http://json-schema.org/draft-04/schema#
+id: sample
+title: Sample
+type: object
+namespace: https://data.test.biocommons.org.au/
+category: biospecimen
+program: '*'
+project: '*'
+description: Biospecimen information that links subjects to samples including sample's
+  provider and source.
+additionalProperties: false
+submittable: true
+validators: null
+systemProperties:
+- id
+- project_id
+- state
+- created_datetime
+- updated_datetime
+links:
+- name: clinical_descriptors
+  backref: samples
+  label: taken_from
+  target_type: clinical_descriptor
+  multiplicity: many_to_one
+  required: true
+required:
+- type
+- submitter_id
+- clinical_descriptors
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  clinical_descriptors:
+    $ref: _definitions.yaml#/to_one
+  freeze_thaw_cycles:
+    description: Number of freeze thaw cycles conducted on the sample
+    type: integer
+  sample_collection_method:
+    description: How the sample was collected, e.g. blood draw
+    type: string
+  sample_id:
+    description: A unique sample identifier
+    type: string
+  sample_in_preservation:
+    description: The preservation method used for the sample
+    enum:
+    - cryopreserved
+    - FFPE
+    - fresh
+    - OCT
+    - snap Frozen
+    - frozen
+    - unknown
+    - not reported
+    - not allowed to collect
+    enumDef:
+    - enumeration: cryopreserved
+      source: BioData Catalyst DD
+    - enumeration: FFPE
+      source: BioData Catalyst DD
+    - enumeration: fresh
+      source: BioData Catalyst DD
+    - enumeration: OCT
+      source: BioData Catalyst DD
+    - enumeration: snap Frozen
+      source: BioData Catalyst DD
+    - enumeration: frozen
+      source: BioData Catalyst DD
+    - enumeration: unknown
+      source: BioData Catalyst DD
+    - enumeration: not reported
+      source: BioData Catalyst DD
+    - enumeration: not allowed to collect
+      source: BioData Catalyst DD
+  sample_in_storage:
+    description: Whether there is a sample in storage
+    enum:
+    - 'yes'
+    - 'no'
+    - unknown
+  sample_provider:
+    description: The name of collaborating institute that provided the sample
+    enum:
+    - Baker
+    - USYD
+    - UMELB
+    - UQ
+  sample_source:
+    description: Uberon identifier, anatomical location as described by the Uber Anatomy
+      Ontology (UBERON). (CMG, CCDG)
+    type: string
+    pattern: ^UBERON:[0-9]{7}$
+  sample_storage_method:
+    description: How the sample was/is stored
+    enum:
+    - not stored
+    - ambient temperature
+    - cut slide
+    - fresh
+    - frozen, -80C freezer
+    - frozen, -150C freezer
+    - frozen, liquid nitrogen
+    - frozen, vapor phase
+    - paraffin block
+    - RNAlater, frozen
+    - TRIzol, frozen
+    enumDef:
+    - enumeration: ambient temperature
+      source: https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage
+      version: 6.1.1
+    - enumeration: cut slide
+      source: https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage
+      version: 6.1.1
+    - enumeration: fresh
+      source: https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage
+      version: 6.1.1
+    - enumeration: frozen, -80C freezer
+      source: https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage
+      version: 6.1.1
+    - enumeration: frozen, -150C freezer
+      source: https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage
+      version: 6.1.1
+    - enumeration: frozen, liquid nitrogen
+      source: https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage
+      version: 6.1.1
+    - enumeration: frozen, vapor phase
+      source: https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage
+      version: 6.1.1
+    - enumeration: paraffin block
+      source: https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage
+      version: 6.1.1
+    - enumeration: RNAlater, frozen
+      source: https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage
+      version: 6.1.1
+    - enumeration: TRIzol, frozen
+      source: https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage
+      version: 6.1.1
+  sample_type:
+    description: The type of sample, e.g. Whole Blood, Blood Cells, Frozen Blood
+    type: string
+  storage_location:
+    description: Where the sample is stored
+    enum:
+    - Baker
+    - USYD
+    - UMELB
+    - UQ

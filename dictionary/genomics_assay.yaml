@@ -1,0 +1,287 @@
+$schema: http://json-schema.org/draft-04/schema#
+id: genomics_assay
+title: Genomics Assay
+type: object
+namespace: https://data.test.biocommons.org.au/
+category: experimental_methods
+program: '*'
+project: '*'
+description: Details about the methods used to produce genomic output files
+additionalProperties: false
+submittable: true
+validators: null
+systemProperties:
+- id
+- project_id
+- state
+- created_datetime
+- updated_datetime
+links:
+- exclusive: null
+  required: true
+  subgroup:
+  - name: samples
+    backref: genomics_assays
+    label: generated_from
+    target_type: sample
+    multiplicity: many_to_one
+    required: true
+required:
+- type
+- submitter_id
+- samples
+- run_id
+- assay_batch_id
+- assay_type
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  samples:
+    $ref: _definitions.yaml#/to_one
+  run_id:
+    description: The unique identifier for the specific instrument run that generated
+      the data. Use an identifier that will best minimise batch effects.
+    type: string
+  instrument_model:
+    description: The name and/or number associated with a specific instrument model.
+      e.g. Hiseq X, NovaSeq 6000
+    type: string
+  instrument_manufacturer:
+    description: The manufacturer of the instrument. E.g. Illumina, Affymetrix, Oxford
+      Nanopore, Thermo Scientific
+    type: string
+  assay_batch_id:
+    description: An identifier for the assay performed on the sample. If unsure, use
+      an identifier that can be best used to minimise batch effects
+    type: string
+  assay_protocol:
+    description: Name of the protocol used to prepare the samples. e.g. Protocol for
+      use with NEBNext Ultra II DNA Library Prep with Sample Purification Beads (E7103)
+    type: string
+  assay_version:
+    description: A string that references the protocol version e.g. E7103
+    type: string
+  assay_link:
+    description: A link to the protocol. e.g. https://www.neb.com/en-au/protocols/2016/07/04/protocol-for-nebnext-ultra-ii-dna-library-prep-with-sample-purification-beads-neb-e7103
+    type: string
+  assay_type:
+    description: Sequencing technique used for this library
+    enum:
+    - WGS
+    - RNA-Seq
+    - WES
+    - SNP Chip
+    - WGA
+    - ssRNA-seq
+    - snRNA-seq
+    - miRNA-Seq
+    - ncRNA-Seq
+    - FL-cDNA
+    - EST
+    - Hi-C
+    - ATAC-seq
+    - WCS
+    - RAD-Seq
+    - CLONE
+    - POOLCLONE
+    - AMPLICON
+    - CLONEEND
+    - FINISHING
+    - ChIP-Seq
+    - MNase-Seq
+    - DNase-Hypersensitivity
+    - Bisulfite-Seq
+    - CTS
+    - MRE-Seq
+    - MeDIP-Seq
+    - MBD-Seq
+    - Tn-Seq
+    - VALIDATION
+    - FAIRE-seq
+    - SELEX
+    - RIP-Seq
+    - ChIA-PET
+    - Synthetic-Long-Read
+    - Targeted-Capture
+    - Tethered Chromatin Conformation Capture
+    - NOMe-Seq
+    - ChM-Seq
+    - GBS
+    - Ribo-Seq
+    - OTHER
+    enumDef:
+    - enumeration: WGS
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: RNA-Seq
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: WES
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: SNP Chip
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: WGA
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: ssRNA-seq
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: snRNA-seq
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: miRNA-Seq
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: ncRNA-Seq
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: FL-cDNA
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: EST
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: Hi-C
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: ATAC-seq
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: WCS
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: RAD-Seq
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: CLONE
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: POOLCLONE
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: AMPLICON
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: CLONEEND
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: FINISHING
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: ChIP-Seq
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: MNase-Seq
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: DNase-Hypersensitivity
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: Bisulfite-Seq
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: CTS
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: MRE-Seq
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: MeDIP-Seq
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: MBD-Seq
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: Tn-Seq
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: VALIDATION
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: FAIRE-seq
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: SELEX
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: RIP-Seq
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: ChIA-PET
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: Synthetic-Long-Read
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: Targeted-Capture
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: Tethered Chromatin Conformation Capture
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: NOMe-Seq
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: ChM-Seq
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: GBS
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: Ribo-Seq
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+    - enumeration: OTHER
+      source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
+      term_id: library_strategy
+      version: 9efee515e2a8351e767f7cfb2d7dffb138c98f82
+  dna_array_version:
+    description: Version, manifest, or catalog number of the DNA microarray used in
+      the genotyping experiment.
+    type: string

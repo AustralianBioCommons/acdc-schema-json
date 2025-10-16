@@ -1,0 +1,78 @@
+$schema: http://json-schema.org/draft-04/schema#
+id: subject
+title: Subject
+type: object
+namespace: https://data.test.biocommons.org.au/
+category: clinical
+program: '*'
+project: '*'
+description: An individual participant in the study with baseline measurements.
+additionalProperties: false
+submittable: true
+validators: null
+systemProperties:
+- id
+- project_id
+- state
+- created_datetime
+- updated_datetime
+links:
+- name: projects
+  backref: subjects
+  label: part_of
+  target_type: project
+  multiplicity: many_to_one
+  required: true
+required:
+- type
+- submitter_id
+- projects
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  projects:
+    $ref: _definitions.yaml#/to_one_project
+  cohort_id:
+    description: Identifier for the cohort the subject is a part of
+    type: string
+  consent_codes:
+    description: 'Subject Consent | Data Use Restrictions that are used to indicate  permissions/restrictions
+      for datasets and/or materials, and relates to the purposes for which datasets
+      and/or material might be removed, stored or used. Based on the Data Use Ontology
+      : see http://www.obofoundry.org/ontology/duo.html'
+    termDef:
+    - term: consent_codes
+    type: array
+    items:
+      enum:
+      - General Research Use
+      - Health or Biomedical Research
+      - Disease Specific Research
+      - not for profit, non commercial user only
+      - ethics approval required
+      - user specific restriction
+      enumDef:
+      - enumeration: General Research Use
+        source: duo
+        term_id: DUO:0000042
+      - enumeration: Health or Biomedical Research
+        source: duo
+        term_id: DUO:0000006
+      - enumeration: Disease Specific Research
+        source: duo
+        term_id: DUO:0000007
+      - enumeration: not for profit, non commercial user only
+        source: duo
+        term_id: DUO:0000018
+      - enumeration: ethics approval required
+        source: duo
+        term_id: DUO:0000021
+      - enumeration: user specific restriction
+        source: duo
+        term_id: DUO:0000026
+  patient_id:
+    description: De-identified unique identifier for the patient/subject
+    type: string

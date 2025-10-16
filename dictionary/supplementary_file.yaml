@@ -1,0 +1,66 @@
+$schema: http://json-schema.org/draft-04/schema#
+id: supplementary_file
+title: Supplementary File
+type: object
+namespace: https://data.test.biocommons.org.au/
+category: data_file
+program: '*'
+project: '*'
+description: Generic Supplementary File
+additionalProperties: false
+submittable: true
+validators: null
+systemProperties:
+- id
+- project_id
+- state
+- created_datetime
+- updated_datetime
+links:
+- name: genomics_files
+  backref: supplementary_files
+  label: part_of
+  target_type: genomics_file
+  multiplicity: many_to_one
+  required: false
+- exclusive: null
+  required: true
+  subgroup:
+  - name: core_metadata_collections
+    backref: supplementary_files
+    label: data_from
+    target_type: core_metadata_collection
+    multiplicity: one_to_one
+    required: false
+required:
+- type
+- submitter_id
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  $ref: _definitions.yaml#/data_file_properties
+  genomics_files:
+    $ref: _definitions.yaml#/to_one
+  core_metadata_collections:
+    $ref: _definitions.yaml#/to_one
+  data_category:
+    description: Data category, default is 'supplementary'
+    enum:
+    - supplementary
+  data_format:
+    description: The format of the data, usually the file extension
+    enum:
+    - bai
+    - bam.bai
+    - crai
+    - cram.crai
+    - other
+  data_type:
+    description: The type of data, e.g. log, index, mapping, etc
+    enum:
+    - index_file
+    - mapping_file
+    - other
+    - log_file

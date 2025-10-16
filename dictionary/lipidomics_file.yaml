@@ -1,0 +1,88 @@
+$schema: http://json-schema.org/draft-04/schema#
+id: lipidomics_file
+title: Lipidomics File
+type: object
+namespace: https://data.test.biocommons.org.au/
+category: data_file
+program: '*'
+project: '*'
+description: Data file containing lipidomics data
+additionalProperties: false
+submittable: true
+validators: null
+systemProperties:
+- id
+- project_id
+- state
+- created_datetime
+- updated_datetime
+links:
+- exclusive: null
+  required: true
+  subgroup:
+  - name: lipidomics_assays
+    backref: lipidomics_files
+    label: data_from
+    target_type: lipidomics_assay
+    multiplicity: many_to_one
+    required: false
+  - name: core_metadata_collections
+    backref: lipidomics_files
+    label: data_from
+    target_type: core_metadata_collection
+    multiplicity: one_to_one
+    required: false
+required:
+- type
+- submitter_id
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  $ref: _definitions.yaml#/data_file_properties
+  lipidomics_assays:
+    $ref: _definitions.yaml#/to_one
+  core_metadata_collections:
+    $ref: _definitions.yaml#/to_one
+  cv:
+    description: Coefficient of variation (%)
+    type: number
+  data_category:
+    description: Broad categorization of the contents of the data file.
+    enum:
+    - mass spec raw
+    - mass spec analysed
+    - summarised results
+  data_format:
+    description: The format of the data in this data file
+    enum:
+    - csv
+    - tsv
+    - txt
+  data_type:
+    description: The type of data in this data file
+    enum:
+    - LC-MS
+    - MS/MS
+    - Multidimensional MS
+    - Ion Mobility MS
+    - MALDI MS
+    - GC-MS
+    - High Mass Accuracy MS
+  imputed_data:
+    description: Does the lipidomic file contain imputed data for missing lipid species?
+    enum:
+    - 'yes'
+    - 'no'
+  individual_or_sum:
+    description: Does the lipidomic file contain data for individual lipid species?
+      Or total lipid class?
+    enum:
+    - individual
+    - sum
+  lipidomic_unit:
+    description: Units of measurement captured in the lipidomics file.
+    enum:
+    - pmol/mL
+    - umol/mL

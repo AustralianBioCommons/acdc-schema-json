@@ -1,0 +1,114 @@
+$schema: http://json-schema.org/draft-04/schema#
+id: demographic
+title: Demographic
+type: object
+namespace: https://data.test.biocommons.org.au/
+category: clinical
+program: '*'
+project: '*'
+description: Data for the characterization of the patient by means of segementing
+  the population (e.g. characterization by age, sex, or race).
+additionalProperties: false
+submittable: true
+validators: null
+systemProperties:
+- id
+- project_id
+- state
+- created_datetime
+- updated_datetime
+links:
+- name: clinical_descriptors
+  backref: demographics
+  label: describes
+  target_type: clinical_descriptor
+  multiplicity: one_to_one
+  required: true
+required:
+- type
+- submitter_id
+- clinical_descriptors
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  clinical_descriptors:
+    $ref: _definitions.yaml#/to_one
+  abs_cluster:
+    description: 'Australian bureau of statistics: Name of the suburb where the participant
+      lives'
+    type: string
+  abs_state:
+    description: 'Australian bureau of statistics: Name of the state where participant
+      lives'
+    type: string
+  abs_weight_2000:
+    description: 'Australian bureau of statistics: Population weights from 2000'
+    type: number
+  baseline_age:
+    description: Age at baseline (examination/enrolment/visit 1) in years to one decimal
+      place.
+    type: number
+  baseline_date:
+    description: Date of baseline examination/recruitment/visit 1. In the format [YYYY-MM-DD]
+    type: string
+    pattern: ^\d{4}-\d{2}-\d{2}
+  bmi_baseline:
+    description: Body mass index calculated at baseline. (kg /(m^2))
+    termDef:
+    - term: body mass index
+      source: efo
+      term_id: EFO:0004340
+    type: number
+  education:
+    description: Highest level of education at baseline. low = ABS HEAP [6-9] no education
+      all the way to secondary education, medium = ABS HEAP [4-5] TAFE, diploma, or
+      certificate, high = ABS HEAP [1-3] University qualification |  https://www.abs.gov.au/census/guide-census-data/census-dictionary/2021/variables-topic/education-and-training/level-highest-educational-attainment-heap
+    enum:
+    - low
+    - medium
+    - high
+  education_abs_heap:
+    description: 'Highest level of educational attainment based on ABS HEAP 2021 :
+      https://www.abs.gov.au/census/guide-census-data/census-dictionary/2021/variables-topic/education-and-training/level-highest-educational-attainment-heap'
+    enum:
+    - HEAP-1
+    - HEAP-2
+    - HEAP-3
+    - HEAP-4
+    - HEAP-5
+    - HEAP-6
+    - HEAP-7
+    - HEAP-8
+    - HEAP-9
+  height_baseline_measured:
+    description: Measured body height at baseline (m)
+    type: number
+  height_baseline_self_reported:
+    description: Self reported body height at baseline (m)
+    type: number
+  month_birth:
+    description: Month of birth at baseline (MM)
+    type: integer
+  postcode:
+    description: "The postcode is used to calculate the Socio-Economic Indexes for\
+      \ Areas (SEIFA) quintile. It may be manually adjusted at the clinician\u2019\
+      s discretion to better reflect the socioeconomic status of individual patients."
+    type: string
+    pattern: ^\d{4}$
+  sex:
+    description: Self-reported biological sex of the participant
+    enum:
+    - male
+    - female
+  weight_baseline_measured:
+    description: Measured body weight at baseline (kg)
+    type: number
+  weight_baseline_self_reported:
+    description: Self reported body weight at baseline (kg)
+    type: number
+  year_birth:
+    description: Year of birth at baseline (YYYY)
+    type: integer

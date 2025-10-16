@@ -1,0 +1,310 @@
+$schema: http://json-schema.org/draft-04/schema#
+id: proteomics_assay
+title: Proteomics Assay
+type: object
+namespace: https://data.test.biocommons.org.au/
+category: experimental_methods
+program: '*'
+project: '*'
+description: Details about the methods that produced the proteomics data
+additionalProperties: false
+submittable: true
+validators: null
+systemProperties:
+- id
+- project_id
+- state
+- created_datetime
+- updated_datetime
+links:
+- exclusive: null
+  required: true
+  subgroup:
+  - name: samples
+    backref: proteomics_assays
+    label: produces
+    target_type: sample
+    multiplicity: many_to_one
+    required: true
+required:
+- type
+- submitter_id
+- samples
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  samples:
+    $ref: _definitions.yaml#/to_one
+  assay_id:
+    description: An identifier for the assay or experiemnt performed on the sample
+    type: string
+  assay_description:
+    description: A description of the type of assay used.
+    type: string
+  protein_names:
+    description: A list of all proteins assayed in this method
+    type: array
+    items:
+      enum:
+      - A1BG
+      - A2M
+      - A2M;PZP
+      - ADIPOQ
+      - AFM
+      - AGT
+      - AHSG
+      - ALB
+      - AMBP
+      - AOAH
+      - APCS
+      - APOA1
+      - APOA2
+      - APOA4
+      - APOB
+      - APOC1
+      - APOC2
+      - APOC3
+      - APOC4
+      - APOD
+      - APOE
+      - APOF
+      - APOH
+      - APOL1
+      - APOM
+      - ATRN
+      - AZGP1
+      - BCHE
+      - BTD
+      - C1QA
+      - C1QB
+      - C1QC
+      - C1R
+      - C1R;C1RL
+      - C1RL
+      - C2
+      - C3
+      - C4A
+      - C4A;C4B
+      - C4B
+      - C4BPA
+      - C4BPB
+      - C5
+      - C6
+      - C7
+      - C8A
+      - C8B
+      - C8G
+      - C9
+      - CD14
+      - CD5L
+      - CFB
+      - CFH
+      - CFH;CFHR1
+      - CFH;CFHR1;CFHR2
+      - CFHR1
+      - CFHR1;CFHR2
+      - CFHR1;CFHR5
+      - CFHR2
+      - CFI
+      - CFP
+      - CLEC3B
+      - CLU
+      - CNDP1
+      - COL26A1
+      - CP
+      - CPB2
+      - CPN1
+      - CPN2
+      - ECM1
+      - EFEMP1
+      - ENTPD5
+      - F10
+      - F11
+      - F11;KLKB1
+      - F12
+      - F13A1
+      - F13B
+      - F2
+      - F5
+      - F9
+      - FBLN1
+      - FCN3
+      - FETUB
+      - FGA
+      - FGB
+      - FGG
+      - FN1
+      - GC
+      - GPLD1
+      - GPX3
+      - GSN
+      - HABP2
+      - HGFAC
+      - HP
+      - HP;HPR
+      - HPR
+      - HPX
+      - HRG
+      - HTRA4
+      - IGFALS
+      - IGFBP3
+      - IGHA1
+      - IGHA1;IGHA2
+      - IGHA2
+      - IGHD
+      - IGHG1
+      - IGHG1;IGHG2;IGHG3
+      - IGHG1;IGHG2;IGHG3;IGHG4
+      - IGHG1;IGHG3
+      - IGHG1;IGHG3;IGHG4
+      - IGHG1;IGHG4
+      - IGHG2
+      - IGHG2;IGHG3
+      - IGHG2;IGHG3;IGHG4
+      - IGHG2;IGHG4
+      - IGHG3
+      - IGHG4
+      - IGHM
+      - IGHV1-3;IGHV1-46;IGHV1-69;IGHV1-69D;IGHV1-8
+      - IGHV1-45
+      - IGHV1-46
+      - IGHV1-69
+      - IGHV1-69-2;IGHV5-10-1;IGHV5-51
+      - IGHV2-26
+      - IGHV2-5
+      - IGHV2-70D
+      - IGHV3-11;IGHV3-13;IGHV3-20;IGHV3-43;IGHV3-7
+      - IGHV3-11;IGHV3-33;IGHV3-53;IGHV3-66;IGHV3-7;IGHV3-74
+      - IGHV3-13
+      - IGHV3-13;IGHV3-23;IGHV3-35;IGHV3-64D;IGHV3-7;IGHV3-72;IGHV3-74
+      - IGHV3-15
+      - IGHV3-15;IGHV3-72;IGHV3-73
+      - IGHV3-23
+      - IGHV3-23;IGHV3-33;IGHV3-53;IGHV3-66;IGHV3-74
+      - IGHV3-33
+      - IGHV3-35
+      - IGHV3-43
+      - IGHV3-43D;IGHV3-9
+      - IGHV3-49
+      - IGHV3-49;IGHV3-73
+      - IGHV3-53
+      - IGHV3-64
+      - IGHV3-66
+      - IGHV3-7
+      - IGHV3-72
+      - IGHV3-73
+      - IGHV3-74
+      - IGHV4-28;IGHV4-38-2;IGHV4-4
+      - IGHV4-30-2;IGHV4-34;IGHV4-38-2;IGHV4-4
+      - IGHV4-34;IGHV4-38-2
+      - IGHV4-4
+      - IGHV5-10-1
+      - IGHV5-10-1;IGHV5-51
+      - IGHV5-51
+      - IGHV6-1
+      - IGKC
+      - IGKJ1
+      - IGKV1-12;IGKV1D-12
+      - IGKV1-13;IGKV1D-13
+      - IGKV1-16
+      - IGKV1-16;IGKV1-17;IGKV1-27;IGKV1-39;IGKV1D-16
+      - IGKV1-17
+      - IGKV1-17;IGKV1-6
+      - IGKV1-27;IGKV1-8;IGKV1-9
+      - IGKV1-33;IGKV1D-33
+      - IGKV1-37;IGKV1D-37
+      - IGKV1-39;IGKV1D-39
+      - IGKV1-5
+      - IGKV1-6
+      - IGKV1-9
+      - IGKV2-24;IGKV2-29;IGKV2D-24;IGKV2D-29
+      - IGKV2-24;IGKV2D-24
+      - IGKV2-28;IGKV2D-28
+      - IGKV2-29;IGKV2-30;IGKV2D-29
+      - IGKV2-29;IGKV2D-29
+      - IGKV2-30
+      - IGKV2-40;IGKV2D-40
+      - IGKV2D-29
+      - IGKV3-11
+      - IGKV3-11;IGKV3D-20
+      - IGKV3-15;IGKV3D-15
+      - IGKV3-20
+      - IGKV3-20;IGKV3D-20
+      - IGKV3-7;IGKV3D-7
+      - IGKV3D-20
+      - IGKV3D-7
+      - IGKV4-1
+      - IGKV6-21
+      - IGLC3
+      - IGLC7
+      - IGLC7;IGLL5
+      - IGLL5
+      - IGLV1-47
+      - IGLV1-51
+      - IGLV2-11
+      - IGLV2-23
+      - IGLV2-8
+      - IGLV3-1
+      - IGLV3-10;IGLV3-16
+      - IGLV3-10;IGLV3-25
+      - IGLV3-16;IGLV3-25;IGLV3-27
+      - IGLV3-19
+      - IGLV3-21
+      - IGLV3-21;IGLV3-9
+      - IGLV3-25;IGLV3-27
+      - IGLV3-27
+      - IGLV5-45
+      - IGLV6-57
+      - IGLV7-43;IGLV7-46
+      - IGLV8-61
+      - ITIH1
+      - ITIH2
+      - ITIH3
+      - ITIH4
+      - JCHAIN
+      - KLKB1
+      - KNG1
+      - LBP
+      - LCAT
+      - LGALS3BP
+      - LRG1
+      - LUM
+      - MASP1
+      - MST1
+      - ORM1
+      - ORM1;ORM2
+      - ORM2
+      - PF4
+      - PGLYRP2
+      - PLG
+      - PLTP
+      - PON1
+      - PPBP
+      - PRG4
+      - PROC
+      - PROS1
+      - PRSS3
+      - PZP
+      - RBP4
+      - SAA4
+      - SELENOP
+      - SERPINA1
+      - SERPINA10
+      - SERPINA3
+      - SERPINA4
+      - SERPINA5
+      - SERPINA6
+      - SERPINA7
+      - SERPINC1
+      - SERPINF1
+      - SERPINF2
+      - SERPING1
+      - SHBG
+      - TF
+      - TGFBI
+      - THBS1
+      - TTR
+      - VTN
