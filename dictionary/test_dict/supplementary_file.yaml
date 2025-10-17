@@ -46,4 +46,17 @@ properties:
     $ref: _definitions.yaml#/to_many
   core_metadata_collections:
     $ref: _definitions.yaml#/to_one
+  data_category:
+    description: Data category, default is 'supplementary'
+    enum:
+    - supplementary
+  data_format:
+    description: The format of the data, usually the file extension
+    $ref: _definitions.yaml#/enum_supp_data_format
+  data_type:
+    description: The type of data, e.g. log, index, mapping, etc
+    $ref: _definitions.yaml#/enum_supp_data_type
+  file_version:
+    description: Version of the file
+    type: string
 additionalProperties: false

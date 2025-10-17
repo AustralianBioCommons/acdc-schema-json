@@ -1,14 +1,15 @@
 $schema: http://json-schema.org/draft-04/schema#
 id: demographic
-title: Demographic
+title: demographic
 type: object
-namespace: https://data.test.biocommons.org.au/
+namespace: https://commons.heartdata.baker.edu.au/
 category: clinical
 program: '*'
 project: '*'
-description: Data for the characterization of the patient by means of segementing
+description: 'Data for the characterization of the patient by means of segementing
   the population (e.g. characterization by age, sex, or race).
-additionalProperties: false
+
+  '
 submittable: true
 validators: null
 systemProperties:
@@ -17,21 +18,20 @@ systemProperties:
 - state
 - created_datetime
 - updated_datetime
-links:
-- name: clinical_descriptors
-  backref: demographics
-  label: describes
-  target_type: clinical_descriptor
-  multiplicity: one_to_one
-  required: true
-required:
-- type
-- submitter_id
-- clinical_descriptors
 uniqueKeys:
 - - id
 - - project_id
   - submitter_id
+required:
+- submitter_id
+- type
+links:
+- name: clinical_descriptors
+  backref: demographics
+  label: null
+  target_type: clinical_descriptor
+  multiplicity: one_to_one
+  required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   clinical_descriptors:
@@ -66,23 +66,11 @@ properties:
     description: Highest level of education at baseline. low = ABS HEAP [6-9] no education
       all the way to secondary education, medium = ABS HEAP [4-5] TAFE, diploma, or
       certificate, high = ABS HEAP [1-3] University qualification |  https://www.abs.gov.au/census/guide-census-data/census-dictionary/2021/variables-topic/education-and-training/level-highest-educational-attainment-heap
-    enum:
-    - low
-    - medium
-    - high
+    $ref: _definitions.yaml#/enum_education
   education_abs_heap:
     description: 'Highest level of educational attainment based on ABS HEAP 2021 :
       https://www.abs.gov.au/census/guide-census-data/census-dictionary/2021/variables-topic/education-and-training/level-highest-educational-attainment-heap'
-    enum:
-    - HEAP-1
-    - HEAP-2
-    - HEAP-3
-    - HEAP-4
-    - HEAP-5
-    - HEAP-6
-    - HEAP-7
-    - HEAP-8
-    - HEAP-9
+    $ref: _definitions.yaml#/enum_abs_heap
   height_baseline_measured:
     description: Measured body height at baseline (m)
     type: number
@@ -100,9 +88,7 @@ properties:
     pattern: ^\d{4}$
   sex:
     description: Self-reported biological sex of the participant
-    enum:
-    - male
-    - female
+    $ref: _definitions.yaml#/enum_sex
   weight_baseline_measured:
     description: Measured body weight at baseline (kg)
     type: number
@@ -112,3 +98,4 @@ properties:
   year_birth:
     description: Year of birth at baseline (YYYY)
     type: integer
+additionalProperties: false

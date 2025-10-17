@@ -35,4 +35,13 @@ properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   samples:
     $ref: _definitions.yaml#/to_one
+  assay_id:
+    description: An identifier for the assay or experiemnt performed on the sample
+    type: string
+  assay_description:
+    description: Description of the method used to assay the markers
+    type: string
+  serum_markers:
+    description: A list of the serum markers that were measured
+    type: array
 additionalProperties: false

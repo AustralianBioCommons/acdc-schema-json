@@ -35,4 +35,14 @@ properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   projects:
     $ref: _definitions.yaml#/to_many
+  acknowledgee:
+    description: Name of the individual or group to be acknowledged. Preferably as First name Last name
+    type: string
+  contact_type:
+    description: The type of contact or role in the project, e.g. Principal Investigator
+    $ref: _definitions.yaml#/enum_role
+  orcid:
+    description: The ORCID number for the acknowledgee
+    type: string
+    pattern: ^[0]{4}-\d{4}-\d{4}-(\d{3}X|\d{4})$
 additionalProperties: false

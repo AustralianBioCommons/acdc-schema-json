@@ -46,4 +46,19 @@ properties:
     $ref: _definitions.yaml#/to_many
   core_metadata_collections:
     $ref: _definitions.yaml#/to_one
+  cv:
+    description: Coefficient of variation (%)
+    type: number
+  data_category:
+    description: Broad categorization of the contents of the data file.
+    $ref: _definitions.yaml#/enum_ms_data_cat
+  data_format:
+    description: The format of the data in this data file
+    $ref: _definitions.yaml#/enum_ms_data_format
+  data_type:
+    description: The type of data in this data file
+    $ref: _definitions.yaml#/enum_ms_type
+  metabolomic_unit:
+    description: Units of measurement captured in the metabolomics file.
+    $ref: _definitions.yaml#/enum_metabolite_units
 additionalProperties: false

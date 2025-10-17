@@ -1,13 +1,14 @@
 $schema: http://json-schema.org/draft-04/schema#
 id: blood_pressure_test
-title: Blood Pressure Test
+title: blood_pressure_test
 type: object
-namespace: https://data.test.biocommons.org.au/
+namespace: https://commons.heartdata.baker.edu.au/
 category: clinical
 program: '*'
 project: '*'
-description: Blood pressure reading (insert method here).
-additionalProperties: false
+description: 'Blood pressure test results for the participant
+
+  '
 submittable: true
 validators: null
 systemProperties:
@@ -16,21 +17,20 @@ systemProperties:
 - state
 - created_datetime
 - updated_datetime
-links:
-- name: clinical_descriptors
-  backref: blood_pressure_tests
-  label: taken_by
-  target_type: clinical_descriptor
-  multiplicity: one_to_one
-  required: true
-required:
-- type
-- submitter_id
-- clinical_descriptors
 uniqueKeys:
 - - id
 - - project_id
   - submitter_id
+required:
+- submitter_id
+- type
+links:
+- name: clinical_descriptors
+  backref: blood_pressure_tests
+  label: null
+  target_type: clinical_descriptor
+  multiplicity: one_to_one
+  required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   clinical_descriptors:
@@ -51,3 +51,4 @@ properties:
       source: efo
       term_id: EFO:0006335
     type: integer
+additionalProperties: false

@@ -1,15 +1,16 @@
 $schema: http://json-schema.org/draft-04/schema#
 id: clinical_descriptor
-title: Clinical Descriptor
+title: clinical_descriptor
 type: object
-namespace: https://data.test.biocommons.org.au/
+namespace: https://commons.heartdata.baker.edu.au/
 category: clinical
 program: '*'
 project: '*'
-description: Contains metadata describing the conditions under which the clinical
+description: 'Contains metadata describing the conditions under which the clinical
   data was recorded. Includes attributes such as study timepoint, follow-up status,
   intervention, and clinical site
-additionalProperties: false
+
+  '
 submittable: true
 validators: null
 systemProperties:
@@ -18,26 +19,24 @@ systemProperties:
 - state
 - created_datetime
 - updated_datetime
-links:
-- name: subjects
-  backref: clinical_descriptors
-  label: describes
-  target_type: subject
-  multiplicity: many_to_one
-  required: true
-required:
-- type
-- submitter_id
-- subjects
-- baseline_measure
 uniqueKeys:
 - - id
 - - project_id
   - submitter_id
+required:
+- submitter_id
+- type
+links:
+- name: subjects
+  backref: clinical_descriptors
+  label: null
+  target_type: subject
+  multiplicity: one_to_many
+  required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   subjects:
-    $ref: _definitions.yaml#/to_one
+    $ref: _definitions.yaml#/to_many
   label:
     description: The code or label for the clinical context. e.g. baseline, 6months,
       treatment, placebo, etc
@@ -55,3 +54,4 @@ properties:
   site:
     description: The location, lab, or clinical site that the data was collected
     type: string
+additionalProperties: false

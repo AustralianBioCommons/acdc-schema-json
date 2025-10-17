@@ -35,4 +35,13 @@ properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   samples:
     $ref: _definitions.yaml#/to_one
+  assay_id:
+    description: An identifier for the assay or experiemnt performed on the sample
+    type: string
+  assay_description:
+    description: A description of the type of assay used.
+    type: string
+  protein_names:
+    description: A list of all proteins assayed in this method
+    type: array
 additionalProperties: false

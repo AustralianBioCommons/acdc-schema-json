@@ -1,14 +1,15 @@
 $schema: http://json-schema.org/draft-04/schema#
 id: lab_result
-title: Laboratory Result
+title: lab_result
 type: object
-namespace: https://data.test.biocommons.org.au/
+namespace: https://commons.heartdata.baker.edu.au/
 category: clinical
 program: '*'
 project: '*'
-description: Measurements obtained from blood or other laboratory tests required by
-  a medical professional.
-additionalProperties: false
+description: 'Measurements obtained from blood or other laboratory tests required
+  by a medical professional.
+
+  '
 submittable: true
 validators: null
 systemProperties:
@@ -17,21 +18,20 @@ systemProperties:
 - state
 - created_datetime
 - updated_datetime
-links:
-- name: clinical_descriptors
-  backref: lab_results
-  label: describes
-  target_type: clinical_descriptor
-  multiplicity: one_to_one
-  required: true
-required:
-- type
-- submitter_id
-- clinical_descriptors
 uniqueKeys:
 - - id
 - - project_id
   - submitter_id
+required:
+- submitter_id
+- type
+links:
+- name: clinical_descriptors
+  backref: lab_results
+  label: null
+  target_type: clinical_descriptor
+  multiplicity: one_to_one
+  required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   clinical_descriptors:
@@ -63,9 +63,7 @@ properties:
     type: number
   fasting:
     description: Whether the participant had fasted before blood was collected.
-    enum:
-    - 'yes'
-    - 'no'
+    $ref: _definitions.yaml#/enum_yes_no
   glucose_fasting:
     description: Fasting blood glucose level (mmol/l) at baseline
     termDef:
@@ -126,3 +124,4 @@ properties:
   uacr:
     description: Urine albumin-creatinine ratio (uACR) (measured in mg/mmol).
     type: number
+additionalProperties: false

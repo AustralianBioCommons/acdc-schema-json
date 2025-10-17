@@ -1,13 +1,14 @@
 $schema: http://json-schema.org/draft-04/schema#
 id: subject
-title: Subject
+title: subject
 type: object
-namespace: https://data.test.biocommons.org.au/
+namespace: https://commons.heartdata.baker.edu.au/
 category: clinical
 program: '*'
 project: '*'
-description: An individual participant in the study with baseline measurements.
-additionalProperties: false
+description: 'The subject, patient, or participant that the data belongs to
+
+  '
 submittable: true
 validators: null
 systemProperties:
@@ -16,25 +17,24 @@ systemProperties:
 - state
 - created_datetime
 - updated_datetime
-links:
-- name: projects
-  backref: subjects
-  label: part_of
-  target_type: project
-  multiplicity: many_to_one
-  required: true
-required:
-- type
-- submitter_id
-- projects
 uniqueKeys:
 - - id
 - - project_id
   - submitter_id
+required:
+- submitter_id
+- type
+links:
+- name: projects
+  backref: subjects
+  label: null
+  target_type: project
+  multiplicity: one_to_many
+  required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   projects:
-    $ref: _definitions.yaml#/to_one_project
+    $ref: _definitions.yaml#/to_many
   cohort_id:
     description: Identifier for the cohort the subject is a part of
     type: string
@@ -76,3 +76,4 @@ properties:
   patient_id:
     description: De-identified unique identifier for the patient/subject
     type: string
+additionalProperties: false

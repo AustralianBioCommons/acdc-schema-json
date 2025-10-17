@@ -46,4 +46,26 @@ properties:
     $ref: _definitions.yaml#/to_many
   core_metadata_collections:
     $ref: _definitions.yaml#/to_one
+  cv:
+    description: Coefficient of variation (%)
+    type: number
+  data_category:
+    description: Broad categorization of the contents of the data file.
+    $ref: _definitions.yaml#/enum_ms_data_cat
+  data_format:
+    description: The format of the data in this data file
+    $ref: _definitions.yaml#/enum_table_data_format
+  data_type:
+    description: The type of data in this data file
+    $ref: _definitions.yaml#/enum_ms_type
+  imputed_data:
+    description: Does the lipidomic file contain imputed data for missing lipid species?
+    $ref: _definitions.yaml#/enum_bool
+  individual_or_sum:
+    description: Does the lipidomic file contain data for individual lipid species?
+      Or total lipid class?
+    $ref: _definitions.yaml#/enum_lipid_ind_sum
+  lipidomic_unit:
+    description: Units of measurement captured in the lipidomics file.
+    $ref: _definitions.yaml#/enum_lipid_units
 additionalProperties: false

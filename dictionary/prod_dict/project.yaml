@@ -83,7 +83,7 @@ properties:
   released:
     description: 'To release a project is to tell the GDC to include all submitted
 
-      entities in the next GDC index.
+      nodes in the next GDC index.
 
       '
     default: false
@@ -120,8 +120,14 @@ properties:
   project_registration:
     description: External source from which the identifier included in study_id originates
     type: string
+  consent_codes:
+    description: "Data Use Restrictions that are used to indicate  permissions/restrictions\
+      \ for datasets and/or materials, and relates to the purposes for which datasets\
+      \ and/or material might be removed, stored or used. \\n\n        Based on the\
+      \ Data Use Ontology : see http://www.obofoundry.org/ontology/duo.html"
+    type: array
   data_access_url:
     description: A URL link that takes you to a page that explains how to gain access
       to the project
     type: string
-namespace: https://data.test.biocommons.org.au/
+namespace: http://commons.heartdata.baker.edu.au/

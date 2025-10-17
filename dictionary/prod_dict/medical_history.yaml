@@ -1,13 +1,14 @@
 $schema: http://json-schema.org/draft-04/schema#
 id: medical_history
-title: Medical History
+title: medical_history
 type: object
-namespace: https://data.test.biocommons.org.au/
+namespace: https://commons.heartdata.baker.edu.au/
 category: clinical
 program: '*'
 project: '*'
-description: Medical history of the participant
-additionalProperties: false
+description: 'Medical history of the participant
+
+  '
 submittable: true
 validators: null
 systemProperties:
@@ -16,40 +17,33 @@ systemProperties:
 - state
 - created_datetime
 - updated_datetime
-links:
-- name: clinical_descriptors
-  backref: medical_histories
-  label: describes
-  target_type: clinical_descriptor
-  multiplicity: one_to_one
-  required: true
-required:
-- type
-- submitter_id
-- clinical_descriptors
 uniqueKeys:
 - - id
 - - project_id
   - submitter_id
+required:
+- submitter_id
+- type
+links:
+- name: clinical_descriptors
+  backref: medical_historys
+  label: null
+  target_type: clinical_descriptor
+  multiplicity: one_to_one
+  required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   clinical_descriptors:
     $ref: _definitions.yaml#/to_one
   atrial_fibrillation:
     description: Self reported Atrial Fibrillation
-    enum:
-    - 'yes'
-    - 'no'
+    $ref: _definitions.yaml#/enum_yes_no
   cabg:
     description: Has the patient had Coronary Artery Bypass Graft (CABG) Surgery?
-    enum:
-    - 'yes'
-    - 'no'
+    $ref: _definitions.yaml#/enum_yes_no
   cvd_death:
     description: Death due to cardiovascular disease
-    enum:
-    - 'yes'
-    - 'no'
+    $ref: _definitions.yaml#/enum_yes_no
   cvd_death_ICD10:
     description: ICD10 code for Death due to CVD
     type: string
@@ -57,14 +51,10 @@ properties:
     description: Does the participant have a family history of CVD? (Family history
       of premature CVD is defined as coronary heart disease or stroke in a first-degree
       female relative aged <65 years or a firstdegree male relative aged <55 years.)
-    enum:
-    - 'yes'
-    - 'no'
+    $ref: _definitions.yaml#/enum_yes_no
   cvd_non_fatal_10_year:
     description: Non fatal cardiovascular disease at 10 years.
-    enum:
-    - 'yes'
-    - 'no'
+    $ref: _definitions.yaml#/enum_yes_no
   cvd_non_fatal_10_year_ICD10:
     description: ICD10 code for Non fatal cardiovascular disease within the last 10
       years.
@@ -75,9 +65,7 @@ properties:
     - term: Stroke
       source: hpo
       term_id: HP:0001297
-    enum:
-    - 'yes'
-    - 'no'
+    $ref: _definitions.yaml#/enum_yes_no
   cvd_reported_ICD10:
     description: ICD10 code for Stroke / MI / Angina at baseline
     termDef:
@@ -91,9 +79,7 @@ properties:
     - term: Stroke
       source: hpo
       term_id: HP:0001297
-    enum:
-    - 'yes'
-    - 'no'
+    $ref: _definitions.yaml#/enum_yes_no
   date_death:
     description: Date of death in the format YYYY-MM-DD
     type: string
@@ -104,18 +90,14 @@ properties:
     - term: Diabetes mellitus
       source: hpo
       term_id: HP:0000819
-    enum:
-    - 'yes'
-    - 'no'
+    $ref: _definitions.yaml#/enum_yes_no
   diabetes_reported:
     description: Diabetes diagnosed by a clinician
     termDef:
     - term: Diabetes mellitus
       source: hpo
       term_id: HP:0000819
-    enum:
-    - 'yes'
-    - 'no'
+    $ref: _definitions.yaml#/enum_yes_no
   diabetes_reported_ICD10:
     description: ICD10 code associated with Diabetes diagnosis
     termDef:
@@ -130,9 +112,7 @@ properties:
       source: hpo
       term_id: HP:0000819
       term_version: '2021-10-10'
-    enum:
-    - type-1
-    - type-2
+    $ref: _definitions.yaml#/enum_diabetes_type
   diabetes_type_ICD10:
     description: ICD10 code for Diabetes mellitus type.
     termDef:
@@ -143,18 +123,15 @@ properties:
     type: string
   heart_failure_status:
     description: Self reported heart failure status.
-    enum:
-    - 'yes'
-    - 'no'
+    $ref: _definitions.yaml#/enum_yes_no
   heart_rate:
     description: Indicate the number of heart beats over a period of one minute.
     type: integer
   hypertension_measured:
-    description: Hypertension reported by a clinician at recruitment. Systolic BP
+    description: >
+      Hypertension reported by a clinician at recruitment. Systolic BP
       >140mmHg, diastolic BP >90mmHg, or both
-    enum:
-    - 'yes'
-    - 'no'
+    $ref: _definitions.yaml#/enum_yes_no
   hypertension_measured_ICD10:
     description: ICD10 code associated with Hypertension reported by a clinician at
       recruitment.
@@ -162,34 +139,25 @@ properties:
   hypertension_self_reported:
     description: Hypertension self reported by patient. Systolic BP >140mmHg, diastolic
       BP >90mmHg, or both
-    enum:
-    - 'yes'
-    - 'no'
+    $ref: _definitions.yaml#/enum_yes_no
   mhx_pad:
     description: Vascular history - Code 13. Peripheral vascular disease (includes
       abdominal aortic aneurism)
-    enum:
-    - 'yes'
-    - 'no'
+    $ref: _definitions.yaml#/enum_yes_no
   os_event:
     description: 'Overall survival or vital status '
-    enum:
-    - alive
-    - dead
-    - censored
+    $ref: _definitions.yaml#/enum_surv_event
   os_time:
     description: Overall survival time in months. Calculated as the time between baseline
       date and death date.
     type: integer
   stent:
     description: Coronary stent
-    enum:
-    - 'yes'
-    - 'no'
+    $ref: _definitions.yaml#/enum_yes_no
   premature_cvd_family_history:
     description: Does the participant have a family history of premature CVD? Premature
       family history is defined as coronary heart disease or stroke in a first-degree
       female relative aged <65 years or a first degree male relative aged <55 years.)
-    enum:
-    - 'yes'
-    - 'no'
+    $ref: _definitions.yaml#/enum_yes_no
+
+additionalProperties: false

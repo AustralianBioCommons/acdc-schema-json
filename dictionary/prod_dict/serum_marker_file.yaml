@@ -17,7 +17,7 @@ systemProperties:
 - created_datetime
 - updated_datetime
 links:
-- exclusive: null
+- exclusive: false
   required: true
   subgroup:
   - name: serum_marker_assays
@@ -47,26 +47,13 @@ properties:
     $ref: _definitions.yaml#/to_one
   data_category:
     description: Broad categorization of the contents of the data file.
-    enum:
-    - mass spec raw
-    - mass spec analysed
-    - summarised results
+    $ref: _definitions.yaml#/enum_ms_data_cat
   data_format:
     description: The format of the data in this data file
-    enum:
-    - csv
-    - tsv
-    - txt
+    $ref: _definitions.yaml#/enum_table_data_format
   data_type:
     description: The type of data in this data file
-    enum:
-    - LC-MS
-    - MS/MS
-    - Multidimensional MS
-    - Ion Mobility MS
-    - MALDI MS
-    - GC-MS
-    - High Mass Accuracy MS
+    $ref: _definitions.yaml#/enum_ms_type
   serum_unit:
     description: Units of measurement captured in the file.
     type: string

@@ -1,13 +1,14 @@
 $schema: http://json-schema.org/draft-04/schema#
 id: serum_marker_assay
-title: Serum Marker Assay
+title: serum_marker_assay
 type: object
-namespace: https://data.test.biocommons.org.au/
+namespace: https://commons.heartdata.baker.edu.au/
 category: experimental_methods
 program: '*'
 project: '*'
-description: Details about the methods that produced the serum marker file
-additionalProperties: false
+description: 'Details about the methods that produced the serum marker data
+
+  '
 submittable: true
 validators: null
 systemProperties:
@@ -16,24 +17,20 @@ systemProperties:
 - state
 - created_datetime
 - updated_datetime
-links:
-- exclusive: null
-  required: true
-  subgroup:
-  - name: samples
-    backref: serum_marker_assays
-    label: produces
-    target_type: sample
-    multiplicity: many_to_one
-    required: true
-required:
-- type
-- submitter_id
-- samples
 uniqueKeys:
 - - id
 - - project_id
   - submitter_id
+required:
+- submitter_id
+- type
+links:
+- name: samples
+  backref: serum_marker_assays
+  label: null
+  target_type: sample
+  multiplicity: many_to_one
+  required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   samples:
@@ -47,64 +44,4 @@ properties:
   serum_markers:
     description: A list of the serum markers that were measured
     type: array
-    items:
-      enum:
-      - TC
-      - HDL
-      - TGL
-      - BNP
-      - GAL3
-      - Trop
-      - HCO3
-      - Cr
-      - CRP
-      - GLU
-      - K
-      - LP(A)
-      - UREA
-      - Omega-3
-      enumDef:
-      - enumeration: TC
-        source: NCIT
-        term_id: NCIT:C61032
-      - enumeration: HDL
-        source: NCIT
-        term_id: NCIT:C25186
-      - enumeration: TGL
-        source: NCIT
-        term_id: NCIT:C61037
-      - enumeration: BNP
-        source: NCIT
-        term_id: NCIT:C74735
-      - enumeration: GAL3
-        source: NCIT
-        term_id: NCIT:C172493
-      - enumeration: Trop
-        source: NCIT
-        term_id: NCIT:C111327
-      - enumeration: HCO3
-        source: NCIT
-        term_id: NCIT:C61022
-      - enumeration: Cr
-        source: NCIT
-        term_id: NCIT:C61023
-      - enumeration: CRP
-        source: NCIT
-        term_id: NCIT:C64548
-      - enumeration: GLU
-        source: NCIT
-        term_id: NCIT:C61027
-      - enumeration: K
-        source: NCIT
-        term_id: NCIT:C61030
-      - enumeration: LP(A)
-        source: NCIT
-        term_id: NCIT:C82022
-      - source: NCIT
-        term_id: NCIT:C64809
-      - enumeration: UREA
-        source: NCIT
-        term_id: NCIT:C64815
-      - enumeration: Omega-3
-        source: EFO
-        term_id: EFO:0010119
+additionalProperties: false

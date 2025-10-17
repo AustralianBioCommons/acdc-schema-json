@@ -132,6 +132,11 @@ nodes:
   description: >
     Data file that contains the results of a proteomics assay
 
+- name: serum_marker_file
+  category: data_file
+  description: >
+    Data file that contains the results of a serum marker assay
+
 - name: metabolomics_file
   category: data_file
   description: >

@@ -1,13 +1,14 @@
 $schema: http://json-schema.org/draft-04/schema#
 id: publication
-title: Publication
+title: publication
 type: object
-namespace: https://data.test.biocommons.org.au/
+namespace: https://commons.heartdata.baker.edu.au/
 category: administrative
 program: '*'
 project: '*'
-description: Publication for a project
-additionalProperties: false
+description: 'Publications associated with the project
+
+  '
 submittable: true
 validators: null
 systemProperties:
@@ -16,25 +17,24 @@ systemProperties:
 - state
 - created_datetime
 - updated_datetime
-links:
-- name: projects
-  backref: publications
-  label: refers_to
-  target_type: project
-  multiplicity: many_to_many
-  required: true
-required:
-- type
-- submitter_id
-- projects
 uniqueKeys:
 - - id
 - - project_id
   - submitter_id
+required:
+- submitter_id
+- type
+links:
+- name: projects
+  backref: publications
+  label: null
+  target_type: project
+  multiplicity: one_to_many
+  required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   projects:
-    $ref: _definitions.yaml#/to_many_project
+    $ref: _definitions.yaml#/to_many
   doi:
     description: Digital object identifier for the published article or pre-print.
       Starting with 10.
@@ -52,3 +52,4 @@ properties:
   url:
     description: Direct link to the published article
     type: string
+additionalProperties: false

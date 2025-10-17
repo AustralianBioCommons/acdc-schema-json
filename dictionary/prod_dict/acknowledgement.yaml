@@ -1,13 +1,14 @@
 $schema: http://json-schema.org/draft-04/schema#
 id: acknowledgement
-title: Acknowledgement
+title: acknowledgement
 type: object
-namespace: https://data.test.biocommons.org.au/
+namespace: https://commons.heartdata.baker.edu.au/
 category: administrative
 program: '*'
 project: '*'
-description: Acknowledgement of an individual or group involved in a project.
-additionalProperties: false
+description: 'Acknowledgements for the project
+
+  '
 submittable: true
 validators: null
 systemProperties:
@@ -16,36 +17,32 @@ systemProperties:
 - state
 - created_datetime
 - updated_datetime
-links:
-- name: projects
-  backref: acknowledgements
-  label: contribute_to
-  target_type: project
-  multiplicity: many_to_many
-  required: true
-required:
-- type
-- submitter_id
-- projects
 uniqueKeys:
 - - id
 - - project_id
   - submitter_id
+required:
+- submitter_id
+- type
+links:
+- name: projects
+  backref: acknowledgements
+  label: null
+  target_type: project
+  multiplicity: one_to_many
+  required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   projects:
-    $ref: _definitions.yaml#/to_many_project
+    $ref: _definitions.yaml#/to_many
   acknowledgee:
-    description: Name of the individual or group to be acknowledged. Preferably as
-      First name Last name
+    description: Name of the individual or group to be acknowledged. Preferably as First name Last name
     type: string
   contact_type:
     description: The type of contact or role in the project, e.g. Principal Investigator
-    enum:
-    - Principal Investigator
-    - Data custodian
-    - Co-investigator
+    $ref: _definitions.yaml#/enum_role
   orcid:
     description: The ORCID number for the acknowledgee
     type: string
     pattern: ^[0]{4}-\d{4}-\d{4}-(\d{3}X|\d{4})$
+additionalProperties: false
