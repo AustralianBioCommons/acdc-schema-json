@@ -1,0 +1,172 @@
+version: 0.5.0
+url: https://commons.heartdata.baker.edu.au/
+
+####################################
+# Nodes
+####################################
+nodes:
+
+##### Administrative nodes
+- name: program
+  category: administrative
+  description: >
+    The program that the data belongs to
+
+
+
+- name: project
+  category: administrative
+  description: >
+    The project, study, or cohort that the data belongs to
+
+
+- name: acknowledgement
+  category: administrative
+  description: >
+    Acknowledgements for the project
+
+
+- name: publication
+  category: administrative
+  description: >
+    Publications associated with the project
+
+
+
+##### Clinical nodes
+- name: subject
+  category: clinical
+  description: >
+    The subject, patient, or participant that the data belongs to
+
+
+- name: clinical_descriptor
+  category: clinical
+  description: >
+    Contains metadata describing the conditions under which the clinical
+    data was recorded. Includes attributes such as study timepoint, follow-up status,
+    intervention, and clinical site
+
+- name: medical_history
+  category: clinical
+  description: >
+    Medical history of the participant
+
+
+- name: blood_pressure_test
+  category: clinical
+  description: >
+    Blood pressure test results for the participant
+
+
+- name: exposure
+  category: clinical
+  description: >
+    Clinically relevant patient information relating to environmental exposures
+    (e.g. smoking)
+
+- name: lab_result
+  category: clinical
+  description: >
+    Measurements obtained from blood or other laboratory tests required by
+    a medical professional.
+
+- name: medication
+  category: clinical
+  description: > 
+    Records about historical or current medication use.
+
+
+- name: demographic
+  category: clinical
+  description: >
+    Data for the characterization of the patient by means of segementing
+    the population (e.g. characterization by age, sex, or race).
+
+
+
+##### Assays and Samples
+- name: sample
+  category: biospecimen
+  description: >
+    Biospecimen information that links subjects to samples including sample's
+    provider and source.
+
+- name: proteomics_assay
+  category: experimental_methods
+  description: >
+    Details about the methods that produced the proteomics data
+
+- name: serum_marker_assay
+  category: experimental_methods
+  description: >
+    Details about the methods that produced the serum marker data
+
+
+- name: metabolomics_assay
+  category: experimental_methods
+  description: >
+    Details about the methods that produced the metabolomics data
+
+
+- name: lipidomics_assay
+  category: experimental_methods
+  description: >
+    Details about the methods that produced the lipidomics data
+
+- name: genomics_assay
+  category: experimental_methods
+  description: >
+    Details about the methods that produced the genomics data
+  
+
+
+##### Data File and Analysis Nodes
+- name: imaging_file
+  category: data_file
+  description: >
+    Data file that contains the results of an imaging assay
+
+- name: proteomics_file
+  category: data_file
+  description: >
+    Data file that contains the results of a proteomics assay
+
+- name: metabolomics_file
+  category: data_file
+  description: >
+    Data file that contains the results of a metabolomics assay
+
+- name: lipidomics_file
+  category: data_file
+  description: >
+    Data file that contains the results of a lipidomics assay
+
+- name: genomics_file
+  category: data_file
+  description: >
+    Data file that contains the results of a genomics assay
+
+- name: qc_file
+  category: data_file
+  description: >
+    Data file that contains the results of a quality control assay
+
+- name: supplementary_file
+  category: data_file
+  description: >
+    Supplementary data file that is not part of the main data set
+  
+- name: analysis_workflow
+  category: analysis
+  description: >
+    Details about the analysis workflow used on the raw data
+
+
+####################################
+# Links
+####################################
+links:
+- parent: subject
+  multiplicity: one_to_many
+  child: sample
