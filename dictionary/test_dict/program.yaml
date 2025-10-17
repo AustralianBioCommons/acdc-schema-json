@@ -1,0 +1,30 @@
+$schema: http://json-schema.org/draft-04/schema#
+id: program
+title: program
+type: object
+namespace: https://commons.heartdata.baker.edu.au/
+category: administrative
+program: '*'
+project: '*'
+description: 'The program that the data belongs to
+
+  '
+submittable: true
+validators: null
+systemProperties:
+- id
+- project_id
+- state
+- created_datetime
+- updated_datetime
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+required:
+- submitter_id
+- type
+links: []
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+additionalProperties: false

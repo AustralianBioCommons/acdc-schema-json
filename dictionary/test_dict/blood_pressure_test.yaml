@@ -1,0 +1,38 @@
+$schema: http://json-schema.org/draft-04/schema#
+id: blood_pressure_test
+title: blood_pressure_test
+type: object
+namespace: https://commons.heartdata.baker.edu.au/
+category: clinical
+program: '*'
+project: '*'
+description: 'Blood pressure test results for the participant
+
+  '
+submittable: true
+validators: null
+systemProperties:
+- id
+- project_id
+- state
+- created_datetime
+- updated_datetime
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+required:
+- submitter_id
+- type
+links:
+- name: clinical_descriptors
+  backref: blood_pressure_tests
+  label: null
+  target_type: clinical_descriptor
+  multiplicity: one_to_one
+  required: true
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  clinical_descriptors:
+    $ref: _definitions.yaml#/to_one
+additionalProperties: false

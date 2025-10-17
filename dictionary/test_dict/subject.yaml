@@ -1,0 +1,38 @@
+$schema: http://json-schema.org/draft-04/schema#
+id: subject
+title: subject
+type: object
+namespace: https://commons.heartdata.baker.edu.au/
+category: clinical
+program: '*'
+project: '*'
+description: 'The subject, patient, or participant that the data belongs to
+
+  '
+submittable: true
+validators: null
+systemProperties:
+- id
+- project_id
+- state
+- created_datetime
+- updated_datetime
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+required:
+- submitter_id
+- type
+links:
+- name: projects
+  backref: subjects
+  label: null
+  target_type: project
+  multiplicity: one_to_many
+  required: true
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  projects:
+    $ref: _definitions.yaml#/to_many
+additionalProperties: false

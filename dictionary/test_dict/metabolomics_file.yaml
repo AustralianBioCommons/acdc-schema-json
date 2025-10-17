@@ -1,0 +1,49 @@
+$schema: http://json-schema.org/draft-04/schema#
+id: metabolomics_file
+title: metabolomics_file
+type: object
+namespace: https://commons.heartdata.baker.edu.au/
+category: data_file
+program: '*'
+project: '*'
+description: 'Data file that contains the results of a metabolomics assay
+
+  '
+submittable: true
+validators: null
+systemProperties:
+- id
+- project_id
+- state
+- created_datetime
+- updated_datetime
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+required:
+- submitter_id
+- type
+links:
+- exclusive: false
+  required: true
+  subgroup:
+  - name: metabolomics_assays
+    backref: metabolomics_files
+    label: null
+    target_type: metabolomics_assay
+    multiplicity: one_to_many
+    required: true
+  - name: core_metadata_collections
+    backref: metabolomics_files
+    label: null
+    target_type: core_metadata_collection
+    multiplicity: one_to_one
+    required: true
+properties:
+  $ref: _definitions.yaml#/data_file_properties
+  metabolomics_assays:
+    $ref: _definitions.yaml#/to_many
+  core_metadata_collections:
+    $ref: _definitions.yaml#/to_one
+additionalProperties: false

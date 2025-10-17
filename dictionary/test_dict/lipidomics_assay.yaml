@@ -1,0 +1,38 @@
+$schema: http://json-schema.org/draft-04/schema#
+id: lipidomics_assay
+title: lipidomics_assay
+type: object
+namespace: https://commons.heartdata.baker.edu.au/
+category: experimental_methods
+program: '*'
+project: '*'
+description: 'Details about the methods that produced the lipidomics data
+
+  '
+submittable: true
+validators: null
+systemProperties:
+- id
+- project_id
+- state
+- created_datetime
+- updated_datetime
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+required:
+- submitter_id
+- type
+links:
+- name: samples
+  backref: lipidomics_assays
+  label: null
+  target_type: sample
+  multiplicity: many_to_one
+  required: true
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  samples:
+    $ref: _definitions.yaml#/to_one
+additionalProperties: false

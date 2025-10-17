@@ -1,0 +1,40 @@
+$schema: http://json-schema.org/draft-04/schema#
+id: clinical_descriptor
+title: clinical_descriptor
+type: object
+namespace: https://commons.heartdata.baker.edu.au/
+category: clinical
+program: '*'
+project: '*'
+description: 'Contains metadata describing the conditions under which the clinical
+  data was recorded. Includes attributes such as study timepoint, follow-up status,
+  intervention, and clinical site
+
+  '
+submittable: true
+validators: null
+systemProperties:
+- id
+- project_id
+- state
+- created_datetime
+- updated_datetime
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+required:
+- submitter_id
+- type
+links:
+- name: subjects
+  backref: clinical_descriptors
+  label: null
+  target_type: subject
+  multiplicity: one_to_many
+  required: true
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  subjects:
+    $ref: _definitions.yaml#/to_many
+additionalProperties: false

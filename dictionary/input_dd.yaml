@@ -167,6 +167,106 @@ nodes:
 # Links
 ####################################
 links:
+- parent: program
+  multiplicity: one_to_many
+  child: project
+  
+- parent: project
+  multiplicity: one_to_many
+  child: acknowledgement
+
+- parent: project
+  multiplicity: one_to_many
+  child: publication
+
+- parent: project
+  multiplicity: one_to_many
+  child: subject
+
 - parent: subject
   multiplicity: one_to_many
+  child: clinical_descriptor
+
+- parent: clinical_descriptor
+  multiplicity: one_to_one
+  child: medical_history
+
+- parent: clinical_descriptor
+  multiplicity: one_to_one
+  child: blood_pressure_test
+
+- parent: clinical_descriptor
+  multiplicity: one_to_one
+  child: exposure
+
+- parent: clinical_descriptor
+  multiplicity: one_to_one
+  child: lab_result
+
+- parent: clinical_descriptor
+  multiplicity: one_to_many
+  child: imaging_file
+
+- parent: clinical_descriptor
+  multiplicity: one_to_one
+  child: medication
+
+- parent: clinical_descriptor
+  multiplicity: one_to_one
+  child: demographic
+
+- parent: clinical_descriptor
+  multiplicity: one_to_many
   child: sample
+
+- parent: sample
+  multiplicity: many_to_one
+  child: proteomics_assay
+
+- parent: sample
+  multiplicity: many_to_one
+  child: serum_marker_assay
+
+- parent: sample
+  multiplicity: many_to_one
+  child: metabolomics_assay
+
+- parent: sample
+  multiplicity: many_to_one
+  child: lipidomics_assay
+
+- parent: sample
+  multiplicity: many_to_one
+  child: genomics_assay
+
+- parent: proteomics_assay
+  multiplicity: one_to_many
+  child: proteomics_file
+
+- parent: serum_marker_assay
+  multiplicity: one_to_many
+  child: serum_marker_file
+
+- parent: metabolomics_assay
+  multiplicity: one_to_many
+  child: metabolomics_file
+
+- parent: lipidomics_assay
+  multiplicity: one_to_many
+  child: lipidomics_file
+
+- parent: genomics_assay
+  multiplicity: one_to_many
+  child: genomics_file
+
+- parent: genomics_file
+  multiplicity: one_to_many
+  child: qc_file
+
+- parent: genomics_file
+  multiplicity: one_to_many
+  child: supplementary_file
+
+- parent: genomics_file
+  multiplicity: many_to_one
+  child: analysis_workflow
