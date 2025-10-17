@@ -8,7 +8,8 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.12.10, <4.0.0"
 dependencies = [
-    "gen3schemadev (==2.1.1)"
+    "gen3schemadev (==2.1.1)",
+    "pandas >=2.2.3, <3.0.0"
 ]
 
 [tool.poetry]
@@ -17,3 +18,8 @@ package-mode = false
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "ipykernel (>=7.0.1,<8.0.0)"
+]
