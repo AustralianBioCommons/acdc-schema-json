@@ -1,0 +1,196 @@
+type_name,enum,enum_definition,source,term_id,version
+enum_seq_data_cat,analysis,,,,
+enum_seq_data_cat,sequencing reads,,,,
+enum_seq_data_cat,single nucleotide variation,,,,
+enum_seq_data_cat,transcriptome profiling,,,,
+enum_seq_data_cat,supplemental,,,,
+enum_genomic_file_data_cat,raw,,,,
+enum_genomic_file_data_cat,processed,,,,
+enum_genomic_file_data_cat,analysis_output,,,,
+enum_genomic_file_data_type,signal_intensity,,,,
+enum_genomic_file_data_type,unaligned_reads,,,,
+enum_genomic_file_data_type,aligned_reads,,,,
+enum_genomic_file_data_type,called_genotypes,,,,
+enum_genomic_file_data_type,imputed_genotypes,,,,
+enum_genomic_file_data_type,genotype_dosage,,,,
+enum_genomic_file_data_type,copy_number_segment,,,,
+enum_genomic_file_data_format,bam,,,,
+enum_genomic_file_data_format,cram,,,,
+enum_genomic_file_data_format,fastq,,,,
+enum_genomic_file_data_format,fastq.gz,,,,
+enum_genomic_file_data_format,bed,,,,
+enum_genomic_file_data_format,vcf,,,,
+enum_genomic_file_data_format,vcf.gz,,,,
+enum_genomic_file_data_format,plink,,,,
+enum_genomic_file_data_format,fam,,,,
+enum_genomic_file_data_format,bin,,,,
+enum_genomic_file_data_format,csv,,,,
+enum_genomic_file_data_format,tsv,,,,
+enum_supp_data_format,bai,,,,
+enum_supp_data_format,bam.bai,,,,
+enum_supp_data_format,crai,,,,
+enum_supp_data_format,cram.crai,,,,
+enum_supp_data_format,other,,,,
+enum_supp_data_type,index_file,,,,
+enum_supp_data_type,mapping_file,,,,
+enum_supp_data_type,other,,,,
+enum_supp_data_type,log_file,,,,
+enum_supp_data_cat,supplementary,,,,
+enum_data_type,unaligned reads,,,,
+enum_data_type,aligned reads,,,,
+enum_data_type,variants annotation,,,,
+enum_data_type,clinical supplement,,,,
+enum_diab_therapy,diet,,,,
+enum_diab_therapy,oral,,,,
+enum_diab_therapy,insulin,,,,
+enum_diab_therapy,injectible,,,,
+enum_diab_therapy,combination,,,,
+enum_diab_therapy,other,,,,
+enum_education,low,,,,
+enum_education,medium,,,,
+enum_education,high,,,,
+enum_abs_heap,HEAP-1,,,,
+enum_abs_heap,HEAP-2,,,,
+enum_abs_heap,HEAP-3,,,,
+enum_abs_heap,HEAP-4,,,,
+enum_abs_heap,HEAP-5,,,,
+enum_abs_heap,HEAP-6,,,,
+enum_abs_heap,HEAP-7,,,,
+enum_abs_heap,HEAP-8,,,,
+enum_abs_heap,HEAP-9,,,,
+enum_institute,Baker,,,,
+enum_institute,USYD,,,,
+enum_institute,UMELB,,,,
+enum_institute,UQ,,,,
+enum_preservation,cryopreserved,,BioData Catalyst DD,,
+enum_preservation,FFPE,,BioData Catalyst DD,,
+enum_preservation,fresh,,BioData Catalyst DD,,
+enum_preservation,OCT,,BioData Catalyst DD,,
+enum_preservation,snap Frozen,,BioData Catalyst DD,,
+enum_preservation,frozen,,BioData Catalyst DD,,
+enum_preservation,unknown,,BioData Catalyst DD,,
+enum_preservation,not reported,,BioData Catalyst DD,,
+enum_preservation,not allowed to collect,,BioData Catalyst DD,,
+enum_role,Principal Investigator,,,,
+enum_role,Data custodian,,,,
+enum_role,Co-investigator,,,,
+enum_sex,male,,,,
+enum_sex,female,,,,
+enum_smoking,never,,,,
+enum_smoking,former,,,,
+enum_smoking,current,,,,
+enum_storage,not stored,,,,
+enum_storage,ambient temperature,,https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage,,6.1.1
+enum_storage,cut slide,,https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage,,6.1.1
+enum_storage,fresh,,https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage,,6.1.1
+enum_storage,"frozen, -80C freezer",,https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage,,6.1.1
+enum_storage,"frozen, -150C freezer",,https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage,,6.1.1
+enum_storage,"frozen, liquid nitrogen",,https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage,,6.1.1
+enum_storage,"frozen, vapor phase",,https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage,,6.1.1
+enum_storage,paraffin block,,https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage,,6.1.1
+enum_storage,"RNAlater, frozen",,https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage,,6.1.1
+enum_storage,"TRIzol, frozen",,https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage,,6.1.1
+enum_yes_no,yes,,,,
+enum_yes_no,no,,,,
+enum_yes_no_unknown,yes,,,,
+enum_yes_no_unknown,no,,,,
+enum_yes_no_unknown,unknown,,,,
+enum_drinking_current,never,,,,
+enum_drinking_current,former,,,,
+enum_drinking_current,current,,,,
+enum_ms_type,LC-MS,,,,
+enum_ms_type,MS/MS,,,,
+enum_ms_type,Multidimensional MS,,,,
+enum_ms_type,Ion Mobility MS,,,,
+enum_ms_type,MALDI MS,,,,
+enum_ms_type,GC-MS,,,,
+enum_ms_type,High Mass Accuracy MS,,,,
+enum_table_data_format,csv,,,,
+enum_table_data_format,tsv,,,,
+enum_table_data_format,txt,,,,
+enum_protein_data_format,mgf,,,,
+enum_ms_data_cat,mass spec raw,,,,
+enum_ms_data_cat,mass spec analysed,,,,
+enum_ms_data_cat,summarised results,,,,
+enum_ms_data_format,wiff,,,,
+enum_lipid_units,pmol/mL,,,,
+enum_lipid_units,umol/mL,,,,
+enum_protein_units,pmol/mL,,,,
+enum_protein_units,umol/mL,,,,
+enum_metabolite_units,pmol/mL,,,,
+enum_metabolite_units,umol/mL,,,,
+enum_bool,yes,,,,
+enum_bool,no,,,,
+enum_lipid_ind_sum,individual,,,,
+enum_lipid_ind_sum,sum,,,,
+enum_align_work,STAR,STAR,BioData Catalyst DD,,
+enum_align_work,BWA-aln,BWA-aln,BioData Catalyst DD,,
+enum_align_work,BWA-mem,BWA-mem,BioData Catalyst DD,,
+enum_align_work,spinnaker,spinnaker,BioData Catalyst DD,,
+enum_gen_assay,WGS,WGS,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,RNA-Seq,RNA-Seq,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,WES,WES,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,SNP Chip,SNP Chip,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,WGA,WGA,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,ssRNA-seq,ssRNA-seq,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,snRNA-seq,snRNA-seq,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,miRNA-Seq,miRNA-Seq,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,ncRNA-Seq,ncRNA-Seq,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,FL-cDNA,FL-cDNA,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,EST,EST,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,Hi-C,Hi-C,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,ATAC-seq,ATAC-seq,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,WCS,WCS,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,RAD-Seq,RAD-Seq,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,CLONE,CLONE,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,POOLCLONE,POOLCLONE,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,AMPLICON,AMPLICON,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,CLONEEND,CLONEEND,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,FINISHING,FINISHING,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,ChIP-Seq,ChIP-Seq,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,MNase-Seq,MNase-Seq,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,DNase-Hypersensitivity,DNase-Hypersensitivity,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,Bisulfite-Seq,Bisulfite-Seq,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,CTS,CTS,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,MRE-Seq,MRE-Seq,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,MeDIP-Seq,MeDIP-Seq,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,MBD-Seq,MBD-Seq,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,Tn-Seq,Tn-Seq,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,VALIDATION,VALIDATION,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,FAIRE-seq,FAIRE-seq,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,SELEX,SELEX,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,RIP-Seq,RIP-Seq,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,ChIA-PET,ChIA-PET,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,Synthetic-Long-Read,Synthetic-Long-Read,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,Targeted-Capture,Targeted-Capture,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,Tethered Chromatin Conformation Capture,Tethered Chromatin Conformation Capture,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,NOMe-Seq,NOMe-Seq,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,ChM-Seq,ChM-Seq,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,GBS,GBS,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,Ribo-Seq,Ribo-Seq,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_gen_assay,OTHER,OTHER,https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md,library_strategy,9efee515e2a8351e767f7cfb2d7dffb138c98f82
+enum_unalign_data_format,fastq.gz,,,,
+enum_ref_genome,GRCh38,,,,
+enum_ref_genome,GRCh37,,,,
+enum_imaging_data_type,DICOM,,,,
+enum_imaging_data_type,NifTI,,,,
+enum_imaging_data_format,dcm,,,,
+enum_imaging_data_format,nii,,,,
+enum_imaging_data_category,CT,,,,
+enum_imaging_data_category,MRI,,,,
+enum_imaging_data_category,X-Ray,,,,
+enum_imaging_data_category,Ultrasound,,,,
+enum_imaging_data_category,PET,,,,
+enum_imaging_acquisition_type,SEQUENCED,,,,
+enum_imaging_acquisition_type,SPIRAL,,,,
+enum_imaging_acquisition_type,CONSTANT_ANGLE,,,,
+enum_imaging_acquisition_type,STATIONARY,,,,
+enum_imaging_acquisition_type,FREE,,,,
+enum_imaging_mod_method,Removal of alphanumeric characters,,,,
+enum_imaging_mod_method,Defacing,,,,
+enum_imaging_mod_method,Skull-stripping,,,,
+enum_surv_event,alive,,,,
+enum_surv_event,dead,,,,
+enum_surv_event,censored,,,,
+enum_diabetes_type,type-1,,,,
+enum_diabetes_type,type-2,,,,
