@@ -39,7 +39,7 @@ links:
     label: null
     target_type: core_metadata_collection
     multiplicity: one_to_one
-    required: true
+    required: false
 properties:
   $ref: _definitions.yaml#/data_file_properties
   clinical_descriptors:
