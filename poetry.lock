@@ -605,14 +605,14 @@ uuid = ">=1.30"
 
 [[package]]
 name = "gen3schemadev"
-version = "2.1.1"
+version = "2.2.0"
 description = "Tool for data modelling in Gen3"
 optional = false
 python-versions = "<4.0,>=3.12.10"
 groups = ["main"]
 files = [
-    {file = "gen3schemadev-2.1.1-py3-none-any.whl", hash = "sha256:8fc1c443001db1d4645de6500fa103a9dad63af8febfeb30b4f29b9e4f844120"},
-    {file = "gen3schemadev-2.1.1.tar.gz", hash = "sha256:5e67663d3d8ed167b52d0b2e3844e9ac61b1f9b3901aea842c5d182df174487b"},
+    {file = "gen3schemadev-2.2.0-py3-none-any.whl", hash = "sha256:56cdd438a5de3fe56351c94429271a411aaf3c06647ce88211702d98a01b2a42"},
+    {file = "gen3schemadev-2.2.0.tar.gz", hash = "sha256:22499735f4a67dc5752014ff6ed93dbda2c8261335d40b86dc2555bd354de99d"},
 ]
 
 [package.dependencies]
@@ -3362,4 +3362,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12.10, <4.0.0"
-content-hash = "86194e6387cb658bc55da9c7fd5d1bf40bf1c1dd27ab8ef7aa41792a5f1bea64"
+content-hash = "5d57fe938068f53e074a6cbb358ec4582dddd767051fc2d656c4a58295af32fc"
