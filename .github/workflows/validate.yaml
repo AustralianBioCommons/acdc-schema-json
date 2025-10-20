@@ -13,6 +13,7 @@ on:
       - '.github/workflows/validate.yaml'
       - 'pyproject.toml'
       - 'poetry.lock'
+  workflow_dispatch:
 
 jobs:
   validate:
