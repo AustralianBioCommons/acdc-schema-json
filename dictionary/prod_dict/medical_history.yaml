@@ -27,7 +27,7 @@ required:
 links:
 - name: clinical_descriptors
   backref: medical_historys
-  label: null
+  label: part_of
   target_type: clinical_descriptor
   multiplicity: one_to_one
   required: true

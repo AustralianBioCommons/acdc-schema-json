@@ -27,7 +27,7 @@ required:
 links:
 - name: genomics_files
   backref: analysis_workflows
-  label: null
+  label: part_of
   target_type: genomics_file
   multiplicity: many_to_one
   required: true

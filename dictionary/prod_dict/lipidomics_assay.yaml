@@ -27,7 +27,7 @@ required:
 links:
 - name: samples
   backref: lipidomics_assays
-  label: null
+  label: part_of
   target_type: sample
   multiplicity: many_to_one
   required: true

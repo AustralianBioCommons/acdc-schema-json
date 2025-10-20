@@ -27,7 +27,7 @@ required:
 links:
 - name: projects
   backref: publications
-  label: null
+  label: part_of
   target_type: project
   multiplicity: one_to_many
   required: true
