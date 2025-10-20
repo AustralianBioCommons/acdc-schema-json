@@ -1,0 +1,41 @@
+name: Validate Data Dictionary
+
+on:
+  push:
+    paths:
+      - 'dictionary/prod_dict/**'
+      - '.github/workflows/validate.yaml'
+      - 'pyproject.toml'
+      - 'poetry.lock'
+  pull_request:
+    paths:
+      - 'dictionary/prod_dict/**'
+      - '.github/workflows/validate.yaml'
+      - 'pyproject.toml'
+      - 'poetry.lock'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Poetry
+        run: |
+          python -m pip install --upgrade pip
+          pip install poetry
+
+      - name: Install dependencies via Poetry
+        run: |
+          poetry install --no-interaction --no-root
+
+      - name: Run gen3schemadev validate
+        run: |
+          poetry run gen3schemadev validate -y dictionary/prod_dict
