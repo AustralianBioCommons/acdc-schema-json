@@ -37,7 +37,7 @@ properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   subjects:
     $ref: _definitions.yaml#/to_many
-  label:
+  context_label:
     description: The code or label for the clinical context. e.g. baseline, 6months,
       treatment, placebo, etc
     type: string
