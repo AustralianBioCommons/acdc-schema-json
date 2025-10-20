@@ -27,7 +27,7 @@ required:
 links:
 - name: samples
   backref: serum_marker_assays
-  label: null
+  label: part_of
   target_type: sample
   multiplicity: many_to_one
   required: true

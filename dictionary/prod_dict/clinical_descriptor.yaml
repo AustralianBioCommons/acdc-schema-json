@@ -29,7 +29,7 @@ required:
 links:
 - name: subjects
   backref: clinical_descriptors
-  label: null
+  label: part_of
   target_type: subject
   multiplicity: one_to_many
   required: true

@@ -30,13 +30,13 @@ links:
   subgroup:
   - name: proteomics_assays
     backref: proteomics_files
-    label: null
+    label: part_of
     target_type: proteomics_assay
     multiplicity: one_to_many
     required: true
   - name: core_metadata_collections
     backref: proteomics_files
-    label: null
+    label: part_of
     target_type: core_metadata_collection
     multiplicity: one_to_one
     required: false
