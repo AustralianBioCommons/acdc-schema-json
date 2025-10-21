@@ -44,4 +44,6 @@ properties:
   metabolite_names:
     description: A list of all metabolites assayed in this method
     type: array
+    items:
+      type: string
 additionalProperties: false

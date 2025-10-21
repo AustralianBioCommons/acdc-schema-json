@@ -46,8 +46,8 @@ properties:
     type: array
     termDef:
     - term: consent_codes
-    type: array
     items:
+      type: string
       enum:
       - General Research Use
       - Health or Biomedical Research

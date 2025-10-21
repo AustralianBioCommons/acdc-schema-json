@@ -44,4 +44,6 @@ properties:
   protein_names:
     description: A list of all proteins assayed in this method
     type: array
+    items:
+      type: string
 additionalProperties: false

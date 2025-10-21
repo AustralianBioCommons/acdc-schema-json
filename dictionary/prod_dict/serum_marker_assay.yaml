@@ -44,4 +44,6 @@ properties:
   serum_markers:
     description: A list of the serum markers that were measured
     type: array
+    items:
+      type: string
 additionalProperties: false

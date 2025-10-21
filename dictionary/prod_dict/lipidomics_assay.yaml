@@ -54,4 +54,6 @@ properties:
   lipid_names:
     description: A list of all lipids assayed in this method
     type: array
+    items:
+      type: string
 additionalProperties: false
