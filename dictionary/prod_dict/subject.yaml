@@ -43,6 +43,7 @@ properties:
       for datasets and/or materials, and relates to the purposes for which datasets
       and/or material might be removed, stored or used. Based on the Data Use Ontology
       : see http://www.obofoundry.org/ontology/duo.html'
+    type: array
     termDef:
     - term: consent_codes
     type: array
