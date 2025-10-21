@@ -24,7 +24,7 @@ links:
   label: data_from
   target_type: project
   multiplicity: many_to_one
-  required: false
+  required: true
 uniqueKeys:
 - - id
 - - project_id
