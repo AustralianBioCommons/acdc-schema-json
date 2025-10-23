@@ -49,4 +49,10 @@ properties:
   data_type:
     description: The type of data, e.g. log, index, mapping, etc
     $ref: _definitions.yaml#/enum_supp_data_type
+  data_category:
+    description: Broad categorization of the contents of the data file.
+    $ref: _definitions.yaml#/enum_supp_data_type
+  data_format:
+    description: The format of the data in this data file
+    $ref: _definitions.yaml#/enum_table_data_format
 additionalProperties: false
