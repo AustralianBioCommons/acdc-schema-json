@@ -2,17 +2,11 @@ name: Validate Data Dictionary
 
 on:
   push:
-    paths:
-      - 'dictionary/prod_dict/**'
-      - '.github/workflows/validate.yaml'
-      - 'pyproject.toml'
-      - 'poetry.lock'
+    branches:
+      - main
   pull_request:
-    paths:
-      - 'dictionary/prod_dict/**'
-      - '.github/workflows/validate.yaml'
-      - 'pyproject.toml'
-      - 'poetry.lock'
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
