@@ -46,4 +46,7 @@ properties:
     $ref: _definitions.yaml#/to_many
   core_metadata_collections:
     $ref: _definitions.yaml#/to_one
+  data_type:
+    description: The type of data, e.g. log, index, mapping, etc
+    $ref: _definitions.yaml#/enum_supp_data_type
 additionalProperties: false
