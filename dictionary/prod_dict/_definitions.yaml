@@ -464,15 +464,17 @@ enum_genomic_file_data_type:
 enum_data_type:
   description: null
   enum:
-  - unaligned reads
-  - aligned reads
-  - variants annotation
-  - clinical supplement
+  - unaligned_reads
+  - aligned_reads
+  - variants_annotation
+  - clinical_supplement
+  - supplmentary_file
   enumDef:
-  - enumeration: unaligned reads
-  - enumeration: aligned reads
-  - enumeration: variants annotation
-  - enumeration: clinical supplement
+  - enumeration: unaligned_reads
+  - enumeration: aligned_reads
+  - enumeration: variants_annotation
+  - enumeration: clinical_supplement
+  - enumeration: supplmentary_file
 enum_preservation:
   description: null
   enum:
