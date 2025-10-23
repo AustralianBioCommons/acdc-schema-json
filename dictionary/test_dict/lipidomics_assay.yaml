@@ -27,31 +27,12 @@ required:
 links:
 - name: samples
   backref: lipidomics_assays
-  label: null
+  label: part_of
   target_type: sample
-  multiplicity: many_to_one
+  multiplicity: one_to_many
   required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   samples:
-    $ref: _definitions.yaml#/to_one
-  assay_id:
-    description: An identifier for the assay or experiemnt performed on the sample
-    type: string
-  assay_description:
-    description: A description of the type of assay used.
-    type: string
-  instrument_type:
-    description: Type of mass spec the instrument used for lipidome measurements
-    enum:
-    - LC-MS
-    - MS/MS
-    - Multidimensional MS
-    - Ion Mobility MS
-    - MALDI MS
-    - GC-MS
-    - High Mass Accuracy MS
-  lipid_names:
-    description: A list of all lipids assayed in this method
-    type: array
+    $ref: _definitions.yaml#/to_many
 additionalProperties: false

@@ -30,33 +30,20 @@ links:
   subgroup:
   - name: genomics_files
     backref: supplementary_files
-    label: null
+    label: part_of
     target_type: genomics_file
-    multiplicity: one_to_many
+    multiplicity: many_to_one
     required: true
   - name: core_metadata_collections
     backref: supplementary_files
-    label: null
+    label: part_of
     target_type: core_metadata_collection
     multiplicity: one_to_one
-    required: true
+    required: false
 properties:
   $ref: _definitions.yaml#/data_file_properties
   genomics_files:
-    $ref: _definitions.yaml#/to_many
+    $ref: _definitions.yaml#/to_one
   core_metadata_collections:
     $ref: _definitions.yaml#/to_one
-  data_category:
-    description: Data category, default is 'supplementary'
-    enum:
-    - supplementary
-  data_format:
-    description: The format of the data, usually the file extension
-    $ref: _definitions.yaml#/enum_supp_data_format
-  data_type:
-    description: The type of data, e.g. log, index, mapping, etc
-    $ref: _definitions.yaml#/enum_supp_data_type
-  file_version:
-    description: Version of the file
-    type: string
 additionalProperties: false

@@ -30,36 +30,20 @@ links:
   subgroup:
   - name: proteomics_assays
     backref: proteomics_files
-    label: null
+    label: part_of
     target_type: proteomics_assay
-    multiplicity: one_to_many
+    multiplicity: many_to_one
     required: true
   - name: core_metadata_collections
     backref: proteomics_files
-    label: null
+    label: part_of
     target_type: core_metadata_collection
     multiplicity: one_to_one
-    required: true
+    required: false
 properties:
   $ref: _definitions.yaml#/data_file_properties
   proteomics_assays:
-    $ref: _definitions.yaml#/to_many
+    $ref: _definitions.yaml#/to_one
   core_metadata_collections:
     $ref: _definitions.yaml#/to_one
-  cv:
-    description: Coefficient of variation (%)
-    type: number
-  data_category:
-    description: Broad categorization of the contents of the data file.
-    $ref: _definitions.yaml#/enum_ms_data_cat
-  data_format:
-    description: The format of the data in this data file
-    $ref: _definitions.yaml#/enum_protein_data_format
-  data_type:
-    description: The type of data in this data file
-    $ref: _definitions.yaml#/enum_ms_type
-  proteomic_unit:
-    description: Units of measurement captured in the proteomics file.
-    $ref: _definitions.yaml#/enum_protein_units
-
 additionalProperties: false

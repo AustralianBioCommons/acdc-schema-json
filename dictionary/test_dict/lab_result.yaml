@@ -28,7 +28,7 @@ required:
 links:
 - name: clinical_descriptors
   backref: lab_results
-  label: null
+  label: part_of
   target_type: clinical_descriptor
   multiplicity: one_to_one
   required: true
@@ -36,92 +36,4 @@ properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   clinical_descriptors:
     $ref: _definitions.yaml#/to_one
-  age_at_collection:
-    description: Age of the participant at the time of lab tests.
-    type: number
-  bnp:
-    description: Brain naturemic peptide (BNP) in ng/L
-    type: number
-  cac_score:
-    description: Coronary artery calcification (CAC). Score using Agatston scoring
-      of CT scan(s) of coronary arteries
-    type: number
-  creatinine_serum_enzymatic:
-    description: "Serum creatinine level measured by enzymatic assay (\xB5mol/L)"
-    type: number
-  creatinine_serum_jaffe:
-    description: "Serum creatinine level measured by jaffe assay (\xB5mol/L)"
-    type: number
-  egfr_baseline_CKDEPI:
-    description: Estimated glomerular filtration rate (eGFR) in mL/min/1.73m?^2, calcuated
-      using CKD-EPI formula. Values of 90, indicate a measurement of 90 or greater
-      (=>90)
-    type: number
-  egfr_baseline_MDRD:
-    description: Estimated glomerular filtration rate (eGFR) in mL/min/1.73m?^2, calcuated
-      using MDRD formula. Values of 90, indicate a measurement of 90 or greater (=>90)
-    type: number
-  fasting:
-    description: Whether the participant had fasted before blood was collected.
-    $ref: _definitions.yaml#/enum_yes_no
-  glucose_fasting:
-    description: Fasting blood glucose level (mmol/l) at baseline
-    termDef:
-    - term: fasting blood glucose measurement
-      source: efo
-      term_id: EFO:0004465
-    type: number
-  hba1c_ifcc:
-    description: HbA1c at baseline (IFCC - mmol/mol)
-    termDef:
-    - term: HbA1c measurement
-      source: efo
-      term_id: EFO:0004541
-    type: number
-  hba1c_ngsp:
-    description: HbA1c at baseline (NGSP - %)
-    termDef:
-    - term: HbA1c measurement
-      source: efo
-      term_id: EFO:0004541
-    type: number
-  hdl:
-    description: Blood mass concentration of high-density lipoprotein (HDL-C) cholesterol
-      (mmol/L) at baseline (1 decimal point)
-    termDef:
-    - term: HDL cholesterol
-      source: efo
-      term_id: CHEBI:47775
-    type: number
-  ldl:
-    description: 'Blood mass concentration of low-density lipoprotein (LDL-C) cholesterol
-      (mmol/L) at baseline (1 decimal point). Note: LDL is not accurate when triglycerides
-      >=4.52 mmol/l'
-    termDef:
-    - term: LDL cholesterol
-      source: efo
-      term_id: EFO:0004195
-    type: number
-  nt_probnp:
-    description: NT-proBNP in ng/L
-    type: number
-  total_cholesterol:
-    description: Blood mass concentration of total cholesterol (mmol/L) at baseline
-      (1 decimal point)
-    termDef:
-    - term: cholesterol
-      source: efo
-      term_id: CHEBI:16113
-    type: number
-  triglycerides:
-    description: Blood mass concentration of triglycerides (mmol/L) at baseline (1
-      decimal point)
-    termDef:
-    - term: triglyceride measurement
-      source: efo
-      term_id: EFO:0004530
-    type: number
-  uacr:
-    description: Urine albumin-creatinine ratio (uACR) (measured in mg/mmol).
-    type: number
 additionalProperties: false

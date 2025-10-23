@@ -27,7 +27,7 @@ required:
 links:
 - name: clinical_descriptors
   backref: medications
-  label: null
+  label: part_of
   target_type: clinical_descriptor
   multiplicity: one_to_one
   required: true
@@ -35,18 +35,4 @@ properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   clinical_descriptors:
     $ref: _definitions.yaml#/to_one
-  antithrombotic_meds:
-    description: 'Self-reported / measured use of antithrobotic medication '
-    $ref: _definitions.yaml#/enum_yes_no
-  bp_lowering_meds:
-    description: Self-reported use of anti-hypertensive medication at the time of
-      blood pressure measurement.
-    $ref: _definitions.yaml#/enum_yes_no
-  diabetes_therapy:
-    description: Self-reported use of anti-diabetic therapy.
-    $ref: _definitions.yaml#/enum_diab_therapy
-  lipid_lowering_meds:
-    description: 'Self-reported use of lipid lowering drugs (are you taking tables
-      to lower your cholesterol?). Full drug audit at wave 2 and 3. '
-    $ref: _definitions.yaml#/enum_yes_no
 additionalProperties: false

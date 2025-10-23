@@ -27,29 +27,12 @@ required:
 links:
 - name: projects
   backref: publications
-  label: null
+  label: part_of
   target_type: project
-  multiplicity: one_to_many
+  multiplicity: many_to_one
   required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   projects:
-    $ref: _definitions.yaml#/to_many
-  doi:
-    description: Digital object identifier for the published article or pre-print.
-      Starting with 10.
-    type: string
-    pattern: ^10\.\d{4,9}.+
-  is_primary:
-    description: Whether the publication is the primary publication for this study
-    type: boolean
-  pmid:
-    description: The pubmed id of the article
-    type: string
-  title:
-    description: Title of the publication
-    type: string
-  url:
-    description: Direct link to the published article
-    type: string
+    $ref: _definitions.yaml#/to_one
 additionalProperties: false

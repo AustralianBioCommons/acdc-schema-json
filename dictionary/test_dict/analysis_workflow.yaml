@@ -27,29 +27,12 @@ required:
 links:
 - name: genomics_files
   backref: analysis_workflows
-  label: null
+  label: part_of
   target_type: genomics_file
-  multiplicity: many_to_one
+  multiplicity: one_to_many
   required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   genomics_files:
-    $ref: _definitions.yaml#/to_one
-    workflow_end_datetime:
-    description: A combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
-    type: string
-    pattern: ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$
-  workflow_link:
-    description: Link to Github hash for the CWL workflow used.
-    type: string
-  workflow_start_datetime:
-    description: A combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
-    type: string
-    pattern: ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$
-  workflow_type:
-    description: Type of read aligner used
-    $ref: _definitions.yaml#/enum_align_work
-  workflow_version:
-    description: Version of the workflow used
-    type: string
+    $ref: _definitions.yaml#/to_many
 additionalProperties: false

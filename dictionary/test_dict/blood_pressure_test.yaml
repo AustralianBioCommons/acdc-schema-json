@@ -27,7 +27,7 @@ required:
 links:
 - name: clinical_descriptors
   backref: blood_pressure_tests
-  label: null
+  label: part_of
   target_type: clinical_descriptor
   multiplicity: one_to_one
   required: true
@@ -35,20 +35,4 @@ properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   clinical_descriptors:
     $ref: _definitions.yaml#/to_one
-  bp_diastolic:
-    description: Resting diastolic blood pressure from the upper arm in a clinical
-      setting. (mmHg)
-    termDef:
-    - term: diastolic blood pressure
-      source: efo
-      term_id: EFO:0006336
-    type: integer
-  bp_systolic:
-    description: Resting systolic blood pressure from the upper arm in a clinical
-      setting. (mmHg)
-    termDef:
-    - term: systolic blood pressure
-      source: efo
-      term_id: EFO:0006335
-    type: integer
 additionalProperties: false

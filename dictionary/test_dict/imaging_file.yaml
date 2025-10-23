@@ -30,103 +30,20 @@ links:
   subgroup:
   - name: clinical_descriptors
     backref: imaging_files
-    label: null
+    label: part_of
     target_type: clinical_descriptor
-    multiplicity: one_to_many
+    multiplicity: many_to_one
     required: true
   - name: core_metadata_collections
     backref: imaging_files
-    label: null
+    label: part_of
     target_type: core_metadata_collection
     multiplicity: one_to_one
-    required: true
+    required: false
 properties:
   $ref: _definitions.yaml#/data_file_properties
   clinical_descriptors:
-    $ref: _definitions.yaml#/to_many
+    $ref: _definitions.yaml#/to_one
   core_metadata_collections:
     $ref: _definitions.yaml#/to_one
-  data_type:
-    description: The type of data file, such as DICOM or NIfTI, which indicates the
-      format used for storing medical images.
-    $ref: _definitions.yaml#/enum_imaging_data_type
-  data_format:
-    description: The specific format of the data files, such as DCM for DICOM files
-      or nii.gz for NIfTI files.
-    $ref: _definitions.yaml#/enum_imaging_data_format
-  data_category:
-    description: The broad category of the imaging data, such as CT, MRI, X-ray, Ultrasound,
-      or PET.
-    $ref: _definitions.yaml#/enum_imaging_data_category
-  acquisition_type:
-    description: The method used to acquire the images, such as SEQUENCED, SPIRAL,
-      CONSTANT_ANGLE, STATIONARY, or FREE.
-    $ref: _definitions.yaml#/enum_imaging_acquisition_type
-  contrast_bolus_agent:
-    description: The type of contrast agent used during the imaging procedure, such
-      as iodine-based agents.
-    type: string
-  convolution_kernel:
-    description: The type of convolution kernel used in image reconstruction, which
-      affects image sharpness and noise.
-    type: string
-  exposure_modulation_type:
-    description: The type of exposure modulation used to adjust the radiation dose
-      during imaging, such as AUTO.
-    type: string
-  image_data_modification_method:
-    description: The type of modification performed on the image data, such as removal
-      of alphanumeric characters, defacing, or skull-stripping.
-    $ref: _definitions.yaml#/enum_imaging_mod_method
-  image_data_modification_name:
-    description: A classification describing specific methods used to modify the image
-      data, such as software tools or processes.
-    type: integer
-  image_data_modified:
-    description: Indicates whether any post-clinical modification of the image pixel
-      data has been performed.
-    type: boolean
-  lossy_image_compression:
-    description: Indicates whether the image was compressed using a lossy algorithm,
-      which can reduce file size but may affect image quality.
-    type: boolean
-  manufacturer:
-    description: The name of the manufacturer of the imaging equipment, such as GE
-      Healthcare or Siemens.
-    type: string
-  manufacturer_model_name:
-    description: The model name of the imaging equipment, such as Revolution CT or
-      MAGNETOM Skyra.
-    type: string
-  modality:
-    description: The type of imaging modality used, such as CT, MRI, X-ray, Ultrasound,
-      or PET.
-    type: string
-  object_id:
-    description: The unique identifier for the imaging file in the data index service.
-    type: string
-  patient_position:
-    description: The position of the patient during the imaging procedure, such as
-      Head First Supine (HFS) or Feet First Prone (FFP).
-    type: string
-  pixel_spacing:
-    description: The distance between the centers of adjacent pixels in the image,
-      measured in millimeters.
-    type: number
-  series_description:
-    description: A description of the imaging series, such as "Chest CT" or "Cardiac
-      MRI".
-    type: string
-  series_uid:
-    description: The unique identifier for the imaging series, assigned by the imaging
-      equipment.
-    type: string
-  slice_thickness:
-    description: The thickness of each slice in the imaging series, measured in millimeters.
-    type: number
-  spacing_between_slices:
-    description: The distance between the centers of adjacent slices in the imaging
-      series, measured in millimeters.
-    type: number
-
 additionalProperties: false
