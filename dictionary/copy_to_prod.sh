@@ -19,6 +19,6 @@ fi
 
 mkdir "$SCRIPT_DIR/prod_dict"
 echo "Copying $SCRIPT_DIR/test_dict to $SCRIPT_DIR/prod_dict ..."
-cp -r "$SCRIPT_DIR/test_dict" "$SCRIPT_DIR/prod_dict"
+cp -r "$SCRIPT_DIR/test_dict/" "$SCRIPT_DIR/prod_dict"
 
 echo "Copied test dictionary to prod_dict."
