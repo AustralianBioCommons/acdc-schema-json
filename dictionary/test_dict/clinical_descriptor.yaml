@@ -37,4 +37,21 @@ properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   subjects:
     $ref: _definitions.yaml#/to_one
+  context_label:
+    description: The code or label for the clinical context. e.g. baseline, 6months,
+      treatment, placebo, etc
+    type: string
+  description:
+    description: The description of the clinical context. e.g. blood taken at 6 months,
+      10mg lovastatin, double-blind placebo
+    type: string
+  baseline_measure:
+    description: Indicates if this is a baseline measure
+    type: boolean
+  years_from_baseline:
+    description: Years from the baseline measurement
+    type: number
+  site:
+    description: The location, lab, or clinical site that the data was collected
+    type: string
 additionalProperties: false

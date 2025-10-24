@@ -32,7 +32,7 @@ links:
     backref: proteomics_files
     label: part_of
     target_type: proteomics_assay
-    multiplicity: one_to_many
+    multiplicity: many_to_one
     required: true
   - name: core_metadata_collections
     backref: proteomics_files
@@ -43,7 +43,7 @@ links:
 properties:
   $ref: _definitions.yaml#/data_file_properties
   proteomics_assays:
-    $ref: _definitions.yaml#/to_many
+    $ref: _definitions.yaml#/to_one
   core_metadata_collections:
     $ref: _definitions.yaml#/to_one
   cv:
@@ -61,5 +61,4 @@ properties:
   proteomic_unit:
     description: Units of measurement captured in the proteomics file.
     $ref: _definitions.yaml#/enum_protein_units
-
 additionalProperties: false

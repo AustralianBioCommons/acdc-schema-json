@@ -46,4 +46,16 @@ properties:
     $ref: _definitions.yaml#/to_one
   core_metadata_collections:
     $ref: _definitions.yaml#/to_one
+  data_category:
+    description: Broad categorization of the contents of the data file.
+    $ref: _definitions.yaml#/enum_ms_data_cat
+  data_format:
+    description: The format of the data in this data file
+    $ref: _definitions.yaml#/enum_table_data_format
+  data_type:
+    description: The type of data in this data file
+    $ref: _definitions.yaml#/enum_ms_type
+  serum_unit:
+    description: Units of measurement captured in the file.
+    type: string
 additionalProperties: false

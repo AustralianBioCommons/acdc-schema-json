@@ -31,12 +31,12 @@ links:
   backref: clinical_descriptors
   label: part_of
   target_type: subject
-  multiplicity: one_to_many
+  multiplicity: many_to_one
   required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   subjects:
-    $ref: _definitions.yaml#/to_many
+    $ref: _definitions.yaml#/to_one
   context_label:
     description: The code or label for the clinical context. e.g. baseline, 6months,
       treatment, placebo, etc

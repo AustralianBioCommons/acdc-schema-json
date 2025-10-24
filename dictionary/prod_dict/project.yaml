@@ -126,8 +126,6 @@ properties:
       \ and/or material might be removed, stored or used. \\n\n        Based on the\
       \ Data Use Ontology : see http://www.obofoundry.org/ontology/duo.html"
     type: array
-    items:
-      type: string
   data_access_url:
     description: A URL link that takes you to a page that explains how to gain access
       to the project

@@ -29,12 +29,12 @@ links:
   backref: publications
   label: part_of
   target_type: project
-  multiplicity: one_to_many
+  multiplicity: many_to_one
   required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   projects:
-    $ref: _definitions.yaml#/to_many
+    $ref: _definitions.yaml#/to_one
   doi:
     description: Digital object identifier for the published article or pre-print.
       Starting with 10.
