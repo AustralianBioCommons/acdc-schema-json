@@ -29,12 +29,12 @@ links:
   backref: proteomics_assays
   label: part_of
   target_type: sample
-  multiplicity: many_to_one
+  multiplicity: one_to_many
   required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   samples:
-    $ref: _definitions.yaml#/to_one
+    $ref: _definitions.yaml#/to_many
   assay_id:
     description: An identifier for the assay or experiemnt performed on the sample
     type: string

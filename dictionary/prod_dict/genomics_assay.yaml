@@ -29,12 +29,12 @@ links:
   backref: genomics_assays
   label: part_of
   target_type: sample
-  multiplicity: many_to_one
+  multiplicity: one_to_many
   required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   samples:
-    $ref: _definitions.yaml#/to_one
+    $ref: _definitions.yaml#/to_many
   run_id:
     description: The unique identifier for the specific instrument run that generated
       the data. Use an identifier that will best minimise batch effects.
@@ -68,5 +68,4 @@ properties:
     description: Version, manifest, or catalog number of the DNA microarray used in
       the genotyping experiment.
     type: string
-
 additionalProperties: false

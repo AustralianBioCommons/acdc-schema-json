@@ -32,7 +32,7 @@ links:
     backref: lipidomics_files
     label: part_of
     target_type: lipidomics_assay
-    multiplicity: one_to_many
+    multiplicity: many_to_one
     required: true
   - name: core_metadata_collections
     backref: lipidomics_files
@@ -43,7 +43,7 @@ links:
 properties:
   $ref: _definitions.yaml#/data_file_properties
   lipidomics_assays:
-    $ref: _definitions.yaml#/to_many
+    $ref: _definitions.yaml#/to_one
   core_metadata_collections:
     $ref: _definitions.yaml#/to_one
   cv:

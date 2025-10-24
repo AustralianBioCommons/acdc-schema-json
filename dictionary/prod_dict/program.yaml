@@ -1,29 +1,24 @@
 $schema: http://json-schema.org/draft-04/schema#
 id: program
-title: program
+title: Program
 type: object
-namespace: https://commons.heartdata.baker.edu.au/
 category: administrative
 program: '*'
 project: '*'
-description: 'The program that the data belongs to
+description: 'A broad framework of goals to be achieved. (NCIt C52647)
 
   '
-submittable: true
+additionalProperties: false
+submittable: false
 validators: null
 systemProperties:
 - id
-- project_id
-- state
-- created_datetime
-- updated_datetime
+required:
+- name
+- dbgap_accession_number
 uniqueKeys:
 - - id
-- - project_id
-  - submitter_id
-required:
-- submitter_id
-- type
+- - name
 links: []
 properties:
   type:
@@ -37,4 +32,3 @@ properties:
   dbgap_accession_number:
     type: string
     description: The dbgap accession number provided for the program.
-additionalProperties: false

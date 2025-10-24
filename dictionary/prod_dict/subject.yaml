@@ -29,12 +29,12 @@ links:
   backref: subjects
   label: part_of
   target_type: project
-  multiplicity: one_to_many
+  multiplicity: many_to_one
   required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   projects:
-    $ref: _definitions.yaml#/to_many
+    $ref: _definitions.yaml#/to_one
   cohort_id:
     description: Identifier for the cohort the subject is a part of
     type: string

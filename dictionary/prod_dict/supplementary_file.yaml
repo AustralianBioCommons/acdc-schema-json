@@ -32,7 +32,7 @@ links:
     backref: supplementary_files
     label: part_of
     target_type: genomics_file
-    multiplicity: one_to_many
+    multiplicity: many_to_one
     required: true
   - name: core_metadata_collections
     backref: supplementary_files
@@ -40,11 +40,35 @@ links:
     target_type: core_metadata_collection
     multiplicity: one_to_one
     required: false
+  - name: lipidomics_files
+    backref: supplementary_files
+    label: part_of
+    target_type: lipidomics_file
+    multiplicity: many_to_one
+    required: true
+  - name: proteomics_files
+    backref: supplementary_files
+    label: part_of
+    target_type: proteomics_file
+    multiplicity: many_to_one
+    required: true
+  - name: metabolomics_files
+    backref: supplementary_files
+    label: part_of
+    target_type: metabolomics_file
+    multiplicity: many_to_one
+    required: true
 properties:
   $ref: _definitions.yaml#/data_file_properties
   genomics_files:
-    $ref: _definitions.yaml#/to_many
+    $ref: _definitions.yaml#/to_one
   core_metadata_collections:
+    $ref: _definitions.yaml#/to_one
+  lipidomics_files:
+    $ref: _definitions.yaml#/to_one
+  proteomics_files:
+    $ref: _definitions.yaml#/to_one
+  metabolomics_files:
     $ref: _definitions.yaml#/to_one
   data_category:
     description: Data category, default is 'supplementary'

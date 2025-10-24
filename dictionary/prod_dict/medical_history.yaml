@@ -159,5 +159,4 @@ properties:
       family history is defined as coronary heart disease or stroke in a first-degree
       female relative aged <65 years or a first degree male relative aged <55 years.)
     $ref: _definitions.yaml#/enum_yes_no
-
 additionalProperties: false

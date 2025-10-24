@@ -1,13 +1,14 @@
 $schema: http://json-schema.org/draft-04/schema#
 id: serum_marker_file
-title: Serum Marker File
+title: serum_marker_file
 type: object
-namespace: https://data.test.biocommons.org.au/
+namespace: https://commons.heartdata.baker.edu.au/
 category: data_file
 program: '*'
 project: '*'
-description: Data file that contains the results of a serum marker assay
-additionalProperties: false
+description: 'Data file that contains the results of a serum marker assay
+
+  '
 submittable: true
 validators: null
 systemProperties:
@@ -16,29 +17,29 @@ systemProperties:
 - state
 - created_datetime
 - updated_datetime
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+required:
+- submitter_id
+- type
 links:
 - exclusive: false
   required: true
   subgroup:
   - name: serum_marker_assays
     backref: serum_marker_files
-    label: derives_from
+    label: part_of
     target_type: serum_marker_assay
     multiplicity: many_to_one
-    required: false
+    required: true
   - name: core_metadata_collections
     backref: serum_marker_files
-    label: describes
+    label: part_of
     target_type: core_metadata_collection
     multiplicity: one_to_one
     required: false
-required:
-- type
-- submitter_id
-uniqueKeys:
-- - id
-- - project_id
-  - submitter_id
 properties:
   $ref: _definitions.yaml#/data_file_properties
   serum_marker_assays:
@@ -57,3 +58,4 @@ properties:
   serum_unit:
     description: Units of measurement captured in the file.
     type: string
+additionalProperties: false

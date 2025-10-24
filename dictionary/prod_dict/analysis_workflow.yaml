@@ -25,17 +25,44 @@ required:
 - submitter_id
 - type
 links:
-- name: genomics_files
-  backref: analysis_workflows
-  label: part_of
-  target_type: genomics_file
-  multiplicity: many_to_one
+- exclusive: false
   required: true
+  subgroup:
+  - name: genomics_files
+    backref: analysis_workflows
+    label: part_of
+    target_type: genomics_file
+    multiplicity: one_to_many
+    required: true
+  - name: metabolomics_files
+    backref: analysis_workflows
+    label: part_of
+    target_type: metabolomics_file
+    multiplicity: one_to_many
+    required: true
+  - name: proteomics_files
+    backref: analysis_workflows
+    label: part_of
+    target_type: proteomics_file
+    multiplicity: one_to_many
+    required: true
+  - name: lipidomics_files
+    backref: analysis_workflows
+    label: part_of
+    target_type: lipidomics_file
+    multiplicity: one_to_many
+    required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   genomics_files:
-    $ref: _definitions.yaml#/to_one
-    workflow_end_datetime:
+    $ref: _definitions.yaml#/to_many
+  metabolomics_files:
+    $ref: _definitions.yaml#/to_many
+  proteomics_files:
+    $ref: _definitions.yaml#/to_many
+  lipidomics_files:
+    $ref: _definitions.yaml#/to_many
+  workflow_end_datetime:
     description: A combination of date and time of day in the form [-]CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm]
     type: string
     pattern: ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2})$

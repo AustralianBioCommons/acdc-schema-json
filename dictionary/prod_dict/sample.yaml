@@ -30,12 +30,12 @@ links:
   backref: samples
   label: part_of
   target_type: clinical_descriptor
-  multiplicity: one_to_many
+  multiplicity: many_to_one
   required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   clinical_descriptors:
-    $ref: _definitions.yaml#/to_many
+    $ref: _definitions.yaml#/to_one
   freeze_thaw_cycles:
     description: Number of freeze thaw cycles conducted on the sample
     type: integer

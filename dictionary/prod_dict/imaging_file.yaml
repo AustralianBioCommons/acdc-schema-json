@@ -32,7 +32,7 @@ links:
     backref: imaging_files
     label: part_of
     target_type: clinical_descriptor
-    multiplicity: one_to_many
+    multiplicity: many_to_one
     required: true
   - name: core_metadata_collections
     backref: imaging_files
@@ -43,7 +43,7 @@ links:
 properties:
   $ref: _definitions.yaml#/data_file_properties
   clinical_descriptors:
-    $ref: _definitions.yaml#/to_many
+    $ref: _definitions.yaml#/to_one
   core_metadata_collections:
     $ref: _definitions.yaml#/to_one
   data_type:
@@ -128,5 +128,4 @@ properties:
     description: The distance between the centers of adjacent slices in the imaging
       series, measured in millimeters.
     type: number
-
 additionalProperties: false

@@ -29,12 +29,12 @@ links:
   backref: acknowledgements
   label: part_of
   target_type: project
-  multiplicity: one_to_many
+  multiplicity: many_to_one
   required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   projects:
-    $ref: _definitions.yaml#/to_many
+    $ref: _definitions.yaml#/to_one
   acknowledgee:
     description: Name of the individual or group to be acknowledged. Preferably as First name Last name
     type: string
