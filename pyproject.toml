@@ -1,6 +1,6 @@
 [project]
 name = "acdc-schema-json"
-version = "0.5.8"
+version = "0.5.9"
 description = "Gen3 Data Dictionary for ACDC"
 authors = [
     {name = "JoshuaHarris391",email = "harjo391@gmail.com"}
