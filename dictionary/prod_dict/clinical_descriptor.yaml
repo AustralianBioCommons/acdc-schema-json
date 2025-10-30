@@ -54,4 +54,7 @@ properties:
   site:
     description: The location, lab, or clinical site that the data was collected
     type: string
+  five_month_follow_up:
+    description: The 5 month follow up status of the participant
+    type: boolean
 additionalProperties: false
