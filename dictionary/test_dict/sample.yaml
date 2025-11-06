@@ -36,36 +36,4 @@ properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   clinical_descriptors:
     $ref: _definitions.yaml#/to_one
-  freeze_thaw_cycles:
-    description: Number of freeze thaw cycles conducted on the sample
-    type: integer
-  sample_collection_method:
-    description: How the sample was collected, e.g. blood draw
-    type: string
-  sample_id:
-    description: A unique sample identifier
-    type: string
-  sample_in_preservation:
-    description: The preservation method used for the sample
-    $ref: _definitions.yaml#/enum_preservation
-  sample_in_storage:
-    description: Whether there is a sample in storage
-    $ref: _definitions.yaml#/enum_yes_no_unknown
-  sample_provider:
-    description: The name of collaborating institute that provided the sample
-    $ref: _definitions.yaml#/enum_institute
-  sample_source:
-    description: Uberon identifier, anatomical location as described by the Uber Anatomy
-      Ontology (UBERON). (CMG, CCDG)
-    type: string
-    pattern: ^UBERON:[0-9]{7}$
-  sample_storage_method:
-    description: How the sample was/is stored
-    $ref: _definitions.yaml#/enum_storage
-  sample_type:
-    description: The type of sample, e.g. Whole Blood, Blood Cells, Frozen Blood
-    type: string
-  storage_location:
-    description: Where the sample is stored
-    $ref: _definitions.yaml#/enum_institute
 additionalProperties: false

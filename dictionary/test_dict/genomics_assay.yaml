@@ -35,37 +35,4 @@ properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   samples:
     $ref: _definitions.yaml#/to_many
-  run_id:
-    description: The unique identifier for the specific instrument run that generated
-      the data. Use an identifier that will best minimise batch effects.
-    type: string
-  instrument_model:
-    description: The name and/or number associated with a specific instrument model.
-      e.g. Hiseq X, NovaSeq 6000
-    type: string
-  instrument_manufacturer:
-    description: The manufacturer of the instrument. E.g. Illumina, Affymetrix, Oxford
-      Nanopore, Thermo Scientific
-    type: string
-  assay_batch_id:
-    description: An identifier for the assay performed on the sample. If unsure, use
-      an identifier that can be best used to minimise batch effects
-    type: string
-  assay_protocol:
-    description: Name of the protocol used to prepare the samples. e.g. Protocol for
-      use with NEBNext Ultra II DNA Library Prep with Sample Purification Beads (E7103)
-    type: string
-  assay_version:
-    description: A string that references the protocol version e.g. E7103
-    type: string
-  assay_link:
-    description: A link to the protocol. e.g. https://www.neb.com/en-au/protocols/2016/07/04/protocol-for-nebnext-ultra-ii-dna-library-prep-with-sample-purification-beads-neb-e7103
-    type: string
-  assay_type:
-    description: Sequencing technique used for this library
-    $ref: _definitions.yaml#/enum_gen_assay
-  dna_array_version:
-    description: Version, manifest, or catalog number of the DNA microarray used in
-      the genotyping experiment.
-    type: string
 additionalProperties: false

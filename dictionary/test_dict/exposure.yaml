@@ -36,20 +36,4 @@ properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   clinical_descriptors:
     $ref: _definitions.yaml#/to_one
-  cigarettes_per_day:
-    description: Self reported cigarettes per day.
-    type: integer
-  drinking_status:
-    description: Self reported current drinking status.
-    $ref: _definitions.yaml#/enum_drinking_current
-  drinks_per_week:
-    description: Estimated standard drinks per week as integer
-    type: integer
-  drinks_per_week_string:
-    description: Estimated standard drinks per week as string. Suitable for questionaires
-      where drinks may be reported as a range e.g. 10-12
-    type: string
-  smoking_status:
-    description: Indicates whether subject ever regularly smoked cigarettes.
-    $ref: _definitions.yaml#/enum_smoking
 additionalProperties: false

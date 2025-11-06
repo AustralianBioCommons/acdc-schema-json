@@ -1,12 +1,12 @@
 $schema: http://json-schema.org/draft-04/schema#
-id: medication
-title: medication
+id: report
+title: report
 type: object
 namespace: https://commons.heartdata.baker.edu.au/
 category: clinical
 program: '*'
 project: '*'
-description: 'Records about historical or current medication use.
+description: 'Data file that contains the results of a report
 
   '
 submittable: true
@@ -26,13 +26,23 @@ required:
 - type
 links:
 - name: clinical_descriptors
-  backref: medications
+  backref: reports
   label: part_of
   target_type: clinical_descriptor
   multiplicity: one_to_one
   required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
+  report_type:
+    type: string
+    description: 'The type of report
+
+      '
+  report_year:
+    type: integer
+    description: 'The date of the report
+
+      '
   clinical_descriptors:
     $ref: _definitions.yaml#/to_one
 additionalProperties: false

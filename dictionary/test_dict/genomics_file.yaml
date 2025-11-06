@@ -47,24 +47,21 @@ properties:
   core_metadata_collections:
     $ref: _definitions.yaml#/to_one
   data_category:
-    description: A high-level category indicating the data's stage in the bioinformatics
-      workflow, such as raw instrument output, processed data, or analysis-ready results
-    $ref: _definitions.yaml#/enum_genomic_file_data_cat
+    description: Broad categorization of the contents of the data file.
+    enum:
+    - data_category_1
+    - data_category_2
+    - data_category_3
   data_format:
-    description: The format of the data in this data file. Usually the extension of
-      the fileThe technical format that defines the structure and encoding of the
-      data within the file. This often corresponds to a standard specification and
-      is typically indicated by the file extension (e.g., VCF, BAM, IDAT)
-    $ref: _definitions.yaml#/enum_genomic_file_data_format
+    description: The format of the data in this data file
+    enum:
+    - data_format_1
+    - data_format_2
+    - data_format_3
   data_type:
-    description: A specific descriptor for the biological content of the file, distinguishing
-      between different kinds of genomic information such as unaligned reads, called
-      genotypes, or copy number segments
-    $ref: _definitions.yaml#/enum_genomic_file_data_type
-  imputed:
-    description: Does the file contain imputed data?
-    type: boolean
-  reference_genome_build:
-    description: Reference genome used e.g. GRCh37.
-    $ref: _definitions.yaml#/enum_ref_genome
+    description: The type of data in this data file
+    enum:
+    - data_type_1
+    - data_type_2
+    - data_type_3
 additionalProperties: false
