@@ -216,10 +216,6 @@ links:
   multiplicity: many_to_many
   child: release
 
-- parent: release
-  multiplicity: one_to_many
-  child: subject
-
 - parent: subject
   multiplicity: one_to_many
   child: clinical_descriptor

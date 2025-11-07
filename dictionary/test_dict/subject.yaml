@@ -25,25 +25,14 @@ required:
 - submitter_id
 - type
 links:
-- exclusive: false
+- name: projects
+  backref: subjects
+  label: part_of
+  target_type: project
+  multiplicity: many_to_one
   required: true
-  subgroup:
-  - name: projects
-    backref: subjects
-    label: part_of
-    target_type: project
-    multiplicity: many_to_one
-    required: true
-  - name: releases
-    backref: subjects
-    label: part_of
-    target_type: release
-    multiplicity: many_to_one
-    required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   projects:
-    $ref: _definitions.yaml#/to_one
-  releases:
     $ref: _definitions.yaml#/to_one
 additionalProperties: false
