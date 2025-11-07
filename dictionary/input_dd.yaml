@@ -213,7 +213,7 @@ links:
   child: subject
 
 - parent: project
-  multiplicity: many_to_one
+  multiplicity: many_to_many
   child: release
 
 - parent: release

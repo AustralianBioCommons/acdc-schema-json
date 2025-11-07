@@ -29,7 +29,7 @@ links:
   backref: releases
   label: part_of
   target_type: project
-  multiplicity: one_to_many
+  multiplicity: many_to_many
   required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
