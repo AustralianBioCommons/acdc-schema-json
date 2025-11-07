@@ -1,0 +1,44 @@
+$schema: http://json-schema.org/draft-04/schema#
+id: release
+title: release
+type: object
+namespace: https://commons.heartdata.baker.edu.au/
+category: administrative
+program: '*'
+project: '*'
+description: 'Information about the data release
+
+  '
+submittable: true
+validators: null
+systemProperties:
+- id
+- project_id
+- state
+- created_datetime
+- updated_datetime
+uniqueKeys:
+- - id
+- - project_id
+  - submitter_id
+required:
+- submitter_id
+- type
+links:
+- name: projects
+  backref: releases
+  label: part_of
+  target_type: project
+  multiplicity: one_to_many
+  required: true
+properties:
+  $ref: _definitions.yaml#/ubiquitous_properties
+  release_version:
+    type: string
+    description: The version of the data release (e.g. 1.0.0)
+  release_date:
+    type: string
+    description: The date of the data release as a string (yyyy-mm-dd)
+  projects:
+    $ref: _definitions.yaml#/to_many
+additionalProperties: false

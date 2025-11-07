@@ -32,7 +32,7 @@ nodes:
     Publications associated with the project
 
 
-- name: data_release
+- name: release
   category: administrative
   description: >
     Information about the data release
@@ -214,9 +214,9 @@ links:
 
 - parent: project
   multiplicity: many_to_one
-  child: data_release
+  child: release
 
-- parent: data_release
+- parent: release
   multiplicity: one_to_many
   child: subject
 

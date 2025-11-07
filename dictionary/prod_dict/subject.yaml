@@ -34,17 +34,17 @@ links:
     target_type: project
     multiplicity: many_to_one
     required: true
-  - name: data_releases
+  - name: releases
     backref: subjects
     label: part_of
-    target_type: data_release
+    target_type: release
     multiplicity: many_to_one
     required: false
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   projects:
     $ref: _definitions.yaml#/to_one
-  data_releases:
+  releases:
     $ref: _definitions.yaml#/to_one
   cohort_id:
     description: Identifier for the cohort the subject is a part of

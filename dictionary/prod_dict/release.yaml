@@ -1,6 +1,6 @@
 $schema: http://json-schema.org/draft-04/schema#
-id: data_release
-title: data_release
+id: release
+title: release
 type: object
 namespace: https://commons.heartdata.baker.edu.au/
 category: administrative
@@ -26,7 +26,7 @@ required:
 - type
 links:
 - name: projects
-  backref: data_releases
+  backref: releases
   label: part_of
   target_type: project
   multiplicity: one_to_many
