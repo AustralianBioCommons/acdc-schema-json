@@ -217,7 +217,7 @@ links:
   child: data_release
 
 - parent: data_release
-  multiplicity: one_to_one
+  multiplicity: one_to_many
   child: subject
 
 - parent: subject
