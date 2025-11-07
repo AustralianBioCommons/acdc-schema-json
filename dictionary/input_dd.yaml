@@ -1,4 +1,4 @@
-version: 0.5.0
+version: 0.6.2
 url: https://commons.heartdata.baker.edu.au/
 
 ####################################
@@ -32,6 +32,17 @@ nodes:
     Publications associated with the project
 
 
+- name: data_release
+  category: administrative
+  description: >
+    Information about the data release
+  properties:
+    - name: release_version
+      description: The version of the data release (e.g. 1.0.0)
+      type: string
+    - name: release_date
+      description: The date of the data release as a string (yyyy-mm-dd)
+      type: string
 
 ##### Clinical nodes
 - name: subject
@@ -83,6 +94,19 @@ nodes:
     Data for the characterization of the patient by means of segementing
     the population (e.g. characterization by age, sex, or race).
 
+- name: report
+  category: clinical
+  description: >
+    Data file that contains the results of a report
+  properties:
+    - name: report_type
+      description: >
+        The type of report
+      type: string
+    - name: report_year
+      description: >  
+        The date of the report
+      type: integer
 
 
 ##### Assays and Samples
@@ -188,6 +212,14 @@ links:
   multiplicity: one_to_many
   child: subject
 
+- parent: project
+  multiplicity: many_to_one
+  child: data_release
+
+- parent: data_release
+  multiplicity: one_to_one
+  child: subject
+
 - parent: subject
   multiplicity: one_to_many
   child: clinical_descriptor
@@ -195,6 +227,10 @@ links:
 - parent: clinical_descriptor
   multiplicity: one_to_one
   child: medical_history
+
+- parent: clinical_descriptor
+  multiplicity: one_to_one
+  child: report
 
 - parent: clinical_descriptor
   multiplicity: one_to_one
