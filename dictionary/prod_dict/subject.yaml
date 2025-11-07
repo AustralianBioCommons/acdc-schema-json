@@ -39,7 +39,7 @@ links:
     label: part_of
     target_type: data_release
     multiplicity: one_to_one
-    required: true
+    required: false
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
   projects:
