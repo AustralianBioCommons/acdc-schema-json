@@ -32,18 +32,6 @@ nodes:
     Publications associated with the project
 
 
-- name: release
-  category: administrative
-  description: >
-    Information about the data release
-  properties:
-    - name: release_version
-      description: The version of the data release (e.g. 1.0.0)
-      type: string
-    - name: release_date
-      description: The date of the data release as a string (yyyy-mm-dd)
-      type: string
-
 ##### Clinical nodes
 - name: subject
   category: clinical
@@ -211,10 +199,6 @@ links:
 - parent: project
   multiplicity: one_to_many
   child: subject
-
-- parent: project
-  multiplicity: many_to_many
-  child: release
 
 - parent: subject
   multiplicity: one_to_many
