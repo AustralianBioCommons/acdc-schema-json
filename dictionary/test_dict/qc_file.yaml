@@ -40,28 +40,75 @@ links:
     target_type: core_metadata_collection
     multiplicity: one_to_one
     required: false
+  - name: lipidomics_files
+    backref: qc_files
+    label: part_of
+    target_type: lipidomics_file
+    multiplicity: many_to_one
+    required: true
+  - name: proteomics_files
+    backref: qc_files
+    label: part_of
+    target_type: proteomics_file
+    multiplicity: many_to_one
+    required: true
+  - name: metabolomics_files
+    backref: qc_files
+    label: part_of
+    target_type: metabolomics_file
+    multiplicity: many_to_one
+    required: true
 properties:
   $ref: _definitions.yaml#/data_file_properties
   genomics_files:
     $ref: _definitions.yaml#/to_one
   core_metadata_collections:
     $ref: _definitions.yaml#/to_one
+  lipidomics_files:
+    $ref: _definitions.yaml#/to_one
+  proteomics_files:
+    $ref: _definitions.yaml#/to_one
+  metabolomics_files:
+    $ref: _definitions.yaml#/to_one
+  data_type:
+    description: The type of data, e.g. log, index, mapping, etc
+    $ref: _definitions.yaml#/enum_supp_data_type
   data_category:
     description: Broad categorization of the contents of the data file.
-    enum:
-    - data_category_1
-    - data_category_2
-    - data_category_3
+    $ref: _definitions.yaml#/enum_supp_data_type
   data_format:
     description: The format of the data in this data file
-    enum:
-    - data_format_1
-    - data_format_2
-    - data_format_3
-  data_type:
-    description: The type of data in this data file
-    enum:
-    - data_type_1
-    - data_type_2
-    - data_type_3
+    $ref: _definitions.yaml#/enum_table_data_format
+  freeze_thaw_cycles:
+    description: Number of freeze thaw cycles conducted on the sample
+    type: integer
+  sample_collection_method:
+    description: How the sample was collected, e.g. blood draw
+    type: string
+  sample_id:
+    description: A unique sample identifier
+    type: string
+  sample_in_preservation:
+    description: The preservation method used for the sample
+    $ref: _definitions.yaml#/enum_preservation
+  sample_in_storage:
+    description: Whether there is a sample in storage
+    $ref: _definitions.yaml#/enum_yes_no_unknown
+  sample_provider:
+    description: The name of collaborating institute that provided the sample
+    $ref: _definitions.yaml#/enum_institute
+  sample_source:
+    description: Uberon identifier, anatomical location as described by the Uber Anatomy
+      Ontology (UBERON). (CMG, CCDG)
+    type: string
+    pattern: ^UBERON:[0-9]{7}$
+  sample_storage_method:
+    description: How the sample was/is stored
+    $ref: _definitions.yaml#/enum_storage
+  sample_type:
+    description: The type of sample, e.g. Whole Blood, Blood Cells, Frozen Blood
+    type: string
+  storage_location:
+    description: Where the sample is stored
+    $ref: _definitions.yaml#/enum_institute
 additionalProperties: false
