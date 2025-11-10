@@ -68,10 +68,4 @@ properties:
   lipidomic_unit:
     description: Units of measurement captured in the lipidomics file.
     $ref: _definitions.yaml#/enum_lipid_units
-  release_version:
-    type: string
-    description: The version of the data release (e.g. 1.0.0)
-  release_date:
-    type: string
-    description: The date of the data release as a string (yyyy-mm-dd)
 additionalProperties: false

@@ -32,9 +32,3 @@ properties:
   dbgap_accession_number:
     type: string
     description: The dbgap accession number provided for the program.
-  release_version:
-    type: string
-    description: The version of the data release (e.g. 1.0.0)
-  release_date:
-    type: string
-    description: The date of the data release as a string (yyyy-mm-dd)

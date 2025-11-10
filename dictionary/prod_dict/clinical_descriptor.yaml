@@ -54,10 +54,7 @@ properties:
   site:
     description: The location, lab, or clinical site that the data was collected
     type: string
-  release_version:
-    type: string
-    description: The version of the data release (e.g. 1.0.0)
-  release_date:
-    type: string
-    description: The date of the data release as a string (yyyy-mm-dd)
+  five_month_follow_up:
+    description: The 5 month follow up status of the participant
+    type: boolean
 additionalProperties: false

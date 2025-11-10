@@ -77,10 +77,10 @@ properties:
   patient_id:
     description: De-identified unique identifier for the patient/subject
     type: string
-  release_version:
+  info_data_release:
+    description: Data release verison e.g. 0.1.1
     type: string
-    description: The version of the data release (e.g. 1.0.0)
-  release_date:
+  info_data_release_date:
+    description: Date of data release in the format YYYY-MM-DD
     type: string
-    description: The date of the data release as a string (yyyy-mm-dd)
 additionalProperties: false

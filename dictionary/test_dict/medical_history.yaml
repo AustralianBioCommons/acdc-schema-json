@@ -128,10 +128,9 @@ properties:
     description: Indicate the number of heart beats over a period of one minute.
     type: integer
   hypertension_measured:
-    description: 'Hypertension reported by a clinician at recruitment. Systolic BP
+    description: >
+      Hypertension reported by a clinician at recruitment. Systolic BP
       >140mmHg, diastolic BP >90mmHg, or both
-
-      '
     $ref: _definitions.yaml#/enum_yes_no
   hypertension_measured_ICD10:
     description: ICD10 code associated with Hypertension reported by a clinician at
@@ -160,10 +159,4 @@ properties:
       family history is defined as coronary heart disease or stroke in a first-degree
       female relative aged <65 years or a first degree male relative aged <55 years.)
     $ref: _definitions.yaml#/enum_yes_no
-  release_version:
-    type: string
-    description: The version of the data release (e.g. 1.0.0)
-  release_date:
-    type: string
-    description: The date of the data release as a string (yyyy-mm-dd)
 additionalProperties: false

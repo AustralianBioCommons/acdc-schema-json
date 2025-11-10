@@ -36,8 +36,7 @@ properties:
   projects:
     $ref: _definitions.yaml#/to_one
   acknowledgee:
-    description: Name of the individual or group to be acknowledged. Preferably as
-      First name Last name
+    description: Name of the individual or group to be acknowledged. Preferably as First name Last name
     type: string
   contact_type:
     description: The type of contact or role in the project, e.g. Principal Investigator
@@ -46,10 +45,4 @@ properties:
     description: The ORCID number for the acknowledgee
     type: string
     pattern: ^[0]{4}-\d{4}-\d{4}-(\d{3}X|\d{4})$
-  release_version:
-    type: string
-    description: The version of the data release (e.g. 1.0.0)
-  release_date:
-    type: string
-    description: The date of the data release as a string (yyyy-mm-dd)
 additionalProperties: false

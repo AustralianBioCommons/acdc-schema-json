@@ -68,10 +68,4 @@ properties:
     description: Version, manifest, or catalog number of the DNA microarray used in
       the genotyping experiment.
     type: string
-  release_version:
-    type: string
-    description: The version of the data release (e.g. 1.0.0)
-  release_date:
-    type: string
-    description: The date of the data release as a string (yyyy-mm-dd)
 additionalProperties: false
