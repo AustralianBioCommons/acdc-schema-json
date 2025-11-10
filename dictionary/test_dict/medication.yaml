@@ -49,4 +49,10 @@ properties:
     description: 'Self-reported use of lipid lowering drugs (are you taking tables
       to lower your cholesterol?). Full drug audit at wave 2 and 3. '
     $ref: _definitions.yaml#/enum_yes_no
+  release_version:
+    type: string
+    description: The version of the data release (e.g. 1.0.0)
+  release_date:
+    type: string
+    description: The date of the data release as a string (yyyy-mm-dd)
 additionalProperties: false
