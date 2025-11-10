@@ -124,4 +124,10 @@ properties:
   uacr:
     description: Urine albumin-creatinine ratio (uACR) (measured in mg/mmol).
     type: number
+  release_version:
+    type: string
+    description: The version of the data release (e.g. 1.0.0)
+  release_date:
+    type: string
+    description: The date of the data release as a string (yyyy-mm-dd)
 additionalProperties: false

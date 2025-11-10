@@ -83,4 +83,10 @@ properties:
   file_version:
     description: Version of the file
     type: string
+  release_version:
+    type: string
+    description: The version of the data release (e.g. 1.0.0)
+  release_date:
+    type: string
+    description: The date of the data release as a string (yyyy-mm-dd)
 additionalProperties: false
