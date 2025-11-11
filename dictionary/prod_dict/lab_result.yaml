@@ -57,7 +57,7 @@ properties:
       using CKD-EPI formula. Values of 90, indicate a measurement of 90 or greater
       (=>90)
     type: number
-  egfr_baseline_mdrd:
+  egfr_baseline_MDRD:
     description: Estimated glomerular filtration rate (eGFR) in mL/min/1.73m?^2, calcuated
       using MDRD formula. Values of 90, indicate a measurement of 90 or greater (=>90)
     type: number
