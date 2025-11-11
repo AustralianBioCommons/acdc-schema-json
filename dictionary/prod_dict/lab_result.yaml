@@ -52,7 +52,7 @@ properties:
   creatinine_serum_jaffe:
     description: "Serum creatinine level measured by jaffe assay (\xB5mol/L)"
     type: number
-  egfr_baseline_ckdepi:
+  egfr_baseline_CKDEPI:
     description: Estimated glomerular filtration rate (eGFR) in mL/min/1.73m?^2, calcuated
       using CKD-EPI formula. Values of 90, indicate a measurement of 90 or greater
       (=>90)
