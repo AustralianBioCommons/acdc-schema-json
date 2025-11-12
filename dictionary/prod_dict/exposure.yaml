@@ -6,10 +6,8 @@ namespace: https://commons.heartdata.baker.edu.au/
 category: clinical
 program: '*'
 project: '*'
-description: 'Clinically relevant patient information relating to environmental exposures
-  (e.g. smoking)
-
-  '
+description: >
+  Clinically relevant patient information relating to environmental exposures (e.g. smoking)
 submittable: true
 validators: null
 systemProperties:
@@ -37,19 +35,23 @@ properties:
   clinical_descriptors:
     $ref: _definitions.yaml#/to_one
   cigarettes_per_day:
-    description: Self reported cigarettes per day.
+    description: >
+      Self-reported number of cigarettes smoked per day.
     type: integer
   drinking_status:
-    description: Self reported current drinking status.
+    description: >
+      Self-reported current drinking status.
     $ref: _definitions.yaml#/enum_drinking_current
   drinks_per_week:
-    description: Estimated standard drinks per week as integer
+    description: >
+      Estimated number of standard drinks per week as an integer.
     type: integer
   drinks_per_week_string:
-    description: Estimated standard drinks per week as string. Suitable for questionaires
-      where drinks may be reported as a range e.g. 10-12
+    description: >
+      Estimated number of standard drinks per week as a string. Suitable for questionnaires where drinks may be reported as a range (e.g. "10-12").
     type: string
   smoking_status:
-    description: Indicates whether subject ever regularly smoked cigarettes.
+    description: >
+      Indicates whether the subject ever regularly smoked cigarettes.
     $ref: _definitions.yaml#/enum_smoking
 additionalProperties: false

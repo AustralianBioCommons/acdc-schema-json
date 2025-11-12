@@ -6,9 +6,8 @@ namespace: https://commons.heartdata.baker.edu.au/
 category: clinical
 program: '*'
 project: '*'
-description: 'Medical history of the participant
-
-  '
+description: >
+  Medical history of the participant.
 submittable: true
 validators: null
 systemProperties:
@@ -36,77 +35,92 @@ properties:
   clinical_descriptors:
     $ref: _definitions.yaml#/to_one
   atrial_fibrillation:
-    description: Self reported Atrial Fibrillation
+    description: >
+      Self-reported atrial fibrillation.
     $ref: _definitions.yaml#/enum_yes_no
   cabg:
-    description: Has the patient had Coronary Artery Bypass Graft (CABG) Surgery?
+    description: >
+      Has the patient had coronary artery bypass graft (CABG) surgery?
     $ref: _definitions.yaml#/enum_yes_no
   cvd_death:
-    description: Death due to cardiovascular disease
+    description: >
+      Death due to cardiovascular disease.
     $ref: _definitions.yaml#/enum_yes_no
   cvd_death_ICD10:
-    description: ICD10 code for Death due to CVD
+    description: >
+      ICD10 code for death due to cardiovascular disease.
     type: string
   cvd_family_history:
-    description: Does the participant have a family history of CVD? (Family history
-      of premature CVD is defined as coronary heart disease or stroke in a first-degree
-      female relative aged <65 years or a firstdegree male relative aged <55 years.)
+    description: >
+      Does the participant have a family history of cardiovascular disease (CVD)?
+      Family history of premature CVD is defined as coronary heart disease or stroke
+      in a first-degree female relative aged <65 years or a first-degree male relative
+      aged <55 years.
     $ref: _definitions.yaml#/enum_yes_no
   cvd_non_fatal_10_year:
-    description: Non fatal cardiovascular disease at 10 years.
+    description: >
+      Non-fatal cardiovascular disease at 10 years.
     $ref: _definitions.yaml#/enum_yes_no
   cvd_non_fatal_10_year_ICD10:
-    description: ICD10 code for Non fatal cardiovascular disease within the last 10
-      years.
+    description: >
+      ICD10 code for non-fatal cardiovascular disease within the last 10 years.
     type: string
   cvd_reported:
-    description: Reported Stroke/MI/Angina at baseline, by clinician
+    description: >
+      Reported stroke, myocardial infarction (MI), or angina at baseline, by clinician.
     termDef:
     - term: Stroke
       source: hpo
       term_id: HP:0001297
     $ref: _definitions.yaml#/enum_yes_no
   cvd_reported_ICD10:
-    description: ICD10 code for Stroke / MI / Angina at baseline
+    description: >
+      ICD10 code for stroke, MI, or angina at baseline.
     termDef:
     - term: Stroke
       source: hpo
       term_id: HP:0001297
     type: string
   cvd_self_reported:
-    description: Self-reported Stroke/MI/Angina at baseline by the participant.
+    description: >
+      Self-reported stroke, myocardial infarction (MI), or angina at baseline by the participant.
     termDef:
     - term: Stroke
       source: hpo
       term_id: HP:0001297
     $ref: _definitions.yaml#/enum_yes_no
   date_death:
-    description: Date of death in the format YYYY-MM-DD
+    description: >
+      Date of death in the format YYYY-MM-DD.
     type: string
     pattern: ^\d{4}-\d{2}-\d{2}
   diabetes_self_reported:
-    description: Self-reported diabetes in the participant
+    description: >
+      Self-reported diabetes in the participant.
     termDef:
     - term: Diabetes mellitus
       source: hpo
       term_id: HP:0000819
     $ref: _definitions.yaml#/enum_yes_no
   diabetes_reported:
-    description: Diabetes diagnosed by a clinician
+    description: >
+      Diabetes diagnosed by a clinician.
     termDef:
     - term: Diabetes mellitus
       source: hpo
       term_id: HP:0000819
     $ref: _definitions.yaml#/enum_yes_no
   diabetes_reported_ICD10:
-    description: ICD10 code associated with Diabetes diagnosis
+    description: >
+      ICD10 code associated with diabetes diagnosis.
     termDef:
     - term: Diabetes mellitus
       source: hpo
       term_id: HP:0000819
     type: string
   diabetes_type:
-    description: Diabetes mellitus type. Either "type-1" or "type-2"
+    description: >
+      Diabetes mellitus type. Either "type-1" or "type-2".
     termDef:
     - term: Diabetes mellitus
       source: hpo
@@ -114,7 +128,8 @@ properties:
       term_version: '2021-10-10'
     $ref: _definitions.yaml#/enum_diabetes_type
   diabetes_type_ICD10:
-    description: ICD10 code for Diabetes mellitus type.
+    description: >
+      ICD10 code for diabetes mellitus type.
     termDef:
     - term: Diabetes mellitus
       source: hpo
@@ -122,41 +137,44 @@ properties:
       term_version: '2021-10-10'
     type: string
   heart_failure_status:
-    description: Self reported heart failure status.
+    description: >
+      Self-reported heart failure status.
     $ref: _definitions.yaml#/enum_yes_no
   heart_rate:
-    description: Indicate the number of heart beats over a period of one minute.
+    description: >
+      Number of heart beats over a period of one minute.
     type: integer
   hypertension_measured:
     description: >
-      Hypertension reported by a clinician at recruitment. Systolic BP
-      >140mmHg, diastolic BP >90mmHg, or both
+      Hypertension reported by a clinician at recruitment. Systolic BP >140 mmHg, diastolic BP >90 mmHg, or both.
     $ref: _definitions.yaml#/enum_yes_no
   hypertension_measured_ICD10:
-    description: ICD10 code associated with Hypertension reported by a clinician at
-      recruitment.
+    description: >
+      ICD10 code associated with hypertension reported by a clinician at recruitment.
     type: string
   hypertension_self_reported:
-    description: Hypertension self reported by patient. Systolic BP >140mmHg, diastolic
-      BP >90mmHg, or both
+    description: >
+      Hypertension self-reported by patient. Systolic BP >140 mmHg, diastolic BP >90 mmHg, or both.
     $ref: _definitions.yaml#/enum_yes_no
   mhx_pad:
-    description: Vascular history - Code 13. Peripheral vascular disease (includes
-      abdominal aortic aneurism)
+    description: >
+      Vascular history - Code 13. Peripheral vascular disease (includes abdominal aortic aneurysm).
     $ref: _definitions.yaml#/enum_yes_no
   os_event:
-    description: 'Overall survival or vital status '
+    description: >
+      Overall survival or vital status.
     $ref: _definitions.yaml#/enum_surv_event
   os_time:
-    description: Overall survival time in months. Calculated as the time between baseline
-      date and death date.
+    description: >
+      Overall survival time in months. Calculated as the time between baseline date and death date.
     type: integer
   stent:
-    description: Coronary stent
+    description: >
+      Coronary stent.
     $ref: _definitions.yaml#/enum_yes_no
   premature_cvd_family_history:
-    description: Does the participant have a family history of premature CVD? Premature
-      family history is defined as coronary heart disease or stroke in a first-degree
-      female relative aged <65 years or a first degree male relative aged <55 years.)
+    description: >
+      Does the participant have a family history of premature CVD?
+      Premature family history is defined as coronary heart disease or stroke in a first-degree female relative aged <65 years or a first-degree male relative aged <55 years.
     $ref: _definitions.yaml#/enum_yes_no
 additionalProperties: false
