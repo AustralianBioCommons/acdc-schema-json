@@ -1,13 +1,12 @@
 $schema: http://json-schema.org/draft-04/schema#
-id: metabolomics_assay
-title: metabolomics_assay
+id: data_release
+title: data_release
 type: object
 namespace: https://commons.heartdata.baker.edu.au/
-category: experimental_methods
+category: administrative
 program: '*'
 project: '*'
-description: 'Details about the methods that produced the metabolomics data
-
+description: 'Information about the data release
   '
 submittable: true
 validators: null
@@ -25,27 +24,16 @@ required:
 - submitter_id
 - type
 links:
-- name: samples
-  backref: metabolomics_assays
+- name: subjects
+  backref: data_releases
   label: part_of
-  target_type: sample
-  multiplicity: one_to_many
+  target_type: subject
+  multiplicity: many_to_one
   required: true
 properties:
   $ref: _definitions.yaml#/ubiquitous_properties
-  samples:
-    $ref: _definitions.yaml#/to_many
-  assay_id:
-    description: An identifier for the assay or experiemnt performed on the sample
-    type: string
-  assay_description:
-    description: A description of the type of assay used.
-    type: string
-  metabolite_names:
-    description: A list of all metabolites assayed in this method
-    type: array
-    items:
-      type: string
+  subjects:
+    $ref: _definitions.yaml#/to_one
   data_release:
     description: Data release verison e.g. 0.1.1
     type: string
