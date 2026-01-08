@@ -37,91 +37,123 @@ properties:
   clinical_descriptors:
     $ref: _definitions.yaml#/to_one
   age_at_collection:
-    description: Age of the participant at the time of lab tests.
+    description: 'Age of the participant at the time of lab tests.
+
+      '
     type: number
   bnp:
-    description: Brain naturemic peptide (BNP) in ng/L
+    description: 'Brain naturemic peptide (BNP) in ng/L.
+
+      '
     type: number
   cac_score:
-    description: Coronary artery calcification (CAC). Score using Agatston scoring
-      of CT scan(s) of coronary arteries
+    description: 'Coronary artery calcification (CAC). Score using Agatston scoring
+      of CT scan(s) of coronary arteries.
+
+      '
     type: number
   creatinine_serum_enzymatic:
-    description: "Serum creatinine level measured by enzymatic assay (\xB5mol/L)"
+    description: "Serum creatinine level measured by enzymatic assay (\u03BCmol/L).\n"
     type: number
   creatinine_serum_jaffe:
-    description: "Serum creatinine level measured by jaffe assay (\xB5mol/L)"
+    description: "Serum creatinine level measured by jaffe assay (\u03BCmol/L).\n"
     type: number
   egfr_baseline_ckdepi:
-    description: Estimated glomerular filtration rate (eGFR) in mL/min/1.73m?^2, calcuated
-      using CKD-EPI formula. Values of 90, indicate a measurement of 90 or greater
-      (=>90)
+    description: "Estimated glomerular filtration rate (eGFR) in mL/min/1.73m\xB2\
+      , calculated using CKD-EPI formula. Values of 90 indicate a measurement of 90\
+      \ or greater (\u226590).\n"
     type: number
   egfr_baseline_mdrd:
-    description: Estimated glomerular filtration rate (eGFR) in mL/min/1.73m?^2, calcuated
-      using MDRD formula. Values of 90, indicate a measurement of 90 or greater (=>90)
+    description: "Estimated glomerular filtration rate (eGFR) in mL/min/1.73m\xB2\
+      , calculated using MDRD formula. Values of 90 indicate a measurement of 90 or\
+      \ greater (\u226590).\n"
     type: number
   fasting:
-    description: Whether the participant had fasted before blood was collected.
+    description: 'Whether the participant had fasted before blood was collected.
+
+      '
     $ref: _definitions.yaml#/enum_yes_no
   glucose_fasting:
-    description: Fasting blood glucose level (mmol/l) at baseline
+    description: 'Fasting blood glucose level (mmol/L) at baseline.
+
+      '
     termDef:
     - term: fasting blood glucose measurement
       source: efo
       term_id: EFO:0004465
     type: number
   hba1c_ifcc:
-    description: HbA1c at baseline (IFCC - mmol/mol)
+    description: 'HbA1c at baseline (IFCC - mmol/mol).
+
+      '
     termDef:
     - term: HbA1c measurement
       source: efo
       term_id: EFO:0004541
     type: number
   hba1c_ngsp:
-    description: HbA1c at baseline (NGSP - %)
+    description: 'HbA1c at baseline (NGSP - %).
+
+      '
     termDef:
     - term: HbA1c measurement
       source: efo
       term_id: EFO:0004541
     type: number
   hdl:
-    description: Blood mass concentration of high-density lipoprotein (HDL-C) cholesterol
-      (mmol/L) at baseline (1 decimal point)
+    description: 'Blood mass concentration of high-density lipoprotein (HDL-C) cholesterol
+      (mmol/L) at baseline (1 decimal point).
+
+      '
     termDef:
     - term: HDL cholesterol
       source: efo
       term_id: CHEBI:47775
     type: number
   ldl:
-    description: 'Blood mass concentration of low-density lipoprotein (LDL-C) cholesterol
-      (mmol/L) at baseline (1 decimal point). Note: LDL is not accurate when triglycerides
-      >=4.52 mmol/l'
+    description: "Blood mass concentration of low-density lipoprotein (LDL-C) cholesterol\
+      \ (mmol/L) at baseline (1 decimal point). Note: LDL is not accurate when triglycerides\
+      \ \u22654.52 mmol/L.\n"
     termDef:
     - term: LDL cholesterol
       source: efo
       term_id: EFO:0004195
     type: number
   nt_probnp:
-    description: NT-proBNP in ng/L
+    description: 'NT-proBNP in ng/L.
+
+      '
     type: number
   total_cholesterol:
-    description: Blood mass concentration of total cholesterol (mmol/L) at baseline
-      (1 decimal point)
+    description: 'Blood mass concentration of total cholesterol (mmol/L) at baseline
+      (1 decimal point).
+
+      '
     termDef:
     - term: cholesterol
       source: efo
       term_id: CHEBI:16113
     type: number
   triglycerides:
-    description: Blood mass concentration of triglycerides (mmol/L) at baseline (1
-      decimal point)
+    description: 'Blood mass concentration of triglycerides (mmol/L) at baseline (1
+      decimal point).
+
+      '
     termDef:
     - term: triglyceride measurement
       source: efo
       term_id: EFO:0004530
     type: number
   uacr:
-    description: Urine albumin-creatinine ratio (uACR) (measured in mg/mmol).
+    description: 'Urine albumin-creatinine ratio (uACR) (measured in mg/mmol).
+
+      '
     type: number
+  data_release:
+    description: Data release verison e.g. 0.1.1
+    type: string
+  data_release_date:
+    description: Date of data release in the format YYYY-MM-DD
+    type: string
+    pattern: ^[0-9]{4}-[0-9]{2}-[0-9]{2}$
 additionalProperties: false
