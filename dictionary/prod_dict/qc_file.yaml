@@ -33,7 +33,7 @@ links:
     label: part_of
     target_type: genomics_file
     multiplicity: many_to_one
-    required: true
+    required: false
   - name: core_metadata_collections
     backref: qc_files
     label: part_of
@@ -45,19 +45,19 @@ links:
     label: part_of
     target_type: lipidomics_file
     multiplicity: many_to_one
-    required: true
+    required: false
   - name: proteomics_files
     backref: qc_files
     label: part_of
     target_type: proteomics_file
     multiplicity: many_to_one
-    required: true
+    required: false
   - name: metabolomics_files
     backref: qc_files
     label: part_of
     target_type: metabolomics_file
     multiplicity: many_to_one
-    required: true
+    required: false
 properties:
   $ref: _definitions.yaml#/data_file_properties
   genomics_files:
