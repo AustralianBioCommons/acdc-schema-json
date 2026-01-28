@@ -556,7 +556,7 @@ enum_diab_therapy:
   - diet
   - oral
   - insulin
-  - injectible
+  - injectable
   - combination
   - other
   enumDef:
@@ -649,6 +649,7 @@ enum_diabetes_type:
   enum:
   - type-1
   - type-2
+  - gestational
   enumDef:
   - enumeration: type-1
   - enumeration: type-2
