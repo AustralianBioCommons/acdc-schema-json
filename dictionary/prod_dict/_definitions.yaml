@@ -923,3 +923,19 @@ enum_supp_data_format:
   - enumeration: crai
   - enumeration: cram.crai
   - enumeration: other
+enum_omics_type:
+  description: The type of omics data.
+  enum:
+  - lipidomic
+  - genomic
+  - proteomic
+  - imaging
+  - metabolomic
+  - serum_marker
+  enumDef:
+  - enumeration: lipidomic
+  - enumeration: genomic
+  - enumeration: proteomic
+  - enumeration: imaging
+  - enumeration: metabolomic
+  - enumeration: serum_marker

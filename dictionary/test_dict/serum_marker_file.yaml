@@ -46,6 +46,9 @@ properties:
     $ref: _definitions.yaml#/to_one
   core_metadata_collections:
     $ref: _definitions.yaml#/to_one
+  omics_type:
+    description: The type of omics data.
+    $ref: _definitions.yaml#/enum_omics_type
   data_category:
     description: Broad categorization of the contents of the data file.
     $ref: _definitions.yaml#/enum_ms_data_cat

@@ -70,6 +70,9 @@ properties:
     $ref: _definitions.yaml#/to_one
   metabolomics_files:
     $ref: _definitions.yaml#/to_one
+  omics_type:
+    description: The type of omics data.
+    $ref: _definitions.yaml#/enum_omics_type
   data_category:
     description: Data category, default is 'supplementary'
     enum:
