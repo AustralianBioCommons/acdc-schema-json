@@ -556,7 +556,7 @@ enum_diab_therapy:
   - diet
   - oral
   - insulin
-  - injectible
+  - injectable
   - combination
   - other
   enumDef:
