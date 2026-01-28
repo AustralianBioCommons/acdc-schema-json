@@ -109,6 +109,12 @@ properties:
       '
     type: string
     pattern: ^\d{4}-\d{2}-\d{2}
+  date_last_followup:
+    description: 'Date of last follow-up in the format YYYY-MM-DD.
+
+      '
+    type: string
+    pattern: ^\d{4}-\d{2}-\d{2}
   diabetes_self_reported:
     description: 'Self-reported diabetes in the participant.
 
