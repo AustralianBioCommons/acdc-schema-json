@@ -256,19 +256,20 @@ def construct_enum_term_yaml_entry(
     Args:
         df: The source dataframe
         enum_name: The name of the enum type
-        description: Optional description for the enum
-        
+        description: Optional description for the enum; the key is omitted
+            from the entry when no description is provided
+
     Returns:
         Dict: Complete YAML entry structure for the enum
     """
     enum_term_list = get_enum_list(df, enum_name)
     enum_def_list = construct_enum_def(df, enum_name)
-    
-    output_dict = {
-        "description": description,
-        "enum": enum_term_list,
-        "enumDef": enum_def_list,
-    }
+
+    output_dict = {}
+    if not check_null(description):
+        output_dict["description"] = description
+    output_dict["enum"] = enum_term_list
+    output_dict["enumDef"] = enum_def_list
     
     logger.debug(f"Constructed YAML entry for enum '{enum_name}'")
     return output_dict
