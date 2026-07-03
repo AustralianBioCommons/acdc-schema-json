@@ -214,7 +214,7 @@ ubiquitous_properties:
   updated_datetime:
     $ref: '#/datetime'
 enum_yes_no:
-  description: null
+
   enum:
   - 'yes'
   - 'no'
@@ -222,13 +222,13 @@ enum_yes_no:
   - enumeration: 'yes'
   - enumeration: 'no'
 enum_supp_data_cat:
-  description: null
+
   enum:
   - supplementary
   enumDef:
   - enumeration: supplementary
 enum_education:
-  description: null
+
   enum:
   - low
   - medium
@@ -238,7 +238,7 @@ enum_education:
   - enumeration: medium
   - enumeration: high
 enum_storage:
-  description: null
+
   enum:
   - not stored
   - ambient temperature
@@ -274,7 +274,7 @@ enum_storage:
   - enumeration: TRIzol, frozen
     source: https://schema.humancellatlas.org/module/biomaterial/6.1.1/preservation_storage
 enum_ms_type:
-  description: null
+
   enum:
   - LC-MS
   - MS/MS
@@ -292,13 +292,13 @@ enum_ms_type:
   - enumeration: GC-MS
   - enumeration: High Mass Accuracy MS
 enum_unalign_data_format:
-  description: null
+
   enum:
   - fastq.gz
   enumDef:
   - enumeration: fastq.gz
 enum_imaging_data_category:
-  description: null
+
   enum:
   - CT
   - MRI
@@ -312,7 +312,7 @@ enum_imaging_data_category:
   - enumeration: Ultrasound
   - enumeration: PET
 enum_align_work:
-  description: null
+
   enum:
   - STAR
   - BWA-aln
@@ -332,7 +332,7 @@ enum_align_work:
     definition: spinnaker
     source: BioData Catalyst DD
 enum_genomic_file_data_cat:
-  description: null
+
   enum:
   - raw
   - processed
@@ -342,7 +342,7 @@ enum_genomic_file_data_cat:
   - enumeration: processed
   - enumeration: analysis_output
 enum_genomic_file_data_format:
-  description: null
+
   enum:
   - bam
   - cram
@@ -370,7 +370,7 @@ enum_genomic_file_data_format:
   - enumeration: csv
   - enumeration: tsv
 enum_seq_data_cat:
-  description: null
+
   enum:
   - analysis
   - sequencing reads
@@ -384,7 +384,7 @@ enum_seq_data_cat:
   - enumeration: transcriptome profiling
   - enumeration: supplemental
 enum_table_data_format:
-  description: null
+
   enum:
   - csv
   - tsv
@@ -394,7 +394,7 @@ enum_table_data_format:
   - enumeration: tsv
   - enumeration: txt
 enum_imaging_data_format:
-  description: null
+
   enum:
   - dcm
   - nii
@@ -402,7 +402,7 @@ enum_imaging_data_format:
   - enumeration: dcm
   - enumeration: nii
 enum_protein_units:
-  description: null
+
   enum:
   - pmol/mL
   - umol/mL
@@ -410,7 +410,7 @@ enum_protein_units:
   - enumeration: pmol/mL
   - enumeration: umol/mL
 enum_bool:
-  description: null
+
   enum:
   - 'yes'
   - 'no'
@@ -418,7 +418,7 @@ enum_bool:
   - enumeration: 'yes'
   - enumeration: 'no'
 enum_sex:
-  description: null
+
   enum:
   - male
   - female
@@ -426,7 +426,7 @@ enum_sex:
   - enumeration: male
   - enumeration: female
 enum_imaging_data_type:
-  description: null
+
   enum:
   - DICOM
   - NifTI
@@ -434,7 +434,7 @@ enum_imaging_data_type:
   - enumeration: DICOM
   - enumeration: NifTI
 enum_drinking_current:
-  description: null
+
   enum:
   - never
   - former
@@ -444,7 +444,7 @@ enum_drinking_current:
   - enumeration: former
   - enumeration: current
 enum_genomic_file_data_type:
-  description: null
+
   enum:
   - signal_intensity
   - unaligned_reads
@@ -462,7 +462,7 @@ enum_genomic_file_data_type:
   - enumeration: genotype_dosage
   - enumeration: copy_number_segment
 enum_data_type:
-  description: null
+
   enum:
   - unaligned_reads
   - aligned_reads
@@ -476,7 +476,7 @@ enum_data_type:
   - enumeration: clinical_supplement
   - enumeration: supplmentary_file
 enum_preservation:
-  description: null
+
   enum:
   - cryopreserved
   - FFPE
@@ -507,7 +507,7 @@ enum_preservation:
   - enumeration: not allowed to collect
     source: BioData Catalyst DD
 enum_abs_heap:
-  description: null
+
   enum:
   - HEAP-1
   - HEAP-2
@@ -529,7 +529,7 @@ enum_abs_heap:
   - enumeration: HEAP-8
   - enumeration: HEAP-9
 enum_ms_data_cat:
-  description: null
+
   enum:
   - mass spec raw
   - mass spec analysed
@@ -539,7 +539,7 @@ enum_ms_data_cat:
   - enumeration: mass spec analysed
   - enumeration: summarised results
 enum_supp_data_type:
-  description: null
+
   enum:
   - index_file
   - mapping_file
@@ -551,7 +551,7 @@ enum_supp_data_type:
   - enumeration: other
   - enumeration: log_file
 enum_diab_therapy:
-  description: null
+
   enum:
   - diet
   - oral
@@ -567,7 +567,7 @@ enum_diab_therapy:
   - enumeration: combination
   - enumeration: other
 enum_yes_no_unknown:
-  description: null
+
   enum:
   - 'yes'
   - 'no'
@@ -577,7 +577,7 @@ enum_yes_no_unknown:
   - enumeration: 'no'
   - enumeration: unknown
 enum_lipid_ind_sum:
-  description: null
+
   enum:
   - individual
   - sum
@@ -585,13 +585,13 @@ enum_lipid_ind_sum:
   - enumeration: individual
   - enumeration: sum
 enum_protein_data_format:
-  description: null
+
   enum:
   - mgf
   enumDef:
   - enumeration: mgf
 enum_imaging_acquisition_type:
-  description: null
+
   enum:
   - SEQUENCED
   - SPIRAL
@@ -605,7 +605,7 @@ enum_imaging_acquisition_type:
   - enumeration: STATIONARY
   - enumeration: FREE
 enum_surv_event:
-  description: null
+
   enum:
   - alive
   - dead
@@ -615,7 +615,7 @@ enum_surv_event:
   - enumeration: dead
   - enumeration: censored
 enum_role:
-  description: null
+
   enum:
   - Principal Investigator
   - Data custodian
@@ -625,7 +625,7 @@ enum_role:
   - enumeration: Data custodian
   - enumeration: Co-investigator
 enum_smoking:
-  description: null
+
   enum:
   - never
   - former
@@ -635,7 +635,7 @@ enum_smoking:
   - enumeration: former
   - enumeration: current
 enum_imaging_mod_method:
-  description: null
+
   enum:
   - Removal of alphanumeric characters
   - Defacing
@@ -645,7 +645,7 @@ enum_imaging_mod_method:
   - enumeration: Defacing
   - enumeration: Skull-stripping
 enum_diabetes_type:
-  description: null
+
   enum:
   - type-1
   - type-2
@@ -654,7 +654,7 @@ enum_diabetes_type:
   - enumeration: type-1
   - enumeration: type-2
 enum_institute:
-  description: null
+
   enum:
   - Baker
   - USYD
@@ -666,7 +666,7 @@ enum_institute:
   - enumeration: UMELB
   - enumeration: UQ
 enum_ref_genome:
-  description: null
+
   enum:
   - GRCh38
   - GRCh37
@@ -674,7 +674,7 @@ enum_ref_genome:
   - enumeration: GRCh38
   - enumeration: GRCh37
 enum_gen_assay:
-  description: null
+
   enum:
   - WGS
   - RNA-Seq
@@ -888,7 +888,7 @@ enum_gen_assay:
     source: https://github.com/enasequence/ena-experiment-checklist/blob/main/data/output_md/GENOMIC.md
     term_id: library_strategy
 enum_lipid_units:
-  description: null
+
   enum:
   - pmol/mL
   - umol/mL
@@ -896,7 +896,7 @@ enum_lipid_units:
   - enumeration: pmol/mL
   - enumeration: umol/mL
 enum_metabolite_units:
-  description: null
+
   enum:
   - pmol/mL
   - umol/mL
@@ -904,13 +904,13 @@ enum_metabolite_units:
   - enumeration: pmol/mL
   - enumeration: umol/mL
 enum_ms_data_format:
-  description: null
+
   enum:
   - wiff
   enumDef:
   - enumeration: wiff
 enum_supp_data_format:
-  description: null
+
   enum:
   - bai
   - bam.bai
