@@ -35,6 +35,15 @@ The data model can be defined using Gen3SchemaDev's simplified YAML input langua
 
 For more information, see the [Gen3SchemaDev README](https://github.com/AustralianBioCommons/gen3schemadev).
 
+## Setup
+
+To set up the environment, run:
+```bash
+pip install poetry
+poetry install
+eval $(poetry env activate)
+```
+
 ## Updating the Dictionary
 
 1. Copy prod_dict to test_dict
