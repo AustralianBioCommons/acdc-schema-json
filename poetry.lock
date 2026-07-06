@@ -415,7 +415,7 @@ files = [
     {file = "colorama-0.4.6-py2.py3-none-any.whl", hash = "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"},
     {file = "colorama-0.4.6.tar.gz", hash = "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44"},
 ]
-markers = {main = "sys_platform == \"win32\" or platform_system == \"Windows\"", dev = "sys_platform == \"win32\""}
+markers = {main = "platform_system == \"Windows\" or sys_platform == \"win32\"", dev = "sys_platform == \"win32\""}
 
 [[package]]
 name = "comm"
@@ -581,43 +581,35 @@ files = [
 
 [[package]]
 name = "gen3-validator"
-version = "1.1.1"
+version = "2.1.0"
 description = "Comprehensive toolkit for resolving Gen3 JSON schemas, validating JSON metadata against schemas, and verifying linkage integrity between data nodes. Includes utilities for parsing Excel metadata templates, generating linkage configuration maps, orchestrating schema validation, and producing detailed validation reports and statistics"
 optional = false
 python-versions = ">=3.9.5"
 groups = ["main"]
 files = [
-    {file = "gen3_validator-1.1.1-py3-none-any.whl", hash = "sha256:c938406fd96a774f060f4f8e3f122c846c2d39c67dd8e38b1bdbba5c909682a6"},
-    {file = "gen3_validator-1.1.1.tar.gz", hash = "sha256:0f75d12adc222680fb40e6eeaee90a327958a4ba60f1fc42c1feb4e14f41c450"},
+    {file = "gen3_validator-2.1.0-py3-none-any.whl", hash = "sha256:a0211f5ed24465d44eceeb9dc554e5c366383abc07ec4d8ff7f566120b7f75db"},
+    {file = "gen3_validator-2.1.0.tar.gz", hash = "sha256:65915becbf98e8b38e1df1bfad3ffe45e932698cec1b47306d8d1c24b8c60993"},
 ]
 
 [package.dependencies]
 jsonschema = ">=4.23.0"
-numpy = ">=2.0.2"
 pandas = ">=2.2.3"
-pydantic = ">=2.10.6"
-pyfakefs = ">=4.7.0"
-pytest = ">=8.3.4"
-shibuya = "*"
-sphinx = "*"
-typing = ">=3.7.4.3"
-uuid = ">=1.30"
 
 [[package]]
 name = "gen3schemadev"
-version = "2.3.3"
+version = "2.6.1"
 description = "Tool for data modelling in Gen3"
 optional = false
-python-versions = "<4.0,>=3.12.10"
+python-versions = "<4.0,>=3.9.5"
 groups = ["main"]
 files = [
-    {file = "gen3schemadev-2.3.3-py3-none-any.whl", hash = "sha256:eea9cc67b638c71cd42cfd4f61fabf43e1add8e9403e434aa145e795a1975680"},
-    {file = "gen3schemadev-2.3.3.tar.gz", hash = "sha256:75b5791e3d36a3053b61fdb8dff1262aa09060897af1b6f5674366f12f43967e"},
+    {file = "gen3schemadev-2.6.1-py3-none-any.whl", hash = "sha256:c124f649c7da6448e7dffc9dc7138c38285acf420cbb0215e388236aac9f2e9a"},
+    {file = "gen3schemadev-2.6.1.tar.gz", hash = "sha256:e20576f3026d1187753c37ed9c3e1d52328b01d3c78003520cb699d3d3cc5e1d"},
 ]
 
 [package.dependencies]
 check-jsonschema = ">=0.34.1,<0.35.0"
-gen3-validator = ">=1.1.1,<2.0.0"
+gen3-validator = ">=2.0.0,<3.0.0"
 linkml = ">=1.9.4,<2.0.0"
 pydantic = ">=2.11.9,<3.0.0"
 setuptools = ">=70.0"
@@ -1789,18 +1781,6 @@ files = [
 typing-extensions = ">=4.14.1"
 
 [[package]]
-name = "pyfakefs"
-version = "5.10.0"
-description = "Implements a fake file system that mocks the Python file system modules."
-optional = false
-python-versions = ">=3.7"
-groups = ["main"]
-files = [
-    {file = "pyfakefs-5.10.0-py3-none-any.whl", hash = "sha256:105a97076aed079589546a8c2bea68e771a19e7a8ee335a30936aa03d98ab4fe"},
-    {file = "pyfakefs-5.10.0.tar.gz", hash = "sha256:68b33b8d9338ed332ad0c809417b875559c2e8ac10972fce248cb19b89d325fa"},
-]
-
-[[package]]
 name = "pygments"
 version = "2.19.2"
 description = "Pygments is a syntax highlighting package written in Python."
@@ -1814,21 +1794,6 @@ files = [
 
 [package.extras]
 windows-terminal = ["colorama (>=0.4.6)"]
-
-[[package]]
-name = "pygments-styles"
-version = "0.2.0"
-description = "A curated collection of Pygments styles based on VS Code themes."
-optional = false
-python-versions = ">=3.9"
-groups = ["main"]
-files = [
-    {file = "pygments_styles-0.2.0-py3-none-any.whl", hash = "sha256:40fb7f1d34ce2b2792aecabc8d3877ca364eb04bb3b7f7747cfc9a7f0569bae9"},
-    {file = "pygments_styles-0.2.0.tar.gz", hash = "sha256:49727d051518ea46cc2d78c329c6985311bf27e1826f524c229a40b32cf00cff"},
-]
-
-[package.dependencies]
-pygments = "*"
 
 [[package]]
 name = "pyjsg"
@@ -2706,22 +2671,6 @@ files = [
 pyjsg = ">=0.11.10"
 
 [[package]]
-name = "shibuya"
-version = "2025.9.25"
-description = "A clean, responsive, and customizable Sphinx documentation theme with light/dark mode."
-optional = false
-python-versions = ">=3.9"
-groups = ["main"]
-files = [
-    {file = "shibuya-2025.9.25-py3-none-any.whl", hash = "sha256:93e439181167936dd1950874880c23920d551f90ff475888ce278af1d2efa4eb"},
-    {file = "shibuya-2025.9.25.tar.gz", hash = "sha256:03131beb0f8e31cf4f501a4b744cd9c3f387cf23696259476d141b9ca976156b"},
-]
-
-[package.dependencies]
-pygments-styles = "*"
-Sphinx = "*"
-
-[[package]]
 name = "six"
 version = "1.17.0"
 description = "Python 2 and 3 compatibility utilities"
@@ -3107,18 +3056,6 @@ files = [
 ]
 
 [[package]]
-name = "typing"
-version = "3.7.4.3"
-description = "Type Hints for Python"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-groups = ["main"]
-files = [
-    {file = "typing-3.7.4.3-py2-none-any.whl", hash = "sha256:283d868f5071ab9ad873e5e52268d611e851c870a2ba354193026f2dfb29d8b5"},
-    {file = "typing-3.7.4.3.tar.gz", hash = "sha256:1187fb9c82fd670d10aa07bbb6cfcfe4bdda42d6fab8d5134f04e8c4d0b71cc9"},
-]
-
-[[package]]
 name = "typing-extensions"
 version = "4.15.0"
 description = "Backported and Experimental Type Hints for Python 3.9+"
@@ -3189,17 +3126,6 @@ brotli = ["brotli (>=1.0.9) ; platform_python_implementation == \"CPython\"", "b
 h2 = ["h2 (>=4,<5)"]
 socks = ["pysocks (>=1.5.6,!=1.5.7,<2.0)"]
 zstd = ["zstandard (>=0.18.0)"]
-
-[[package]]
-name = "uuid"
-version = "1.30"
-description = "UUID object and generation functions (Python 2.3 or higher)"
-optional = false
-python-versions = "*"
-groups = ["main"]
-files = [
-    {file = "uuid-1.30.tar.gz", hash = "sha256:1f87cc004ac5120466f36c5beae48b4c48cc411968eed0eaecd3da82aa96193f"},
-]
 
 [[package]]
 name = "watchdog"
@@ -3362,4 +3288,4 @@ files = [
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12.10, <4.0.0"
-content-hash = "6d9e391dedcb942f6eff12b29a17ffa809854a3a09f28dc96a1e99fe1a1f3db5"
+content-hash = "4251eb555571c5081ecf80bf73514da5634296b37db67e4da436797c8aa31933"
