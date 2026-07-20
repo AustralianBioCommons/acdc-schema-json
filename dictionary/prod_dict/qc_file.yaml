@@ -110,8 +110,7 @@ properties:
     $ref: _definitions.yaml#/enum_storage
   sample_type:
     description: >
-      Type of biological material this specimen consists of. Controlled vocabulary; look
-      terms up at https://www.ebi.ac.uk/ols4/ontologies/uberon (and /cl, /chebi). Use
+      Type of biological material this specimen consists of. Use
       "other" if the material is not listed, "not_reported" if unknown.
     $ref: _definitions.yaml#/enum_sample_type
   storage_location:
