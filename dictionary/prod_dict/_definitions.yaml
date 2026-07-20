@@ -939,3 +939,177 @@ enum_omics_type:
   - enumeration: imaging
   - enumeration: metabolomic
   - enumeration: serum_marker
+enum_sample_type:
+
+  enum:
+  - whole_blood
+  - plasma
+  - serum
+  - peripheral_blood_mononuclear_cells
+  - erythrocytes
+  - leukocytes
+  - tissue
+  - tumor_tissue
+  - normal_tissue
+  - adjacent_normal_tissue
+  - metastatic_tissue
+  - biopsy
+  - cell_line
+  - primary_cells
+  - stem_cells
+  - immune_cells
+  - DNA
+  - genomic_DNA
+  - cell_free_DNA
+  - RNA
+  - total_RNA
+  - mRNA
+  - cell_free_RNA
+  - protein
+  - protein_extract
+  - peptide
+  - urine
+  - saliva
+  - cerebrospinal_fluid
+  - synovial_fluid
+  - pleural_fluid
+  - ascites_fluid
+  - interstitial_fluid
+  - feces
+  - bone_marrow
+  - organoid
+  - xenograft
+  - plasma_exosome
+  - serum_exosome
+  - extracellular_vesicles
+  - other
+  - not_reported
+  enumDef:
+  - enumeration: whole_blood
+    source: uberon
+    term_id: UBERON:0000178
+  - enumeration: plasma
+    source: uberon
+    term_id: UBERON:0001969
+  - enumeration: serum
+    source: uberon
+    term_id: UBERON:0001977
+  - enumeration: peripheral_blood_mononuclear_cells
+    source: ms
+    term_id: MS:1002711
+  - enumeration: erythrocytes
+    source: uberon
+    term_id: UBERON:0000170
+  # leukocytes: cell-level term; CL:0000738 may be more precise. Confirm in OLS4.
+  - enumeration: leukocytes
+    source: uberon
+    term_id: UBERON:0000178
+  - enumeration: tissue
+    source: uberon
+    term_id: UBERON:0000479
+  # The four qualified tissue values share the generic UBERON tissue term; the qualifier
+  # (tumor / normal / adjacent / metastatic) has no single pure UBERON class.
+  - enumeration: tumor_tissue
+    source: uberon
+    term_id: UBERON:0000479
+  - enumeration: normal_tissue
+    source: uberon
+    term_id: UBERON:0000479
+  - enumeration: adjacent_normal_tissue
+    source: uberon
+    term_id: UBERON:0000479
+  - enumeration: metastatic_tissue
+    source: uberon
+    term_id: UBERON:0000479
+  - enumeration: biopsy
+    source: ms
+    term_id: MS:1002839
+  - enumeration: cell_line
+    source: ms
+    term_id: MS:1002714
+  - enumeration: primary_cells
+    source: ms
+    term_id: MS:1002713
+  - enumeration: stem_cells
+    source: uberon
+    term_id: UBERON:0001062
+  - enumeration: immune_cells
+    source: uberon
+    term_id: UBERON:0002405
+  - enumeration: DNA
+    source: chebi
+    term_id: CHEBI:16991
+  - enumeration: genomic_DNA
+    source: chebi
+    term_id: CHEBI:16991
+  # cell_free_DNA: no distinct ChEBI subclass; the cell-free context is carried by metadata.
+  - enumeration: cell_free_DNA
+    source: chebi
+    term_id: CHEBI:16991
+  - enumeration: RNA
+    source: chebi
+    term_id: CHEBI:33697
+  - enumeration: total_RNA
+    source: chebi
+    term_id: CHEBI:33697
+  - enumeration: mRNA
+    source: chebi
+    term_id: CHEBI:33699
+  - enumeration: cell_free_RNA
+    source: chebi
+    term_id: CHEBI:33697
+  - enumeration: protein
+    source: chebi
+    term_id: CHEBI:36080
+  - enumeration: protein_extract
+    source: ms
+    term_id: MS:1002401
+  - enumeration: peptide
+    source: chebi
+    term_id: CHEBI:16670
+  - enumeration: urine
+    source: uberon
+    term_id: UBERON:0001088
+  - enumeration: saliva
+    source: uberon
+    term_id: UBERON:0001836
+  - enumeration: cerebrospinal_fluid
+    source: uberon
+    term_id: UBERON:0001359
+  - enumeration: synovial_fluid
+    source: uberon
+    term_id: UBERON:0001090
+  - enumeration: pleural_fluid
+    source: uberon
+    term_id: UBERON:0001087
+  # ascites_fluid: closest available fluid class; ascitic fluid is often modelled contextually.
+  - enumeration: ascites_fluid
+    source: uberon
+    term_id: UBERON:0001088
+  - enumeration: interstitial_fluid
+    source: uberon
+    term_id: UBERON:0001093
+  - enumeration: feces
+    source: uberon
+    term_id: UBERON:0001988
+  - enumeration: bone_marrow
+    source: uberon
+    term_id: UBERON:0002371
+  - enumeration: organoid
+    source: ms
+    term_id: MS:1002896
+  - enumeration: xenograft
+    source: ms
+    term_id: MS:1002861
+  # The two exosome values share the generic exosome term; plasma/serum context is in the value.
+  - enumeration: plasma_exosome
+    source: ms
+    term_id: MS:1002495
+  - enumeration: serum_exosome
+    source: ms
+    term_id: MS:1002495
+  - enumeration: extracellular_vesicles
+    source: ms
+    term_id: MS:1002494
+  - enumeration: other
+  - enumeration: not_reported

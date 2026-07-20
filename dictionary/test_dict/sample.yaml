@@ -63,13 +63,15 @@ properties:
     description: How the sample was/is stored
     $ref: _definitions.yaml#/enum_storage
   sample_type:
-    description: The type of sample, e.g. Whole Blood, Blood Cells, Frozen Blood
-    type: string
+    description: >
+      Type of biological material this specimen consists of. Use
+      "other" if the material is not listed, "not_reported" if unknown.
+    $ref: _definitions.yaml#/enum_sample_type
   storage_location:
     description: Where the sample is stored
     $ref: _definitions.yaml#/enum_institute
   data_release:
-    description: Data release verison e.g. 0.1.1
+    description: Data release version e.g. 0.1.1
     type: string
   data_release_date:
     description: Date of data release in the format YYYY-MM-DD
