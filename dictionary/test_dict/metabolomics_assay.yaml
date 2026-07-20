@@ -46,6 +46,111 @@ properties:
     type: array
     items:
       type: string
+  instrument_model:
+    description: >
+      Vendor make/model of the mass spectrometer, e.g. "Agilent 6550 iFunnel Q-TOF".
+    type: string
+  instrument_manufacturer:
+    description: Instrument vendor, e.g. "Agilent", "Thermo Fisher Scientific", "Bruker".
+    type: string
+  ionization_type:
+    description: The ion source used to generate gas-phase ions before mass analysis.
+    $ref: _definitions.yaml#/enum_ionization_type
+  ionization_polarity:
+    description: >
+      Polarity of acquisition: "positive", "negative", or "both". Essential for correct
+      metabolite annotation.
+    type: string
+  mass_analyzer_type:
+    description: >
+      The primary mass analyzer separating ions by m/z. For hybrid instruments, record
+      the main analyzer here and give the full configuration in instrument_model.
+    $ref: _definitions.yaml#/enum_mass_analyzer_type
+  detector_type:
+    description: The ion detector used by the instrument, if reported.
+    $ref: _definitions.yaml#/enum_detector_type
+  acquisition_mode:
+    description: >
+      How spectra were acquired. Use "MS1 only" for untargeted profiling without
+      fragmentation; reaction-monitoring modes are targeted.
+    $ref: _definitions.yaml#/enum_acquisition_mode
+  chromatography_type:
+    description: >
+      Chromatographic separation coupled to the MS, or "none / direct infusion".
+      Report each mode separately if more than one was run.
+    $ref: _definitions.yaml#/enum_chromatography_type
+  chromatography_instrument:
+    description: LC/GC system make and model.
+    type: string
+  column_type:
+    description: Analytical column description.
+    type: string
+  extraction_method:
+    description: >
+      Sample extraction / preparation protocol, e.g. "methanol:water (80:20) protein
+      precipitation".
+    type: string
+  derivatization:
+    description: >
+      Chemical derivatization applied, common in GC-MS, e.g. "MSTFA silylation".
+      Leave blank if none.
+    type: string
+  internal_standards:
+    description: >
+      Internal / quality-control standards spiked into samples, e.g.
+      ["13C-labelled amino acid mix"].
+    type: array
+    items:
+      type: string
+  retention_index_used:
+    description: >
+      Whether a retention-index system, e.g. an alkane or FAME ladder, was used to
+      normalize retention times.
+    $ref: _definitions.yaml#/enum_yes_no
+  quantification_method:
+    description: >
+      How metabolite abundances were derived, e.g. targeted against a standard curve
+      or label-free relative comparison.
+    $ref: _definitions.yaml#/enum_quantification_method
+  data_processing_software:
+    description: Feature-detection / annotation software, e.g. MZmine, XCMS, MS-DIAL.
+    $ref: _definitions.yaml#/enum_search_engine
+  data_processing_software_version:
+    description: Version string of the data-processing software.
+    type: string
+  reference_database:
+    description: >
+      Spectral / compound library used for annotation, e.g. "HMDB 5.0", "METLIN",
+      "NIST 20", "MoNA".
+    type: string
+  metabolite_identification_confidence_level:
+    description: >
+      Highest identification confidence level achieved in this assay, on the
+      Metabolomics Standards Initiative / Schymanski scheme. Level 1 is a confirmed
+      structure against an authentic standard; Level 5 is an unknown feature.
+      Per-compound confidence belongs in the mzTab-M results file.
+    $ref: _definitions.yaml#/enum_ident_confidence_level
+  metabolite_chebi_ids:
+    description: >
+      ChEBI IDs of identified metabolites, e.g. ["CHEBI:17234"], index-aligned to
+      metabolite_names where possible.
+    type: array
+    items:
+      type: string
+      pattern: ^CHEBI:[0-9]+$
+  metabolite_inchikeys:
+    description: >
+      InChIKeys of identified metabolites, the 27-character structure hash and the
+      preferred cross-database identity anchor.
+    type: array
+    items:
+      type: string
+      pattern: ^[A-Z]{14}-[A-Z]{10}-[A-Z]$
+  metabolite_refmet_names:
+    description: Standardized RefMet names, using Metabolomics Workbench nomenclature.
+    type: array
+    items:
+      type: string
   data_release:
     description: Data release version e.g. 0.1.1
     type: string

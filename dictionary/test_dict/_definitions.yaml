@@ -406,9 +406,19 @@ enum_protein_units:
   enum:
   - pmol/mL
   - umol/mL
+  - ng/mL
+  - ug/mL
+  - fmol
+  - nmol/L
+  - mg/L
   enumDef:
   - enumeration: pmol/mL
   - enumeration: umol/mL
+  - enumeration: ng/mL
+  - enumeration: ug/mL
+  - enumeration: fmol
+  - enumeration: nmol/L
+  - enumeration: mg/L
 enum_bool:
 
   enum:
@@ -588,8 +598,30 @@ enum_protein_data_format:
 
   enum:
   - mgf
+  - mzIdentML
+  - mzTab
+  - pepXML
+  - protXML
+  - mzML
+  - raw
+  - csv
+  - tsv
+  - txt
+  - xls
+  - xlsx
   enumDef:
   - enumeration: mgf
+  - enumeration: mzIdentML
+  - enumeration: mzTab
+  - enumeration: pepXML
+  - enumeration: protXML
+  - enumeration: mzML
+  - enumeration: raw
+  - enumeration: csv
+  - enumeration: tsv
+  - enumeration: txt
+  - enumeration: xls
+  - enumeration: xlsx
 enum_imaging_acquisition_type:
 
   enum:
@@ -900,15 +932,55 @@ enum_metabolite_units:
   enum:
   - pmol/mL
   - umol/mL
+  - ng/mL
+  - ug/mL
+  - fmol
+  - nmol/L
+  - mg/L
   enumDef:
   - enumeration: pmol/mL
   - enumeration: umol/mL
+  - enumeration: ng/mL
+  - enumeration: ug/mL
+  - enumeration: fmol
+  - enumeration: nmol/L
+  - enumeration: mg/L
 enum_ms_data_format:
 
   enum:
   - wiff
+  - mzML
+  - mzXML
+  - raw
+  - ".d"
+  - ".wiff.scan"
+  - imzML
+  - mzTab
+  - "mzTab-M"
+  - mwTab
+  - nmrML
+  - csv
+  - tsv
+  - txt
+  - xls
+  - xlsx
   enumDef:
   - enumeration: wiff
+  - enumeration: mzML
+  - enumeration: mzXML
+  - enumeration: raw
+  - enumeration: ".d"
+  - enumeration: ".wiff.scan"
+  - enumeration: imzML
+  - enumeration: mzTab
+  - enumeration: "mzTab-M"
+  - enumeration: mwTab
+  - enumeration: nmrML
+  - enumeration: csv
+  - enumeration: tsv
+  - enumeration: txt
+  - enumeration: xls
+  - enumeration: xlsx
 enum_supp_data_format:
 
   enum:
@@ -1113,3 +1185,245 @@ enum_sample_type:
     term_id: MS:1002494
   - enumeration: other
   - enumeration: not_reported
+enum_ionization_type:
+
+  enum:
+  - electrospray ionization
+  - matrix-assisted laser desorption ionization
+  - atmospheric pressure chemical ionization
+  - atmospheric pressure photoionization
+  - electron ionization
+  - fast atom bombardment
+  - nanoelectrospray
+  enumDef:
+  - enumeration: electrospray ionization
+  - enumeration: matrix-assisted laser desorption ionization
+  - enumeration: atmospheric pressure chemical ionization
+  - enumeration: atmospheric pressure photoionization
+  - enumeration: electron ionization
+  - enumeration: fast atom bombardment
+  - enumeration: nanoelectrospray
+enum_mass_analyzer_type:
+
+  enum:
+  - orbitrap
+  - time-of-flight
+  - quadrupole
+  - fourier transform ion cyclotron resonance
+  - quadrupole ion trap
+  - radial ejection linear ion trap
+  - magnetic sector
+  - asymmetric track lossless analyzer
+  enumDef:
+  - enumeration: orbitrap
+  - enumeration: time-of-flight
+  - enumeration: quadrupole
+  - enumeration: fourier transform ion cyclotron resonance
+  - enumeration: quadrupole ion trap
+  - enumeration: radial ejection linear ion trap
+  - enumeration: magnetic sector
+  - enumeration: asymmetric track lossless analyzer
+enum_detector_type:
+
+  enum:
+  - electron multiplier
+  - microchannel plate detector
+  - inductive detector
+  enumDef:
+  - enumeration: electron multiplier
+  - enumeration: microchannel plate detector
+  - enumeration: inductive detector
+enum_dissociation_method:
+
+  enum:
+  - collision-induced dissociation
+  - beam-type collision-induced dissociation
+  - electron transfer dissociation
+  - electron capture dissociation
+  - low-energy collision-induced dissociation
+  enumDef:
+  - enumeration: collision-induced dissociation
+  - enumeration: beam-type collision-induced dissociation
+  - enumeration: electron transfer dissociation
+  - enumeration: electron capture dissociation
+  - enumeration: low-energy collision-induced dissociation
+enum_acquisition_mode:
+
+  enum:
+  - data-dependent acquisition
+  - data-independent acquisition
+  - sequential window acquisition of all theoretical mass spectra
+  - parallel reaction monitoring
+  - selected reaction monitoring
+  - selected ion monitoring
+  - MS1 only
+  enumDef:
+  - enumeration: data-dependent acquisition
+  - enumeration: data-independent acquisition
+  - enumeration: sequential window acquisition of all theoretical mass spectra
+  - enumeration: parallel reaction monitoring
+  - enumeration: selected reaction monitoring
+  - enumeration: selected ion monitoring
+  - enumeration: MS1 only
+enum_chromatography_type:
+
+  enum:
+  - high-performance liquid chromatography
+  - ultra-high-performance liquid chromatography
+  - reversed-phase liquid chromatography
+  - hydrophilic interaction liquid chromatography
+  - gas chromatography
+  - capillary electrophoresis
+  - none / direct infusion
+  enumDef:
+  - enumeration: high-performance liquid chromatography
+  - enumeration: ultra-high-performance liquid chromatography
+  - enumeration: reversed-phase liquid chromatography
+  - enumeration: hydrophilic interaction liquid chromatography
+  - enumeration: gas chromatography
+  - enumeration: capillary electrophoresis
+  - enumeration: none / direct infusion
+enum_quantification_method:
+
+  enum:
+  - label-free
+  - tandem mass tag
+  - isobaric tags for relative and absolute quantitation
+  - stable isotope labeling by amino acids in cell culture
+  - intensity-based absolute quantification
+  - spectral counting
+  - targeted (standard curve)
+  - not quantified
+  enumDef:
+  - enumeration: label-free
+  - enumeration: tandem mass tag
+  - enumeration: isobaric tags for relative and absolute quantitation
+  - enumeration: stable isotope labeling by amino acids in cell culture
+  - enumeration: intensity-based absolute quantification
+  - enumeration: spectral counting
+  - enumeration: targeted (standard curve)
+  - enumeration: not quantified
+enum_ident_confidence_level:
+
+  enum:
+  - "Level 1 - confirmed structure"
+  - "Level 2 - probable structure"
+  - "Level 3 - tentative candidate"
+  - "Level 4 - molecular formula"
+  - "Level 5 - unknown feature"
+  enumDef:
+  - enumeration: "Level 1 - confirmed structure"
+  - enumeration: "Level 2 - probable structure"
+  - enumeration: "Level 3 - tentative candidate"
+  - enumeration: "Level 4 - molecular formula"
+  - enumeration: "Level 5 - unknown feature"
+enum_digestion_enzyme:
+
+  enum:
+  - trypsin
+  - "trypsin/P"
+  - "Lys-C"
+  - "Glu-C"
+  - chymotrypsin
+  - "Asp-N"
+  - "Arg-C"
+  - pepsin
+  - none
+  enumDef:
+  - enumeration: trypsin
+  - enumeration: "trypsin/P"
+  - enumeration: "Lys-C"
+  - enumeration: "Glu-C"
+  - enumeration: chymotrypsin
+  - enumeration: "Asp-N"
+  - enumeration: "Arg-C"
+  - enumeration: pepsin
+  - enumeration: none
+enum_search_engine:
+
+  enum:
+  - MaxQuant
+  - "Proteome Discoverer"
+  - FragPipe
+  - "DIA-NN"
+  - Spectronaut
+  - Mascot
+  - "MS-GF+"
+  - Comet
+  - Skyline
+  - MZmine
+  - XCMS
+  - "MS-DIAL"
+  - other
+  enumDef:
+  - enumeration: MaxQuant
+  - enumeration: "Proteome Discoverer"
+  - enumeration: FragPipe
+  - enumeration: "DIA-NN"
+  - enumeration: Spectronaut
+  - enumeration: Mascot
+  - enumeration: "MS-GF+"
+  - enumeration: Comet
+  - enumeration: Skyline
+  - enumeration: MZmine
+  - enumeration: XCMS
+  - enumeration: "MS-DIAL"
+  - enumeration: other
+enum_abundance_measure:
+
+  enum:
+  - raw intensity
+  - normalized abundance
+  - relative abundance
+  - LFQ intensity
+  - iBAQ
+  - reporter ion intensity
+  - spectral count
+  - area under curve
+  enumDef:
+  - enumeration: raw intensity
+  - enumeration: normalized abundance
+  - enumeration: relative abundance
+  - enumeration: LFQ intensity
+  - enumeration: iBAQ
+  - enumeration: reporter ion intensity
+  - enumeration: spectral count
+  - enumeration: area under curve
+enum_qc_metric_status:
+
+  enum:
+  - pass
+  - warn
+  - fail
+  - not evaluated
+  enumDef:
+  - enumeration: pass
+  - enumeration: warn
+  - enumeration: fail
+  - enumeration: not evaluated
+enum_file_granularity:
+
+  enum:
+  - per participant
+  - per sample
+  - cohort matrix
+  enumDef:
+  - enumeration: per participant
+  - enumeration: per sample
+  - enumeration: cohort matrix
+enum_transformation:
+
+  enum:
+  - none
+  - log2
+  - log10
+  - "natural log"
+  - "z-score"
+  - "square root"
+  enumDef:
+  - enumeration: none
+  - enumeration: log2
+  - enumeration: log10
+  - enumeration: "natural log"
+  - enumeration: "z-score"
+  - enumeration: "square root"
