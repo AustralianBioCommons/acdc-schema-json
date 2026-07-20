@@ -159,7 +159,7 @@ properties:
       to the project
     type: string
   data_release:
-    description: Data release verison e.g. 0.1.1
+    description: Data release version e.g. 0.1.1
     type: string
   data_release_date:
     description: Date of data release in the format YYYY-MM-DD
