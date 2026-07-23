@@ -31,6 +31,65 @@ jobs:
         run: |
           poetry install --no-interaction --no-root
 
-      - name: Run gen3schemadev validate
+      # The node schemas are hand-maintained, so validation is the primary
+      # correctness check - there is no input file to regenerate from and
+      # compare against.
+      - name: Schemas are valid Gen3
         run: |
           poetry run gen3schemadev validate -y dictionary/prod_dict
+
+      # acdc_schema.json is what the deployment pipeline fetches and Gen3
+      # loads, so it is validated in its own right rather than only via the
+      # loose YAMLs it was built from.
+      - name: Bundled schema is valid Gen3
+        run: |
+          poetry run gen3schemadev validate -b dictionary/prod_dict/acdc_schema.json
+
+      # The bundle is generated separately from the schemas, so a branch can
+      # edit a node YAML and forget to re-bundle. That would ship the previous
+      # model while both checks above still passed.
+      - name: Bundled schema is up to date
+        run: |
+          poetry run gen3schemadev bundle \
+            -i dictionary/prod_dict \
+            -f "${RUNNER_TEMP}/fresh_bundle.json"
+          if diff -q "${RUNNER_TEMP}/fresh_bundle.json" \
+                     dictionary/prod_dict/acdc_schema.json > /dev/null; then
+            echo "Bundled schema is current."
+            exit 0
+          fi
+          echo "::error file=dictionary/prod_dict/acdc_schema.json::Bundled schema is stale. Re-run: poetry run gen3schemadev bundle -i dictionary/prod_dict -f dictionary/prod_dict/acdc_schema.json"
+          # The bundle is one long line, so name what differs rather than dumping it.
+          python - <<'PY'
+          import json, os
+
+          fresh = json.load(open(os.path.join(os.environ["RUNNER_TEMP"], "fresh_bundle.json")))
+          committed = json.load(open("dictionary/prod_dict/acdc_schema.json"))
+
+          only_fresh = sorted(set(fresh) - set(committed))
+          only_committed = sorted(set(committed) - set(fresh))
+          differing = sorted(k for k in set(fresh) & set(committed) if fresh[k] != committed[k])
+
+          if only_fresh:
+              print(f"  missing from the committed bundle: {only_fresh}")
+          if only_committed:
+              print(f"  in the committed bundle but no longer a schema: {only_committed}")
+          if differing:
+              print(f"  content differs for: {differing}")
+          if not (only_fresh or only_committed or differing):
+              print("  content matches; only the serialised form differs. "
+                    "Check the pinned gen3schemadev version.")
+          PY
+          exit 1
+
+      # _settings.yaml is the canonical dictionary version; pyproject.toml and
+      # the release tag are expected to follow it.
+      - name: Dictionary version is consistent
+        run: |
+          dict_version=$(grep -m1 '_dict_version:' dictionary/prod_dict/_settings.yaml | awk '{print $2}')
+          proj_version=$(grep -m1 '^version' pyproject.toml | sed 's/.*"\(.*\)".*/\1/')
+          echo "_settings.yaml: ${dict_version} | pyproject.toml: ${proj_version}"
+          if [ "${dict_version}" != "${proj_version}" ]; then
+            echo "::error::Version mismatch. _dict_version in _settings.yaml is canonical; bring pyproject.toml into line."
+            exit 1
+          fi
