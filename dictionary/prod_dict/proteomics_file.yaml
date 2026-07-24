@@ -64,6 +64,47 @@ properties:
   proteomic_unit:
     description: Units of measurement captured in the proteomics file.
     $ref: _definitions.yaml#/enum_protein_units
+  universal_spectrum_identifier:
+    description: >
+      Universal Spectrum Identifier (USI) for a representative spectrum, format
+      "mzspec:<collection>:<ms_run>:<index>". Lets anyone retrieve the exact spectrum.
+    type: string
+    pattern: "^mzspec:"
+  proteomexchange_id:
+    description: >
+      ProteomeXchange dataset accession, if the dataset has been deposited, format
+      "PXDnnnnnn".
+    type: string
+    pattern: ^PXD[0-9]{6}$
+  file_granularity:
+    description: >
+      What this file represents. "per participant" means one file holds a single
+      participant's values, typical of summarised or processed submissions;
+      "per sample" means one file per biospecimen or run; "cohort matrix" means one
+      file holds all participants.
+    $ref: _definitions.yaml#/enum_file_granularity
+  abundance_measure:
+    description: >
+      What the numeric values in the file represent, for quantities that are not
+      physical concentrations. If the values are a physical concentration, use
+      proteomic_unit instead or as well.
+    $ref: _definitions.yaml#/enum_abundance_measure
+  normalization_method:
+    description: >
+      How values were normalized, e.g. "median normalization", "quantile", "TIC",
+      "none".
+    type: string
+  transformation:
+    description: Mathematical transformation applied to the values, e.g. "log2", "none".
+    $ref: _definitions.yaml#/enum_transformation
+  feature_count:
+    description: Number of analytes (proteins) reported in this file.
+    type: integer
+    minimum: 0
+  missing_value_encoding:
+    description: >
+      How missing values are represented in the table, e.g. "NA", "0", "blank".
+    type: string
   data_release:
     description: Data release version e.g. 0.1.1
     type: string

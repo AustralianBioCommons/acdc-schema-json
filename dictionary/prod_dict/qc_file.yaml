@@ -116,6 +116,53 @@ properties:
   storage_location:
     description: Where the sample is stored
     $ref: _definitions.yaml#/enum_institute
+  number_ms1_spectra:
+    description: Total number of MS1 spectra acquired in the run.
+    type: integer
+    minimum: 0
+  number_ms2_spectra:
+    description: Total number of MS2 spectra acquired in the run.
+    type: integer
+    minimum: 0
+  mz_acquisition_range_low:
+    description: Lower bound of the acquired m/z range.
+    type: number
+  mz_acquisition_range_high:
+    description: Upper bound of the acquired m/z range.
+    type: number
+  rt_acquisition_range_start:
+    description: Retention time in minutes of the first acquired spectrum.
+    type: number
+  rt_acquisition_range_end:
+    description: Retention time in minutes of the last acquired spectrum.
+    type: number
+  chromatography_duration:
+    description: Total chromatographic run duration in minutes.
+    type: number
+  identified_psms:
+    description: Number of peptide-spectrum matches passing the FDR threshold.
+    type: integer
+    minimum: 0
+  identified_peptides:
+    description: Number of distinct peptides identified.
+    type: integer
+    minimum: 0
+  identified_proteins:
+    description: Number of protein groups identified.
+    type: integer
+    minimum: 0
+  median_mass_error_ppm:
+    description: Median precursor mass measurement error, in parts per million.
+    type: number
+  missed_cleavage_percent:
+    description: >
+      Percentage of identified peptides carrying at least one missed cleavage.
+    type: number
+    minimum: 0
+    maximum: 100
+  qc_metric_status:
+    description: Overall QC outcome for the run against study-defined thresholds.
+    $ref: _definitions.yaml#/enum_qc_metric_status
   data_release:
     description: Data release version e.g. 0.1.1
     type: string
