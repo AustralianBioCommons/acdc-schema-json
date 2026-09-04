@@ -76,6 +76,10 @@ properties:
 
       '
     $ref: _definitions.yaml#/enum_abs_heap
+  education_raw:
+    description: Raw education value exactly as supplied by the data custodian, before
+      it is mapped to the education categories.
+    type: string
   height_baseline_measured:
     description: Measured body height at baseline (m)
     type: number
